@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
-<body>
+<body background="/images/background.jpg">
+<div class="header">
+    <img src="/images/DarkblueBCNW.png" class="logo" width="200">
+    <div class="header-right">
+        <form action="/" th:method="POST">
+            <label for="user">Username</label>
+            <input type="text" id="user" name="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <input type="submit">
+            <div class="error" th:if="${param.error}">
+                Invalid username and password.
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<img class="frontPagePic" src="/images/loginPic.png"/>
 
 </body>
 </html>
