@@ -23,14 +23,11 @@ public class Student {
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email, String password, City city, String address, Date dateOfBirth) {
+    public Student(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.city = city;
-        this.address = address;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {

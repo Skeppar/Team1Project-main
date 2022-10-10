@@ -11,6 +11,9 @@ public class City {
     @ManyToOne
     private Student student;
 
+    @ManyToOne
+    private Teacher teacher;
+
     public City() {
     }
 
@@ -40,5 +43,13 @@ public class City {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }
