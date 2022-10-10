@@ -2,8 +2,9 @@ package com.example.slutprojekt;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
-public class Student {
+public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,20 +18,21 @@ public class Student {
     private City city;
     private String address;
     private Date dateOfBirth;
-    @OneToMany
+    @ManyToMany
     private Course course;
 
-    public Student() {
+    public Teacher() {
     }
 
-    public Student(String firstName, String lastName, String email, String password, City city, String address, Date dateOfBirth) {
+    public Teacher(String firstName, String lastName, String email, String password, String linkedIn, String gitHub, City city, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.linkedIn = linkedIn;
+        this.gitHub = gitHub;
         this.city = city;
         this.address = address;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {
@@ -89,8 +91,8 @@ public class Student {
         this.gitHub = gitHub;
     }
 
-    public String getCity() {
-        return city.getName();
+    public City getCity() {
+        return city;
     }
 
     public void setCity(City city) {
