@@ -33,7 +33,7 @@
                 <button><div>Assignments</div></button>
             </div>
         </div>
-      <div class="column2" style="background-color:#bbb;">
+      <div class="column2">
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">
@@ -59,8 +59,12 @@
         <div class="createPost">
             <form method="post" action="/" th:object="${newPost}">
                 <div>Title: <input type="text" name="title" th:field="*{title}"></div>
-                <div>Content: <input type="text" name="title" th:field="*{content}"></div>
-                <input type="submit" value="Post some news">
+                <!-- <div>Content: <input type="text" name="title" th:field="*{content}"></div>-->
+                <div>
+                    Content: <textarea th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
+                    </textarea>
+                </div>
+                <input type="submit" value="Post">
             </form>
         </div>
 
@@ -85,8 +89,120 @@
         </form>-->
 
         <div class="column3" style="background-color:#ccc;">
-            <h2>Column 3</h2>
-            <p>Schema här</p>
+            <table class="schema" border="5" cellspacing="0" align="center">
+                <!--<caption>Timetable</caption>-->
+                <tr>
+                    <td align="center" height="50"
+                        width="80"><br>
+                        <b>Day/Period</b></br>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>I<br>9:30-10:20</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>II<br>10:20-11:10</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>III<br>11:10-12:00</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>12:00-13:00</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>IV<br>13:00-1:30</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>V<br>1:30-2:20</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>VI<br>2:20-3:10</b>
+                    </td>
+                    <td align="center" height="50"
+                        width="80">
+                        <b>VII<br>3:10-4:00</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="50">
+                        <b>Monday</b></td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Mat</td>
+                    <td align="center" height="30">Che</td>
+                    <td rowspan="6" align="center" height="30">
+                        <h2>L<br>U<br>N<br>C<br>H</h2>
+                    </td>
+                    <td colspan="3" align="center"
+                        height="30">LAB</td>
+                    <td align="center" height="30">Phy</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30">
+                        <b>Tuesday</b>
+                    </td>
+                    <td colspan="3" align="center"
+                        height="30">LAB
+                    </td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Che</td>
+                    <td align="center" height="30">Mat</td>
+                    <td align="center" height="30">SPORTS</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30">
+                        <b>Wednesday</b>
+                    </td>
+                    <td align="center" height="30">Mat</td>
+                    <td align="center" height="30">phy</td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Che</td>
+                    <td colspan="3" align="center"
+                        height="30">LIBRARY
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="30">
+                        <b>Thursday</b>
+                    </td>
+                    <td align="center" height="30">Phy</td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Che</td>
+                    <td colspan="3" align="center"
+                        height="30">LAB
+                    </td>
+                    <td align="center" height="30">Mat</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30">
+                        <b>Friday</b>
+                    </td>
+                    <td colspan="3" align="center"
+                        height="30">LAB
+                    </td>
+                    <td align="center" height="30">Mat</td>
+                    <td align="center" height="30">Che</td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Phy</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30">
+                        <b>Saturday</b>
+                    </td>
+                    <td align="center" height="30">Eng</td>
+                    <td align="center" height="30">Che</td>
+                    <td align="center" height="30">Mat</td>
+                    <td colspan="3" align="center"
+                        height="30">SEMINAR
+                    </td>
+                    <td align="center" height="30">SPORTS</td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -105,5 +221,6 @@
             <a th:href="'/items?page=' + ${currentPage+1}" th:text="Next" class="itemlistinglinks"></a>
         </span>
 -->
+
 </body>
 </html>

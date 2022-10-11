@@ -68,11 +68,14 @@
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;
   margin: 0 auto;
+  border-style: groove;
+  border-color: rgb(0,119,182);
+
 }
 
 .column3 {
   float: left;
-  width: 10%;
+  width: 30%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;
@@ -102,4 +105,9 @@
 .posts {
 border-style: groove;
 margin-bottom: 25px;
+}
+
+.schema {
+height: 20%;
+width: 20%;
 }
