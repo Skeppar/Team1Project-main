@@ -15,14 +15,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class PostController {
     private static final int PAGE_SIZE = 10;
     Logger logger = LoggerFactory.getLogger(PostController.class);
+
     @Autowired
     TeacherAnnouncementRepo teacherAnnouncementRepo;
+
+    @Autowired
+    TeacherRepo teacherRepo;
 
     @GetMapping("/post/{id}")
     public String post(Model model, @PathVariable Long id) {
@@ -31,19 +37,38 @@ public class PostController {
         model.addAttribute("post1", post1);
         return "home";
     }
-    @GetMapping("/home")
-    public String posts(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
-      /*  List<TeacherAnnouncement> posts = getPage(page - 1, PAGE_SIZE);
-        int pageCount = numberOfPages(PAGE_SIZE);
-        int[] pages = toArray(pageCount);
+    @GetMapping("/")
+    public String posts(HttpSession session, Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+      //List<TeacherAnnouncement> posts = getPage(page - 1, PAGE_SIZE);
+        //int pageCount = numberOfPages(PAGE_SIZE);
+        //int[] pages = toArray(pageCount);
 
-        model.addAttribute("content", posts);
-        model.addAttribute("pages", pages);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("showPrev", page > 1);
-        model.addAttribute("showNext", page < pageCount);*/
-        List<TeacherAnnouncement> posts = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
-        model.addAttribute("content", posts);
+        /*List<String> contentsTitle = new ArrayList<>();
+        List<String> contentsContent = new ArrayList<>();
+        for (TeacherAnnouncement strings : posts) {
+            contentsTitle.add(strings.getTitle());
+            contentsContent.add(strings.getContent());
+        }
+
+        session.setAttribute("contentTitle", contentsTitle);
+        session.setAttribute("contentContent", contentsContent);*/
+
+        List<TeacherAnnouncement> allContent = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        /*for (TeacherAnnouncement announcement : allContent) {
+            for (Teacher teacher : teacherRepo.findAll()) {
+                if (Objects.equals(announcement.getTeacher().getId(), teacher.getId())) {
+                    announcement.setTeacherName(teacher.getFirstName() + " " + teacher.getLastName());
+                }
+            }
+        }*/
+        model.addAttribute("allContent", allContent);
+        //model.addAttribute("content", posts);
+        //model.addAttribute("pages", pages);
+        //model.addAttribute("currentPage", page);
+        //model.addAttribute("showPrev", page > 1);
+        //model.addAttribute("showNext", page < pageCount);
+        //List<TeacherAnnouncement> posts = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        //.addAttribute("content", posts);
         return "home";
     }
     @GetMapping("/addPost")

@@ -48,6 +48,7 @@
 
 .body {
   box-sizing: border-box;
+
 }
 
 /* Create three equal columns that floats next to each other */
@@ -56,6 +57,8 @@
   width: 10%;
   padding: 10px;
   /*height: 300px; /* Should be removed. Only for demonstration */
+  display: table;
+  margin: 0 auto;
 }
 
 .column2 {
@@ -63,6 +66,8 @@
   width: 70%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
+  display: table;
+  margin: 0 auto;
 }
 
 .column3 {
@@ -70,6 +75,8 @@
   width: 10%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
+  display: table;
+  margin: 0 auto;
 }
 
 /* Clear floats after the columns */
@@ -90,4 +97,9 @@
 .frontPagePic {
     margin-left: 250px;
     margin-top: 161px;
+}
+
+.posts {
+border-style: groove;
+margin-bottom: 25px;
 }

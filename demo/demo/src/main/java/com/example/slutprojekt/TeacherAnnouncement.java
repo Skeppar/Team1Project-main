@@ -12,15 +12,25 @@ public class TeacherAnnouncement {
     private String content;
     private String img = "/image/ads/default.png";
     private String date;
+    private String teacherName;
 
     @ManyToOne
     private Teacher teacher;
 
     public TeacherAnnouncement(){}
 
-    public TeacherAnnouncement(String title, String content) {
+    public TeacherAnnouncement(String title, String content, Teacher teacher) {
         this.title = title;
         this.content = content;
+        this.teacher = teacher;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public Long getId() {

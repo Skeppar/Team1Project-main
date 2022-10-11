@@ -34,9 +34,17 @@
                 <button><div>Assignments</div></button>
             </div>
         </div>
-      <!--  <div class="column2" style="background-color:#bbb;">
-            <div th:if="${content.title != null}">
-                <a th:href="'/addPost/' + ${post.id}"> <h2>Your post is created! </h2></a>
+      <div class="column2" style="background-color:#bbb;">
+          <h2>Recent announcement</h2>
+
+          <div class="posts" th:each="post : ${allContent}">
+              <h3><div th:text="${post.title}"></div></h3>
+              <div th:text="${post.content}"></div>
+              <!--<div th:text="${post.teacherName}"></div>-->
+          </div>
+
+            <!--<div th:if="${content.title != null}">
+
                 <div class ="created">
                     <table style="padding-left: 10px;">
                         <th><p th:text="'Title: ' + ${content.title}"></p></th>
@@ -49,9 +57,11 @@
             </div>
         </div>-->
         <div class="createAd">
-            <h3 class="createTitle">Create an ad </h3>
+            <button><h3 class="createTitle">Create an ad </h3></button>
         </div>
-        <form  action="/addPost" method="POST" th:object="${content}" enctype="multipart/form-data">
+
+          </div>
+        <!--<form  action="/addPost" method="POST" th:object="${content}" enctype="multipart/form-data">
             <table><div>
                 <th >Title: <input type="text" th:field="*{title}"/>
                     <p class="error" th:if="${#fields.hasErrors('title')}">Incorrect first name</p></th>
@@ -62,13 +72,13 @@
                 <td><img th:src="${content.img}" width="100"></td>
                 <tr></tr>
                 <th><input type="file" name="image"/></th>
-                <!--! th:field="*{img} -->
+                ! th:field="*{img}
 
                 <tr></tr>
                 <th> <input type="submit"/></th>
             </div>
             </table>
-        </form>
+        </form>-->
 
         <div class="column3" style="background-color:#ccc;">
             <h2>Column 3</h2>

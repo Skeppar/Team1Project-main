@@ -11,10 +11,10 @@ public class BrightsController {
 
 
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String home() {
-        return "home";
-    }
+        return "/";
+    }*/
 
     @GetMapping("/login")
     public String login() {
