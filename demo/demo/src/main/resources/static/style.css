@@ -63,7 +63,7 @@
 
 .column2 {
   float: left;
-  width: 70%;
+  width: 55%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;

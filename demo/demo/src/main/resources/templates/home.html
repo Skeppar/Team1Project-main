@@ -59,7 +59,6 @@
         <div class="createPost">
             <form method="post" action="/" th:object="${newPost}">
                 <div>Title: <input type="text" name="title" th:field="*{title}"></div>
-                <!-- <div>Content: <input type="text" name="title" th:field="*{content}"></div>-->
                 <div>
                     Content: <textarea th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
                     </textarea>
@@ -89,8 +88,93 @@
         </form>-->
 
         <div class="column3" style="background-color:#ccc;">
+            <table>
+                <tr>
+                    <td>
+                        <b>TODAY - </b> <script> document.write(new Date().toLocaleDateString()); </script> <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>09:00 - Checkin</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>AnonymousClassesAndLambda - Exercises.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>AnonymousClassesAndLambda.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>LambdaStarter.zip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>[10.15 - 10.30 - Morning break]</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>10.30 - LambdaSolution.zip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Functional Programming.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Lambda.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Lambda - Exercises.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>14:00 - Lambda2Solution.zip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Streams.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Streams - Exercises.pdf</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>[14.45 - 15.00 - Afternoon break]</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>16:30 - StreamsSolution.zip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Checkout</b>
+                    </td>
+                </tr>
+                <tr>
+                    <b></b>
+                </tr>
+            </table>
+            <br>
             <table class="schema" border="5" cellspacing="0" align="center">
-                <!--<caption>Timetable</caption>-->
                 <tr>
                     <td align="center" height="50"
                         width="80"><br>
@@ -190,18 +274,6 @@
                     <td align="center" height="30">Eng</td>
                     <td align="center" height="30">Phy</td>
                 </tr>
-                <tr>
-                    <td align="center" height="30">
-                        <b>Saturday</b>
-                    </td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Che</td>
-                    <td align="center" height="30">Mat</td>
-                    <td colspan="3" align="center"
-                        height="30">SEMINAR
-                    </td>
-                    <td align="center" height="30">SPORTS</td>
-                </tr>
             </table>
         </div>
     </div>
@@ -221,6 +293,5 @@
             <a th:href="'/items?page=' + ${currentPage+1}" th:text="Next" class="itemlistinglinks"></a>
         </span>
 -->
-
 </body>
 </html>
