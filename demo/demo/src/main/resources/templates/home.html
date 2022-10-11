@@ -9,9 +9,8 @@
 </head>
 <body>
 <div class="header">
-    <a href="#default" class="logo">CompanyLogo</a>
+    <a href="/" class="logo">Company Logo</a>
     <div class="header-right">
-        <a class="active" href="#home">Home</a>
         <a href="#contact">Contact</a>
         <a href="#about">Profile</a>
     </div>
@@ -56,8 +55,12 @@
                 </div>
             </div>
         </div>-->
-        <div class="createAd">
-            <button><h3 class="createTitle">Create an ad </h3></button>
+        <div class="createPost">
+            <form method="post" action="/" th:object="${newPost}">
+                <div>Title: <input type="text" name="title" th:field="*{title}"></div>
+                <div>Content: <input type="text" name="title" th:field="*{content}"></div>
+                <input type="submit" value="Post some news">
+            </form>
         </div>
 
           </div>

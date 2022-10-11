@@ -69,20 +69,20 @@ public class PostController {
         //model.addAttribute("showNext", page < pageCount);
         //List<TeacherAnnouncement> posts = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
         //.addAttribute("content", posts);
-        return "home";
-    }
-    @GetMapping("/addPost")
-    public String addItem(Model model) {
-        model.addAttribute("post",new TeacherAnnouncement());
+
+        model.addAttribute("newPost",new TeacherAnnouncement());
 
         return "home";
     }
-    @PostMapping("/addPost")
-    public String addPost(@ModelAttribute TeacherAnnouncement post, Model model, HttpSession session, HttpServletRequest request, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+    @PostMapping("/")
+    public String addPost(@ModelAttribute TeacherAnnouncement post, Model model, HttpSession session, HttpServletRequest request /*, @RequestParam("image") MultipartFile multipartFile*/) throws IOException {
         model.addAttribute("content",post);
 
+                /*
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
 
         // Har användaren inte laddat upp en bild så vill fortsätta använda default
         if(!fileName.equals(""))
@@ -96,6 +96,7 @@ public class PostController {
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
              */
 
+        /*
             // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
             String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\ads\\";
             byte[] bytes = multipartFile.getBytes();
@@ -110,7 +111,13 @@ public class PostController {
 
         teacherAnnouncementRepo.save(post);
         logger.info("User added an item" + " " + post );
-        return "home";
+        */
+
+        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent());
+        System.out.println(ta.getContent());
+        teacherAnnouncementRepo.save(ta);
+
+        return "redirect:/";
     }
     private List<TeacherAnnouncement> getPage(int page, int pageSize) {
         List<TeacherAnnouncement> items = (List<TeacherAnnouncement>)teacherAnnouncementRepo.findAll();

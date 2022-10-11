@@ -19,6 +19,11 @@ public class TeacherAnnouncement {
 
     public TeacherAnnouncement(){}
 
+    public TeacherAnnouncement(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     public TeacherAnnouncement(String title, String content, Teacher teacher) {
         this.title = title;
         this.content = content;
