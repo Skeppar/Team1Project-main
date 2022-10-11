@@ -2,6 +2,8 @@ package com.example.slutprojekt;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Teacher {
@@ -14,12 +16,19 @@ public class Teacher {
     private String password;
     private String linkedIn;
     private String gitHub;
-    @OneToMany
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
     private City city;
     private String address;
     private Date dateOfBirth;
-    @ManyToMany
-    private Course course;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Teacher_Course",
+            joinColumns = { @JoinColumn(name = "teacher_id") },
+            inverseJoinColumns = { @JoinColumn(name = "course_id") }
+    )
+    Set<Course> course = new HashSet<>();
 
     public Teacher() {
     }
@@ -115,11 +124,24 @@ public class Teacher {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Course getCourse() {
+    public Set<Course> getCourse() {
+        return course;
+    }
+
+    public void setCourse(Set<Course> course) {
+        this.course = course;
+    }
+
+    /*public Course getCourse() {
         return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
-    }
+    }*/
 }
+
+/*
+INSERT INTO COURSE (TITLE, START_DATE, GRADUATION_DATE, CITY) VALUES ('Java HT 2022', 01-08-2022, 21-10-2022, 'Stockholm');
+INSERT INTO COURSE (TITLE, START_DATE, GRADUATION_DATE, CITY) VALUES ('JavaScript HT 2022', 01-08-2022, 21-10-2022, 'Stockholm');
+ */

@@ -1,6 +1,7 @@
 package com.example.slutprojekt;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class City {
@@ -8,11 +9,14 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToOne
-    private Student student;
 
-    @ManyToOne
-    private Teacher teacher;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
+    private List<Student> students;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
+    private List<Teacher> teachers;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
+    private List<Course> courses;
 
     public City() {
     }
@@ -20,6 +24,15 @@ public class City {
     public City(String name) {
         this.name = name;
     }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
 
     public Long getId() {
         return id;
@@ -37,19 +50,35 @@ public class City {
         this.name = name;
     }
 
-    public Student getStudent() {
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    /*public Student getStudent() {
         return student;
     }
 
     public void setStudent(Student student) {
         this.student = student;
-    }
+    }*/
 
-    public Teacher getTeacher() {
+    /*public Teacher getTeacher() {
         return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }*/
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }

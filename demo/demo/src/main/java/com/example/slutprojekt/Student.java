@@ -1,5 +1,7 @@
 package com.example.slutprojekt;
 
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import java.util.Date;
 @Entity
@@ -13,12 +15,16 @@ public class Student {
     private String password;
     private String linkedIn;
     private String gitHub;
-    @OneToMany
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
     private City city;
     private String address;
     private Date dateOfBirth;
-    @OneToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
     private Course course;
+
 
     public Student() {
     }
@@ -29,6 +35,14 @@ public class Student {
         this.email = email;
         this.password = password;
     }
+
+    /*public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }*/
 
     public Long getId() {
         return id;
