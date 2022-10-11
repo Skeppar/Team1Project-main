@@ -1,7 +1,7 @@
 package com.example.slutprojekt;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,10 +12,10 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    /*private Date startDate;
-    private Date graduationDate;*/
-    private String startDate;
-    private String graduationDate;
+    private Date startDate;
+    private Date graduationDate;
+    //private String startDate;
+    //private String graduationDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
@@ -32,11 +32,11 @@ public class Course {
     public Course() {
     }
 
-    public Course(String title, String startDate, String graduationDate) {
+    public Course(String title, Date startDate, Date graduationDate) {
         this.title = title;
         this.startDate = startDate;
         this.graduationDate = graduationDate;
-        //this.city = city;
+        this.city = city;
     }
 
     public Long getId() {
@@ -55,7 +55,7 @@ public class Course {
         this.title = title;
     }
 
-    /*public Date getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
@@ -69,9 +69,9 @@ public class Course {
 
     public void setGraduationDate(Date graduationDate) {
         this.graduationDate = graduationDate;
-    }*/
+    }
 
-    public String getStartDate() {
+    /*public String getStartDate() {
         return startDate;
     }
 
@@ -85,7 +85,7 @@ public class Course {
 
     public void setGraduationDate(String graduationDate) {
         this.graduationDate = graduationDate;
-    }
+    } */
 
     public City getCity() {
         return city;
