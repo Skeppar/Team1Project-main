@@ -18,10 +18,9 @@ public class TeacherAnnouncement {
 
     public TeacherAnnouncement(){}
 
-    public TeacherAnnouncement(String title, String content, String date) {
+    public TeacherAnnouncement(String title, String content) {
         this.title = title;
         this.content = content;
-        this.date = date;
     }
 
     public Long getId() {

@@ -32,8 +32,8 @@ public class PostController {
         return "home";
     }
     @GetMapping("/home")
-    public String items(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
-        List<TeacherAnnouncement> posts = getPage(page - 1, PAGE_SIZE);
+    public String posts(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+      /*  List<TeacherAnnouncement> posts = getPage(page - 1, PAGE_SIZE);
         int pageCount = numberOfPages(PAGE_SIZE);
         int[] pages = toArray(pageCount);
 
@@ -41,8 +41,10 @@ public class PostController {
         model.addAttribute("pages", pages);
         model.addAttribute("currentPage", page);
         model.addAttribute("showPrev", page > 1);
-        model.addAttribute("showNext", page < pageCount);
-        return "items";
+        model.addAttribute("showNext", page < pageCount);*/
+        List<TeacherAnnouncement> posts = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        model.addAttribute("content", posts);
+        return "home";
     }
     @GetMapping("/addPost")
     public String addItem(Model model) {
@@ -86,15 +88,21 @@ public class PostController {
         return "home";
     }
     private List<TeacherAnnouncement> getPage(int page, int pageSize) {
-        List<TeacherAnnouncement> items = (List)teacherAnnouncementRepo.findAll();
+        List<TeacherAnnouncement> items = (List<TeacherAnnouncement>)teacherAnnouncementRepo.findAll();
 
         int from = Math.max(0,page*pageSize);
         int to = Math.min(items.size(),(page+1)*pageSize);
         return items.subList(from, to);
     }
-
     private int numberOfPages(int pageSize) {
-        List<TeacherAnnouncement> books = (List)teacherAnnouncementRepo.findAll();
+        List<TeacherAnnouncement> books = (List<TeacherAnnouncement>)teacherAnnouncementRepo.findAll();
         return (int)Math.ceil((double) books.size() / pageSize);
+    }
+    private int[] toArray ( int num){
+        int[] result = new int[num];
+        for (int i = 0; i < num; i++) {
+            result[i] = i + 1;
+        }
+        return result;
     }
 }
