@@ -1,9 +1,7 @@
 package com.example.slutprojekt;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Teacher {
@@ -16,6 +14,9 @@ public class Teacher {
     private String password;
     private String linkedIn;
     private String gitHub;
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<TeacherAnnouncement> posts = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
@@ -43,7 +44,9 @@ public class Teacher {
         this.city = city;
         this.address = address;
     }
+    public List<TeacherAnnouncement> getPosts() {return posts;}
 
+    public void setPosts(List<TeacherAnnouncement> posts) {this.posts = posts;}
     public Long getId() {
         return id;
     }
