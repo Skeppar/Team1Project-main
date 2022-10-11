@@ -1,6 +1,7 @@
 package com.example.slutprojekt;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 public class TeacherAnnouncement {
@@ -11,7 +12,7 @@ public class TeacherAnnouncement {
     private String title;
     private String content;
     private String img = "/image/ads/default.png";
-    private String date;
+    private Timestamp date;
     private String teacherName;
 
     @ManyToOne
@@ -19,15 +20,17 @@ public class TeacherAnnouncement {
 
     public TeacherAnnouncement(){}
 
-    public TeacherAnnouncement(String title, String content) {
+    public TeacherAnnouncement(String title, String content, Timestamp  date) {
         this.title = title;
         this.content = content;
+        this.date = date;
     }
 
-    public TeacherAnnouncement(String title, String content, Teacher teacher) {
+    public TeacherAnnouncement(String title, String content, Teacher teacher, Timestamp date) {
         this.title = title;
         this.content = content;
         this.teacher = teacher;
+        this.date = date;
     }
 
     public String getTeacherName() {
@@ -70,12 +73,12 @@ public class TeacherAnnouncement {
         this.img = img;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.date = Timestamp.valueOf(date);
     }
 
     public Teacher getTeacher() {

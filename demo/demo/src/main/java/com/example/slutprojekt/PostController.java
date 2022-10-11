@@ -15,9 +15,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import static javax.print.attribute.Size2DSyntax.MM;
 
 @Controller
 public class PostController {
@@ -54,6 +59,7 @@ public class PostController {
         session.setAttribute("contentContent", contentsContent);*/
 
         List<TeacherAnnouncement> allContent = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        Collections.sort(allContent, (o1, o2) -> o2.getDate().compareTo(o1.getDate()));
         /*for (TeacherAnnouncement announcement : allContent) {
             for (Teacher teacher : teacherRepo.findAll()) {
                 if (Objects.equals(announcement.getTeacher().getId(), teacher.getId())) {
@@ -113,8 +119,9 @@ public class PostController {
         logger.info("User added an item" + " " + post );
         */
 
-        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent());
-        System.out.println(ta.getContent());
+        Long millis=System.currentTimeMillis();
+        java.sql.Timestamp date = new java.sql.Timestamp (millis);
+        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(), date);
         teacherAnnouncementRepo.save(ta);
 
         return "redirect:/";

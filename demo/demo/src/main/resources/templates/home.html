@@ -39,6 +39,7 @@
           <div class="posts" th:each="post : ${allContent}">
               <h3><div th:text="${post.title}"></div></h3>
               <div th:text="${post.content}"></div>
+              <div th:text="${post.date}"></div>
               <!--<div th:text="${post.teacherName}"></div>-->
           </div>
 
