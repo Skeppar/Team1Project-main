@@ -39,7 +39,7 @@
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">
-              <h3><div th:text="${post.title}"></div></h3>
+              <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
               <div th:text="${post.content}"></div>
               <div th:text="${post.date}"></div>
               <!--<div th:text="${post.teacherName}"></div>-->

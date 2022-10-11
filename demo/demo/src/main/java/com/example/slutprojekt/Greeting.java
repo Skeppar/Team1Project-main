@@ -14,6 +14,7 @@ public class Greeting {
     }
 
     public Greeting() {
+
     }
 
     public Greeting(String content,String sender) {
@@ -24,10 +25,6 @@ public class Greeting {
     public String getContent() {
         return content;
     }
-    public enum MessageType {
-        CHAT,
-        JOIN,
-        LEAVE
-    }
+
 
 }
