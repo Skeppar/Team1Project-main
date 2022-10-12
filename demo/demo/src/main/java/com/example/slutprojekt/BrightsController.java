@@ -26,10 +26,12 @@ public class BrightsController {
         return "profile";
     }
 
+    /*
     @GetMapping("/people")
     public  String people() {
         return "people";
     }
+     */
 
     @GetMapping("/assignment")
     public String assignment() {
