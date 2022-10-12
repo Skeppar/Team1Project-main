@@ -127,6 +127,7 @@ width: 20%;
 }
 .pix
 {
+ border-radius: 10px;
     border:solid 1px;
     height: 168px;
     width: 235px;

@@ -20,7 +20,6 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -31,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/").permitAll() // Nödlösning när security inte funkar
                 .antMatchers("/video").permitAll() // Nödlösning när security inte funkar
                 .antMatchers( "/init", "/h2", "/h2/**").permitAll()
+                .antMatchers( "/login").permitAll()
                 //.antMatchers("/", "/home").hasRole("USER") // Kommenterade ut eftersom inlogg inte funkade
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -38,9 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.formLogin()
                 .formLogin().defaultSuccessUrl("/", true)
                 .loginPage("/login")
+                //and().formLogin().disable()
                 .permitAll();
         http.csrf().disable();
         http.headers().frameOptions().disable();
+
     }
 
     @Bean
