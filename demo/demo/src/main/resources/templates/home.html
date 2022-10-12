@@ -33,9 +33,14 @@
                 <button><div>Modules</div></button>
                 <br>
                 <button><div>Assignments</div></button>
+                <br>
+                <form action="/people">
+                    <input type="submit" value="Meet the team" />
+                </form>
             </div>
         </div>
       <div class="column2">
+          <p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">

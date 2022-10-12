@@ -18,12 +18,6 @@ public class BrightsController {
     @Autowired
     private StudentRepo studentRepo;
 
-
-    /*@GetMapping("/")
-    public String home() {
-        return "home";
-    }*/
-
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -41,6 +35,7 @@ public class BrightsController {
         return "profile";
     }
 
+    @GetMapping("/people")
     @PostMapping("/profile")
     public String profilePost(@ModelAttribute Student student, HttpSession session, Model model) {
         student.setFirstName((String)model.getAttribute("firstName"));
@@ -63,13 +58,8 @@ public class BrightsController {
 
 
         //return "redirect:/profile";
-        return "";
+        return "/home";
     }
-
-    /*@GetMapping("/people")
-    public  String people() {
-        return "people";
-    }*/
 
     @GetMapping("/assignment")
     public String assignment() {

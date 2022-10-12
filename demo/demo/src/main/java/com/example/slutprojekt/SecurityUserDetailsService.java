@@ -23,7 +23,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         //User user = userRepository.findByUsername(username);
         Student student = studentRepo.findByEmail(username);
-        Teacher teacher = teacherRepo.findByUsername(username);
+        Teacher teacher = teacherRepo.findByEmail(username);
         if (student == null && teacher == null) {
             throw new UsernameNotFoundException(username);
         }

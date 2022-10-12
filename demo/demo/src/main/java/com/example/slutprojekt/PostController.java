@@ -33,6 +33,9 @@ public class PostController {
     TeacherAnnouncementRepo teacherAnnouncementRepo;
 
     @Autowired
+    StudentRepo studentRepo;
+
+    @Autowired
     TeacherRepo teacherRepo;
 
 
@@ -149,5 +152,12 @@ public class PostController {
     @GetMapping ("/video")
     public String chat() {
         return "video";
+    }
+
+    @GetMapping ("/people")
+    public String people(Model model){
+        model.addAttribute("students", studentRepo.findAll());
+        model.addAttribute("teachers", teacherRepo.findAll());
+        return "people";
     }
 }
