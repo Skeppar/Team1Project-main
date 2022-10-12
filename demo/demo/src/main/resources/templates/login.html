@@ -1,3 +1,8 @@
+<!--
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,25 +12,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body background="/images/background.jpg">
+<body >
 <div class="header">
-    <img src="/images/DarkblueBCNW.png" class="logo" width="200">
-    <div class="header-right">
-        <form action="/" th:method="POST">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-            <input type="submit">
-            <div class="error" th:if="${param.error}">
-                Invalid username and password.
-            </div>
-        </form>
-    </div>
+    <img src="/images/DarkblueBCNW.png" class="headerPic">
 </div>
+<img src="/images/loginpic2.png" class="logo" width="200">
+<div class="container">
+    <form class="login" action="/" th:method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+        <!-- <div class="error" th:if="${param.error}">
+             Invalid username and password.
+         </div>-->
+    </form>
+    <div class="picContainer">
+        <img class="pix" src="SP3.jfif"/>
+        <img class="pix" src="SP1.jpeg"/>
+        <img class="pix" src="SP2.jfif"/>
+    </div>
 
-
-<img class="frontPagePic" src="/images/loginPic.png"/>
-
+</div>
 </body>
 </html>
