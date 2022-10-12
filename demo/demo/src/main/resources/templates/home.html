@@ -36,6 +36,7 @@
             </div>
         </div>
       <div class="column2">
+          <p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">
