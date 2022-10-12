@@ -21,7 +21,7 @@ public class InitController {
     public String init(){
         // tries to find the user so that we only save the user if it does not exist
         //User user = userRepository.findByUsername("user");
-        Student student = studentRepo.findByUsername("user");
+        Student student = studentRepo.findByEmail("user");
         /*if (user == null) {
             user = new User();
             user.setUsername("user");
@@ -30,7 +30,7 @@ public class InitController {
             userRepository.save(user);*/
         if (student == null) {
             student = new Student();
-            student.setUsername("user");
+            student.setEmail("user");
             student.setPassword(encoder.encode("123"));
             // svae the user with username user and an encoded value for 123 as password
             studentRepo.save(student);
