@@ -36,12 +36,12 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String firstName, String lastName, String email, String password) {//, String linkedIn, String gitHub, City city, String address) {
+    public Teacher(String firstName, String lastName, String email, String linkedIn, String password) {//, String gitHub, City city, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.linkedIn = linkedIn;
         this.password = password;
-        //this.linkedIn = linkedIn;
         //this.gitHub = gitHub;
         //this.city = city;
         //this.address = address;
