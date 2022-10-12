@@ -15,6 +15,8 @@ public class Student {
     private String password;
     private String linkedIn;
     private String gitHub;
+    //@Column(nullable = false, unique = true)
+    private String username;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
@@ -130,5 +132,13 @@ public class Student {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public String getUsername() {
+        return email;
+    }
+
+    public void setUsername(String username) {
+        this.email = username;
     }
 }

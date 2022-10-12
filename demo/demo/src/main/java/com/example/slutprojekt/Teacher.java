@@ -14,6 +14,8 @@ public class Teacher {
     private String password;
     private String linkedIn;
     private String gitHub;
+    //@Column(nullable = false, unique = true)
+    private String username;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<TeacherAnnouncement> posts = new ArrayList<>();
