@@ -53,7 +53,7 @@ public class SecurityUserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return student.getUsername();
+        return student.getEmail();
     }
 
     /*@Override

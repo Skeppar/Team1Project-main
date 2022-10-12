@@ -35,6 +35,7 @@ public class PostController {
     @Autowired
     TeacherRepo teacherRepo;
 
+
     @GetMapping("/post/{id}")
     public String post(Model model, @PathVariable Long id) {
         //Item item1 = itemRepository.getItem(id);
@@ -143,5 +144,10 @@ public class PostController {
             result[i] = i + 1;
         }
         return result;
+    }
+
+    @GetMapping ("/video")
+    public String chat() {
+        return "video";
     }
 }

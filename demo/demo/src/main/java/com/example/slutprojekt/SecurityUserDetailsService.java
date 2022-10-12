@@ -22,7 +22,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         //User user = userRepository.findByUsername(username);
-        Student student = studentRepo.findByUsername(username);
+        Student student = studentRepo.findByEmail(username);
         Teacher teacher = teacherRepo.findByUsername(username);
         if (student == null && teacher == null) {
             throw new UsernameNotFoundException(username);

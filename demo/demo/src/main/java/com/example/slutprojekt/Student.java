@@ -134,11 +134,13 @@ public class Student {
         this.course = course;
     }
 
-    public String getUsername() {
+    /*public String getUsername() {
         return email;
     }
 
     public void setUsername(String username) {
         this.email = username;
     }
+
+     */
 }

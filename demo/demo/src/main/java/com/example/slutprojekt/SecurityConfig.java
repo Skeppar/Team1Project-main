@@ -28,9 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/", "/home", "/init", "/h2", "/h2/**").permitAll()
 
                 .antMatchers("/style.css").permitAll()
-                .antMatchers("/style.css").permitAll()
+                .antMatchers("/").permitAll() // Nödlösning när security inte funkar
+                .antMatchers("/video").permitAll() // Nödlösning när security inte funkar
                 .antMatchers( "/init", "/h2", "/h2/**").permitAll()
-                .antMatchers("/", "/home").hasRole("USER")
+                //.antMatchers("/", "/home").hasRole("USER") // Kommenterade ut eftersom inlogg inte funkade
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
