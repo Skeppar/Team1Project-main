@@ -1,4 +1,13 @@
+.header {
+    margin-left: 470px;
+    margin-top: 50px;
 
+  }
+  .headerPic
+  {
+    width: 300px;
+    height: 100px;
+  }
 /* Style the header links */
 .header a {
   float: left;
@@ -120,3 +129,51 @@ width: 20%;
   border-style: groove;
   border-color: rgb(0,119,182);
 }
+
+.picContainer
+{
+    margin-left: 250px;
+    padding-bottom: 70px;
+}
+.pix
+{
+ border-radius: 10px;
+    border:solid 1px;
+    height: 168px;
+    width: 235px;
+    margin: 10px;
+
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: darkgreen;
+  }
+
+  .container{
+    background-color: lightblue;
+    margin-bottom: 150px;
+
+
+  }
+  input
+  {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .login{
+    padding-top: 90px;
+    margin-left: 400px;
+    margin-bottom: 50px;
+  }
+
+  .logo{
+    margin-left: 500px;
+
+  }
