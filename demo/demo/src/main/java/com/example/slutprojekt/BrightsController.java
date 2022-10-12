@@ -13,7 +13,7 @@ public class BrightsController {
 
     /*@GetMapping("/")
     public String home() {
-        return "/";
+        return "home";
     }*/
 
     @GetMapping("/login")

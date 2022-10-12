@@ -13,7 +13,9 @@
     <div class="header-right">
         <a href="#contact">Contact</a>
         <a href="#about">Profile</a>
+        <a href="/chat">Chat</a>
     </div>
+
 </div>
 <br>
 <br>
@@ -37,7 +39,7 @@
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">
-              <h3><div th:text="${post.title}"></div></h3>
+              <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
               <div th:text="${post.content}"></div>
               <div th:text="${post.date}"></div>
               <!--<div th:text="${post.teacherName}"></div>-->
@@ -95,8 +97,15 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="stefan" style="font-weight: bold;">
+                        <br>
+                        <a href="/video" target="_blank">Digital Classroom</a>
                     <td>
-                        <b>09:00 - Checkin</b>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <b>09:00 - Check-in</b>
                     </td>
                 </tr>
                 <tr>
