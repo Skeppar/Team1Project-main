@@ -18,8 +18,12 @@ INSERT INTO CITY (NAME) VALUES ('Visby');
 INSERT INTO COURSE (TITLE, START_DATE, GRADUATION_DATE, CITY_ID) VALUES ('Java HT 2022', '2022-08-01', '2022-10-21', (SELECT ID FROM CITY WHERE NAME = 'Stockholm'));
 INSERT INTO COURSE (TITLE, START_DATE, GRADUATION_DATE, CITY_ID) VALUES ('JavaScript HT 2022', '2022-08-01', '2022-10-21', (SELECT ID FROM CITY WHERE NAME = 'Stockholm'));
 
-INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Johan', 'Mattsson', 'johan@mail.com','https://se.linkedin.com/in/johan-mattsson-2b7468219?' ,'$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
-INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES ('Carl', 'Norrland', 'carl@mail.com','$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Johan', 'Mattsson', 'johan@mail.com', 'https://se.linkedin.com/in/johan-mattsson-2b7468219?' ,'$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Carl', 'Norrland', 'carl@mail.com', 'https://se.linkedin.com/in/carl-mickelson-300901189/en','$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES ('Carl Johan', 'Stefansson', 'carljohan@mail.com', '$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Alvin', 'Skeppar', 'alvin@mail.com', 'https://se.linkedin.com/in/alvin-skeppar-5a87a1122/en' ,'$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Markus', 'Turesson', 'markus@mail.com', 'https://se.linkedin.com/in/markus-turesson-sj%C3%B6man-095506115' ,'$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
+INSERT INTO STUDENT (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Rebecca', 'Rivera', 'markus@mail.com', 'https://se.linkedin.com/in/rebecca-rivera-0926a9227' ,'$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
 
 INSERT INTO TEACHER (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Andreas', 'Olsson', 'olsson@mail.com', 'https://se.linkedin.com/in/andreasols/en?', '$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
 INSERT INTO TEACHER (FIRST_NAME, LAST_NAME, EMAIL, LINKED_IN, PASSWORD) VALUES ('Oscar', 'Olsson', 'Oscar.olsson@mail.com', 'https://se.linkedin.com/in/happybits?', '$2a$11$RCEkkIuaDpUlqn5PyzUjEOvwrNnLSJ4kQKke5QJV6nGaZQiXcoWPa');
