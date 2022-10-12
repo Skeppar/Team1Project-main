@@ -35,7 +35,7 @@ public class BrightsController {
         return "profile";
     }
 
-    @GetMapping("/people")
+
     @PostMapping("/profile")
     public String profilePost(@ModelAttribute Student student, HttpSession session, Model model) {
         student.setFirstName((String)model.getAttribute("firstName"));
