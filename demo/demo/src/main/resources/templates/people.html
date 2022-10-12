@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+<div class="body">
+
+    <div class="row">
+        <div class="people">
+            <h2>Teachers</h2>
+            <div th:each="teacher : ${teachers}">
+                <p th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></p>
+                <td>
+                    <a th:href="${teacher.linkedIn}" target="_blank">LinkedIn</a>
+                <td>
+                <!-- <p th:text="${student.linkedIn}"></p> -->
+                <!-- <p><img th:src="@{/Image/} + ${profile.image}" width="100"></p> -->
+                <td>
+                    <form th:action="'/mail' + ${teacher.email}" method="post">
+                        <input type="submit" value="Send email"/>
+                    </form>
+                </td>
+            </div>
+        </div>
+
+        <div class="people">
+            <h2>Students</h2>
+            <div th:each="student : ${students}">
+                <p th:text="${student.firstName} + ' ' + ${student.lastName}"></p>
+                <td>
+                    <div th:if="${student.linkedIn != null}">
+                        <a th:href="${student.linkedIn}" target="_blank">LinkedIn</a>
+                    </div>
+                <td>
+                <!-- <p th:text="${student.linkedIn}"></p> -->
+                <!-- <p><img th:src="@{/Image/} + ${profile.image}" width="100"></p> -->
+                <td>
+                    <form th:action="'/mail' + ${student.email}" method="post">
+                        <input type="submit" value="Send email"/>
+                    </form>
+                </td>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

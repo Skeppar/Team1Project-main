@@ -38,6 +38,14 @@ public class Student {
         this.password = password;
     }
 
+    public Student(String firstName, String lastName, String email, String linkedIn, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.linkedIn = linkedIn;
+        this.password = password;
+    }
+
     /*public boolean isActive() {
         return isActive;
     }
