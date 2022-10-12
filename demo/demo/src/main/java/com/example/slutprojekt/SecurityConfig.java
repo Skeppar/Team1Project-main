@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/", "/home", "/init", "/h2", "/h2/**").permitAll()
 
                 .antMatchers("/style.css").permitAll()
-                .antMatchers("/style.css").permitAll()
+                .antMatchers("/video").permitAll() // Nödlösning när security inte funkar
                 .antMatchers( "/init", "/h2", "/h2/**").permitAll()
                 .antMatchers("/", "/home").hasRole("USER")
                 .antMatchers("/admin").hasRole("ADMIN")
