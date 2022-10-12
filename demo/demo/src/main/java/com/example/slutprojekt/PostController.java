@@ -144,4 +144,9 @@ public class PostController {
         }
         return result;
     }
+
+    @GetMapping ("/video")
+    public String chat() {
+        return "video";
+    }
 }
