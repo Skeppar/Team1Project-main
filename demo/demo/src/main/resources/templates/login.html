@@ -19,9 +19,9 @@
 <img src="/images/loginpic2.png" class="logo1" width="200">
 <div class="container">
     <form class="login" action="/login" th:method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
+        <input class="loginInput" type="text" name="username" placeholder="Username" required>
+        <input class="loginInput" type="password" name="password" placeholder="Password" required>
+        <input class="loginInput" type="submit" value="Login">
         <!-- <div class="error" th:if="${param.error}">
              Invalid username and password.
          </div>-->
