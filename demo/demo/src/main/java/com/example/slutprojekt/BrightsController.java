@@ -112,7 +112,7 @@ public class BrightsController {
         }
         @PostMapping("/uploadAss")
         public String addAss(@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession
-        session, HttpServletRequest request, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
             model.addAttribute("post", ta);
 
             // Hämta filnamnet
@@ -133,7 +133,7 @@ public class BrightsController {
                 Path path = Paths.get(folder + multipartFile.getOriginalFilename());
                 Files.write(path, bytes);
 
-                ta.setImg("files/" + ta.getImg()); // item.getImg()
+                ta.setImg("static/files/" + ta.getImg()); // item.getImg()
             }
 
             Teacher teacher = (Teacher) session.getAttribute("teacher");
@@ -141,7 +141,7 @@ public class BrightsController {
 
             teacherAnnouncementRepo.save(ta);
             logger.info("User added an item" + " " + ta );
-            return "redirect:/home";
+            return "redirect:/uploadAss";
         }
         @GetMapping("/logoutuser")
         public String logout (HttpSession session, HttpServletResponse res)
