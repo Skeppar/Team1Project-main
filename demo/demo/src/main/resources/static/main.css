@@ -3,12 +3,44 @@ body {
 }
 
 #main-content {
-    max-width: 940px;
+    max-width: 600px;
+    min-width: 600px;
     padding: 2em 3em;
     margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
+    background-color: #Caf0f8;
+    border: 5px solid #000000;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+
+
+}
+.table {
+word-break: break-word;
+border: 3px solid #000000
+}
+#connect{
+    color: #333;
+    background-color: #04AA6D;
+    border-color: #020202;
+}
+#disconnect{
+   color: #333;
+   background-color: #cd1e36;
+    border-color: #020202;
+}
+#send {
+color: #333;
+    background-color: #04AA6D;
+    border-color: #020202;
+    float: right;
+}
+div.form-group{
+    display: block;
+    margin-top: 0em;
+    min-width: 200px;
+}
+tr {
+    border-color: black;
+    border: 3px solid #000000
 }
