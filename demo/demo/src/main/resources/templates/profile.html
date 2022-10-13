@@ -9,11 +9,10 @@
 <div class="header">
     <a href="/" class="logo">Company Logo</a>
     <div class="header-right">
+        <a href="/">Home</a>
         <a href="#contact">Contact</a>
-        <a href="/profile">Profile</a>
         <a href="/chat">Chat</a>
     </div>
-
 </div>
 <br>
 <br>
@@ -23,14 +22,18 @@
 <div class="body">
 
     <div class="row">
-        <div class="column1" style="background-color:#aaa;">
-            <h2>Column 1</h2>
+        <div class="column1">
+            <h2>Links</h2>
             <div class="flex-container">
-                <button><div>Most recent updates</div></button>
+                <button class="frontPageButton"><div>Most recent updates</div></button>
                 <br>
-                <button><div>Modules</div></button>
+                <button class="frontPageButton"><div>Modules</div></button>
                 <br>
-                <button><div>Assignments</div></button>
+                <button class="frontPageButton"><div>Assignments</div></button>
+                <br>
+                <form action="/people">
+                    <input type="submit" value="Meet the team" />
+                </form>
             </div>
         </div>
         <div class="column2">
@@ -49,13 +52,12 @@
                     Date of Birth: <input type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
                 </div>
 
-
                 City: <select id="cities" name="cities" th:selected="*{city}">
                     <div th:if="*{city} == null">
                         <option value="none">Choose city..</option>
                     </div>
                 <div th:if="*{city} != null">
-                    <option value="*{city}" th:text="*{city}"></option>
+                    <option th:value="*{city}" th:text="*{city}"></option>
                 </div>
 
                     <div th:each="stad : ${stader}">
@@ -63,7 +65,6 @@
                     </div>
 
                 </select> <br> <br> <br>
-
 
                 Address: <input type="text" th:field="*{address}"><br><br><br>
                 <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
@@ -78,11 +79,6 @@
 
                 <input type="submit" value="Save">
             </form>
-
-
-        <div class="column3" style="background-color:#ccc;">
-            <br>
-        </div>
 
     </div>
 
