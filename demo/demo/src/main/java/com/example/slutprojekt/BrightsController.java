@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.List;
@@ -61,9 +62,14 @@ public class BrightsController {
         return "/home";
     }
 
-    @GetMapping("/assignment")
+    @GetMapping("/uploadAss")
     public String assignment() {
-        return "assignment";
+        return "uploadAss";
     }
-
+    @GetMapping("/logoutuser")
+    public String logout(HttpSession session, HttpServletResponse res)
+    {
+        session.removeAttribute("student");
+        return "redirect:/";
+    }
 }
