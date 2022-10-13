@@ -126,9 +126,9 @@ public class BrightsController {
 
             String uploadDir = "images/" + item.getId();
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
-             */
+             demo/demo/src/main/resources/static/files*/
                 // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
-                String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\";
+                String folder = System.getProperty("\\demo\\src\\main\\resources\\static\\files\\");
                 byte[] bytes = multipartFile.getBytes();
                 Path path = Paths.get(folder + multipartFile.getOriginalFilename());
                 Files.write(path, bytes);
