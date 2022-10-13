@@ -16,6 +16,9 @@ public class GreetingController {
     @Autowired
     StudentRepo studentRepo;
 
+    @Autowired
+    TeacherRepo teacherRepo;
+
     @GetMapping("/chat")
     public String post() {
         return "chat";
@@ -26,10 +29,13 @@ public class GreetingController {
     public Greeting greeting(ChatMessage message,Principal principal) throws Exception {
         Thread.sleep(100);
 
-        Student student = studentRepo.findByEmail(principal.getName());
-
-        return new Greeting( HtmlUtils.htmlEscape(message.getMessage()),student.getFirstName());
+        if (studentRepo.findByEmail(principal.getName()) != null) {
+            Student student = studentRepo.findByEmail(principal.getName());
+            return new Greeting( HtmlUtils.htmlEscape(message.getMessage()),student.getFirstName());
+        } else {
+            Teacher teacher = teacherRepo.findByEmail(principal.getName());
+            return new Greeting( HtmlUtils.htmlEscape(message.getMessage()),teacher.getFirstName());
+        }
     }
-
 }
 
