@@ -152,7 +152,6 @@
   border-color: rgb(0,119,182);
 }
 
-.picContainer {
 .picContainer
 {
     margin-left: 250px;
@@ -183,12 +182,10 @@ input[type=submit] {
     margin-bottom: 150px;
 
 
-  input { /* Ändra denna till endast sin sida */
-  }
-  .loginInput
+ .loginInput
   {
     padding: 10px;
-    /* border-radius: 10px; */
+    border-radius: 10px;
   }
 
   .login {

@@ -1,7 +1,10 @@
 package com.example.slutprojekt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,14 +31,16 @@ import java.util.List;
 
 @Controller
 public class BrightsController {
-
+    Logger logger = LoggerFactory.getLogger(BrightsController.class);
     @Autowired
     private StudentRepo studentRepo;
     @Autowired
     private TeacherAnnouncementRepo teacherAnnouncementRepo;
-
     @Autowired
     private CityRepo cityRepo;
+
+    @Autowired
+   private FileUploadUtil fileUploadUtil;
 
     @GetMapping("/login")
     public String login() {
@@ -101,18 +106,17 @@ public class BrightsController {
         }
 
         @GetMapping("/uploadAss")
-        public String assignment (Model model){
+        public String assignment(Model model){
             model.addAttribute("post", new TeacherAnnouncement());
             return "uploadAss";
         }
         @PostMapping("/uploadAss")
-        public String addItem (@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession
+        public String addAss(@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession
         session, HttpServletRequest request, @RequestParam("image") MultipartFile multipartFile) throws IOException {
             model.addAttribute("post", ta);
 
             // Hämta filnamnet
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-
             // Har användaren inte laddat upp en bild så vill fortsätta använda default
             if (!fileName.equals("")) {
                 ta.setImg(fileName);
@@ -123,21 +127,21 @@ public class BrightsController {
             String uploadDir = "images/" + item.getId();
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
              */
-
                 // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
-                String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\ads\\";
+                String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files\\";
                 byte[] bytes = multipartFile.getBytes();
                 Path path = Paths.get(folder + multipartFile.getOriginalFilename());
                 Files.write(path, bytes);
 
-                ta.setImg("images/ads/" + ta.getImg()); // item.getImg()
+                ta.setImg("files/" + ta.getImg()); // item.getImg()
             }
 
             Teacher teacher = (Teacher) session.getAttribute("teacher");
             ta.setTeacher(teacher);
 
             teacherAnnouncementRepo.save(ta);
-            return "uploadAss";
+            logger.info("User added an item" + " " + ta );
+            return "redirect:/home";
         }
         @GetMapping("/logoutuser")
         public String logout (HttpSession session, HttpServletResponse res)
