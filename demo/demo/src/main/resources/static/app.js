@@ -37,7 +37,7 @@ stompClient.send("/app/hello", {}, JSON.stringify({'message': $("#message").val(
 }
 
 function showGreeting(greeting) {
-$("#greetings").append("<tr><td>" + greeting.content + " Sent by " + greeting.sender +"</td></tr>");
+$("#greetings").append("<tr><td>" + greeting.content + " : Sent by " + greeting.sender +"</td></tr>");
 }
 
 $(function () {
