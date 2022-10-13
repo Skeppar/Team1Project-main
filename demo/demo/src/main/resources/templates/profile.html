@@ -34,6 +34,7 @@
             </div>
         </div>
         <div class="column2">
+
             <h1 th:text="'Hello ' + ${student.firstName}"></h1>
 
             <form action="/profile" th:object="${student}" method="post">
@@ -41,29 +42,56 @@
                 First name: <input type="text" th:field="*{firstName}"><br><br><br>
                 Last name: <input type="text" th:field="*{lastName}"><br><br><br>
                 Email: <input type="text" th:field="*{email}"><br><br><br>
+                <div th:if="*{dateOfBirth} == null">
+                    Date of Birth: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+                <div th:if="*{dateOfBirth} != null">
+                    Date of Birth: <input type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+
+
+                City: <select id="cities" name="cities" th:selected="*{city}">
+                    <div th:if="*{city} == null">
+                        <option value="none">Choose city..</option>
+                    </div>
+                <div th:if="*{city} != null">
+                    <option value="*{city}" th:text="*{city}"></option>
+                </div>
+
+                    <div th:each="stad : ${stader}">
+                        <option th:value="${stad}" th:text="${stad}"></option>
+                    </div>
+
+                </select> <br> <br> <br>
+
+
+                Address: <input type="text" th:field="*{address}"><br><br><br>
                 <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
                 LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
                 gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>
-                <!--City: <input type="text" th:field="*{city}"><br><br><br>STRULAR!!!!!!-->
-                Address: <input type="text" th:field="*{address}"><br><br><br>
-                <!--Date of Birth: <input type="text" th:field="*{dateOfBirth}"><br><br><br>-->
 
+                <!--<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">-->
+
+
+                <!--  -->
                 <input type="hidden" th:field="*{id}">
-
 
                 <input type="submit" value="Save">
             </form>
 
 
         <div class="column3" style="background-color:#ccc;">
-
             <br>
-
         </div>
+
     </div>
 
 </div>
-
-
+</div>
+   <!-- <script>
+function myFunction() {
+  document.getElementById("date").defaultValue = "2014-02-09";
+}
+</script>-->
 </body>
 </html>

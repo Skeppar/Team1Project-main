@@ -8,3 +8,4 @@ const calendar = new DayPilot.Calendar("calendar", {
   ]
 });
 calendar.init();
+
