@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form class="logOutButton" action="@{/logout}" method="get">
+<form class="logOutButton" th:action="@{/logout}" method="get">
     <input type="submit" value="Logout"/></form></span>
+<div class="header">
+    <a href="/" class="logo"><img src="/images/DarkblueBCNW.png" class="headerPic"></a>
+    <div class="header-right">
+        <a href="#contact">Contact</a>
+        <a href="/profile">Profile</a>
+        <a href="/chat">Chat</a>
+    </div>
+</div>
+
+
 </body>
 </html>
