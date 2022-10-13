@@ -8,6 +8,17 @@
     width: 300px;
     height: 100px;
   }
+  .headerAss{
+    display: flex;
+    background-color: #0077B6;
+    padding: 10px;
+    justify-content: flex-end;
+  }
+  .logoAss
+  {
+    width: 300px;
+    height: 100px;
+  }
 /* Style the header links */
 .header a {
   float: left;
@@ -56,6 +67,7 @@
 }
 
 .body {
+  padding: 10px;
   box-sizing: border-box;
 
 }
@@ -65,14 +77,14 @@
   float: left;
   width: 10%;
   padding: 10px;
-  /*height: 300px; /* Should be removed. Only for demonstration */
-  display: table;
+  /*height: 300px; /* Should be removed. Only for demonstration
+  display: table;*/
   margin: 0 auto;
 }
 
 .column2 {
   float: left;
-  width: 55%;
+  width: 200px;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;
@@ -90,7 +102,7 @@
   margin: 0 auto;
 }
 
-/* Clear floats after the columns */
+/* Clear floats after the columns
 .row:after {
   content: "";
   display: table;
@@ -103,7 +115,7 @@
   padding: 20px;
   font-size: 30px;
 
-}
+}*/
 
 .frontPagePic {
     margin-left: 250px;
@@ -118,17 +130,6 @@ margin-bottom: 25px;
 .schema {
 height: 20%;
 width: 20%;
-}
-
-.people {
-  float: left;
-  width: 40%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-  display: table;
-  margin: 10px;
-  border-style: groove;
-  border-color: rgb(0,119,182);
 }
 
 .picContainer
@@ -162,7 +163,7 @@ input[type=submit] {
 
 
   }
-  input
+  .loginInput
   {
     padding: 10px;
     border-radius: 10px;
@@ -177,4 +178,25 @@ input[type=submit] {
   .logo{
     margin-left: 500px;
 
+  }
+  .btn {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .info {
+
+    border-color: #2196F3;
+    color: dodgerblue;
+    border-radius: 10px;
+
+  }
+
+  .info:hover {
+    background: #2196F3;
+    color: white;
   }

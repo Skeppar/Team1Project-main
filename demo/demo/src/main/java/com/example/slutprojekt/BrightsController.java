@@ -66,6 +66,8 @@ public class BrightsController {
     public String assignment() {
         return "uploadAss";
     }
+
+
     @GetMapping("/logoutuser")
     public String logout(HttpSession session, HttpServletResponse res)
     {
