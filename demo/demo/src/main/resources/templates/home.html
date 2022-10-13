@@ -25,13 +25,14 @@
 <div class="body">
 
     <div class="row">
-        <div class="column1" style="background-color:#aaa;">
-            <h2>Column 1</h2>
+        <div class="column1">
+            <h2>Links</h2>
             <div class="flex-container">
-                <button><div>Most recent updates</div></button>
+                <button class="frontPageButton"><div>Most recent updates</div></button>
                 <br>
-                <button><div>Modules</div></button>
+                <button class="frontPageButton"><div>Modules</div></button>
                 <br>
+                <button class="frontPageButton"><div>Assignments</div></button>
                 <a href="/uploadAss"><button><div>Assignments</div></button></a>
                 <br>
                 <form action="/people">
@@ -40,13 +41,13 @@
             </div>
         </div>
       <div class="column2">
-          <p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+          <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
           <h2>Recent announcement</h2>
 
           <div class="posts" th:each="post : ${allContent}">
               <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
               <div th:text="${post.content}"></div>
-              <div th:text="${post.date}"></div>
+              <div class="date" th:text="'Posted the: ' + ${post.date}"></div>
               <!--<div th:text="${post.teacherName}"></div>-->
           </div>
 
@@ -65,12 +66,11 @@
         </div>-->
         <div class="createPost">
             <form method="post" action="/" th:object="${newPost}">
-                <div>Title: <input type="text" name="title" th:field="*{title}"></div>
-                <div>
-                    Content: <textarea th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
+                <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
+                <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
                     </textarea>
                 </div>
-                <input type="submit" value="Post">
+                <input class="announcementButton" type="submit" value="Post">
             </form>
         </div>
 
@@ -94,7 +94,7 @@
             </table>
         </form>-->
 
-        <div class="column3" style="background-color:#ccc;">
+        <div class="column3">
             <table>
                 <tr>
                     <td>

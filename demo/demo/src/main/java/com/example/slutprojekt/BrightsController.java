@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
+import javax.activation.MimeType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,8 +19,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Controller
 public class BrightsController {
@@ -27,6 +33,10 @@ public class BrightsController {
     private StudentRepo studentRepo;
     @Autowired
     private TeacherAnnouncementRepo teacherAnnouncementRepo;
+
+    @Autowired
+    private CityRepo cityRepo;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -35,85 +45,105 @@ public class BrightsController {
     @GetMapping("/profile")
     public String profile(HttpSession session, HttpServletRequest request, Model model) {
         String email = request.getRemoteUser();
+        session.setAttribute("userEmail", request.getRemoteUser());
+
+
+        Date birth = null;
 
         for (Student student : studentRepo.findAll()) {
             if (student.getEmail().equals(email)) {
                 model.addAttribute("student", student);
+                if (student.getDateOfBirth() != null) {
+                    birth = student.getDateOfBirth();
+                }
             }
         }
+
+        List<String> cityNames = new ArrayList<>();
+        for (City city2 : cityRepo.findAll()) {
+            cityNames.add(city2.getName());
+        }
+
+        model.addAttribute("birth", birth);
+        session.setAttribute("birth2", birth);
+        model.addAttribute("stader", cityNames);
+
         return "profile";
     }
 
 
     @PostMapping("/profile")
-    public String profilePost(@ModelAttribute Student student, HttpSession session, Model model) {
-        student.setFirstName((String) model.getAttribute("firstName"));
-        student.setLastName((String) model.getAttribute("lastName"));
-        student.setEmail((String) model.getAttribute("email"));
-        student.setLinkedIn((String) model.getAttribute("linkedIn"));
-        student.setGitHub((String) model.getAttribute("gitHub"));
-        //student.setUsername((String)session.getAttribute("username"));
-        /*student.setFirstName((String)session.getAttribute("firstName"));
-        student.setLastName((String)session.getAttribute("lastName"));
-        student.setEmail((String)session.getAttribute("email"));
-        student.setLinkedIn((String)session.getAttribute("linkedIn"));
-        student.setGitHub((String)session.getAttribute("gitHub"));*/
-        //student.setCity((City)session.getAttribute("city"));
-        //student.setAddress((String)session.getAttribute("address"));
-        //student.setDateOfBirth((Date)session.getAttribute("dateofBirth"));
+        public String profilePost (@ModelAttribute Student student, HttpServletRequest request) throws IOException {
 
-        //student.setPassword((String)session.getAttribute("password"));
-        studentRepo.save(student);
+            String newCity = request.getParameter("cities");
 
+            City newCity2 = null;
+            for (City city : cityRepo.findAll()) {
+                if (city.getName().equals(newCity)) {
+                    newCity2 = city;
+                }
+            }
 
-        //return "redirect:/profile";
-        return "/home";
-    }
+            student.setCity(newCity2);
 
-    @GetMapping("/uploadAss")
-    public String assignment(Model model) {
-        model.addAttribute("post",new TeacherAnnouncement());
-        return "uploadAss";
-    }
-    @PostMapping("/uploadAss")
-    public String addItem(@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession session, HttpServletRequest request, @RequestParam("image") MultipartFile multipartFile) throws IOException {
-        model.addAttribute("post",ta);
+            Date date2 = Date.valueOf(request.getParameter("date"));
 
-        // Hämta filnamnet
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            student.setDateOfBirth(date2);
 
-        // Har användaren inte laddat upp en bild så vill fortsätta använda default
-        if(!fileName.equals(""))
-        {
-            ta.setImg(fileName);
+            studentRepo.save(student);
 
-            // Lägg till bilden i projektmappen /images/[bildnamn.typ]
+            return "redirect:/profileSaved";
+        }
+
+        @GetMapping("/profileSaved")
+        public String profileSaved () {
+            return "profileSaved";
+        }
+
+        @GetMapping("/uploadAss")
+        public String assignment (Model model){
+            model.addAttribute("post", new TeacherAnnouncement());
+            return "uploadAss";
+        }
+        @PostMapping("/uploadAss")
+        public String addItem (@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession
+        session, HttpServletRequest request, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+            model.addAttribute("post", ta);
+
+            // Hämta filnamnet
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+            // Har användaren inte laddat upp en bild så vill fortsätta använda default
+            if (!fileName.equals("")) {
+                ta.setImg(fileName);
+
+                // Lägg till bilden i projektmappen /images/[bildnamn.typ]
             /* Med FileUploadUtil
 
             String uploadDir = "images/" + item.getId();
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
              */
 
-            // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
-            String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\ads\\";
-            byte[] bytes = multipartFile.getBytes();
-            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
-            Files.write(path,bytes);
+                // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
+                String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\ads\\";
+                byte[] bytes = multipartFile.getBytes();
+                Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+                Files.write(path, bytes);
 
-            ta.setImg("images/ads/" + ta.getImg()); // item.getImg()
+                ta.setImg("images/ads/" + ta.getImg()); // item.getImg()
+            }
+
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
+            ta.setTeacher(teacher);
+
+            teacherAnnouncementRepo.save(ta);
+            return "uploadAss";
         }
-
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
-        ta.setTeacher(teacher);
-
-        teacherAnnouncementRepo.save(ta);
-        return "uploadAss";
+        @GetMapping("/logoutuser")
+        public String logout (HttpSession session, HttpServletResponse res)
+        {
+            session.removeAttribute("student");
+            return "redirect:/";
+        }
     }
 
-    @GetMapping("/logoutuser")
-    public String logout(HttpSession session, HttpServletResponse res)
-    {
-        session.removeAttribute("student");
-        return "redirect:/";
-    }
-}

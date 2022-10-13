@@ -3,7 +3,7 @@ package com.example.slutprojekt;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 @Entity
 public class Student {
     @Id
@@ -111,6 +111,9 @@ public class Student {
     }
 
     public String getCity() {
+        if (city == null) {
+            return "";
+        }
         return city.getName();
     }
 

@@ -3,8 +3,8 @@
     margin-top: 50px;
 
   }
-  .headerPic
-  {
+
+  .headerPic {
     width: 300px;
     height: 100px;
   }
@@ -19,6 +19,7 @@
     width: 300px;
     height: 100px;
   }
+
 /* Style the header links */
 .header a {
   float: left;
@@ -33,7 +34,7 @@
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 25px;
+  font-size: 50px;
   font-weight: bold;
 }
 
@@ -75,11 +76,13 @@
 /* Create three equal columns that floats next to each other */
 .column1 {
   float: left;
-  width: 10%;
+  width: 9%;
   padding: 10px;
   /*height: 300px; /* Should be removed. Only for demonstration
   display: table;*/
   margin: 0 auto;
+  border-style: groove;
+  border-color: rgb(0,119,182);
 }
 
 .column2 {
@@ -88,7 +91,8 @@
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;
-  margin: 0 auto;
+  margin-left: 12px;
+  margin-right: 12px;
   border-style: groove;
   border-color: rgb(0,119,182);
 }
@@ -100,9 +104,11 @@
   height: 300px; /* Should be removed. Only for demonstration */
   display: table;
   margin: 0 auto;
+  border-style: groove;
+  border-color: rgb(0,119,182);
 }
 
-/* Clear floats after the columns
+/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
@@ -114,31 +120,46 @@
   margin: 10px;
   padding: 20px;
   font-size: 30px;
+}
 
 }*/
 
 .frontPagePic {
-    margin-left: 250px;
-    margin-top: 161px;
+   margin-left: 250px;
+   margin-top: 161px;
 }
 
 .posts {
-border-style: groove;
-margin-bottom: 25px;
+  border-style: groove;
+  margin-bottom: 25px;
+  width: 1000px;
+  word-break: break-word;
 }
 
 .schema {
-height: 20%;
-width: 20%;
+  height: 20%;
+  width: 20%;
 }
 
+.people {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  display: table;
+  margin: 10px;
+  border-style: groove;
+  border-color: rgb(0,119,182);
+}
+
+.picContainer {
 .picContainer
 {
     margin-left: 250px;
     padding-bottom: 70px;
 }
-.pix
-{
+
+.pix {
  border-radius: 10px;
     border:solid 1px;
     height: 168px;
@@ -157,26 +178,64 @@ input[type=submit] {
     background-color: darkgreen;
   }
 
-  .container{
+  .container {
     background-color: lightblue;
     margin-bottom: 150px;
 
 
+  input { /* Ändra denna till endast sin sida */
   }
   .loginInput
   {
     padding: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
   }
 
-  .login{
+  .login {
     padding-top: 90px;
     margin-left: 400px;
     margin-bottom: 50px;
   }
 
-  .logo{
-    margin-left: 500px;
+  .logo {
+    margin-left: -480px;
+  }
+
+  .title {
+    position: relative;
+    right: -20px;
+    margin-bottom: 10px;
+  }
+
+  .titleText {
+    padding: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    width: 400px;
+  }
+
+ .content {
+
+ }
+
+ .contentText {
+    min-width: 400px;
+    max-width: 920px;
+    max-height: 200px;
+    padding-top: 5px;
+    padding-left: 5px;
+ }
+
+ .date {
+    padding-top: 10px;
+    font-weight: bold;
+ }
+
+ .loggedInAs {
+    margin-top: 0px;
+    font-weight: bold;
+ }
 
   }
   .btn {
@@ -200,3 +259,10 @@ input[type=submit] {
     background: #2196F3;
     color: white;
   }
+ .frontPageButton {
+    margin-bottom: 10px;
+ }
+
+ .announcementButton {
+    margin-left: 60px;
+ }

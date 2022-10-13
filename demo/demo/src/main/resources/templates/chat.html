@@ -10,6 +10,19 @@
     <script src="/app.js"></script>
 </head>
 <body>
+<div class="header">
+    <a href="/" class="logo">Company Logo</a>
+    <div class="header-right">
+        <a href="/">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="/profile">Profile</a>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
@@ -18,7 +31,7 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">Connect to Chatterino:</label>
+                    <label for="connect">Connect to Groupchat:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                     </button>
@@ -29,9 +42,10 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="message">New message</label>
-                    <input type="text" id="message" class="form-control" placeholder="banankalas...">
+                    <input type="text" id="message" class="form-control" placeholder="new message...">
+                    <button id="send" class="btn btn-default" type="submit">Send</button>
                 </div>
-                <button id="send" class="btn btn-default" type="submit">Send</button>
+
             </form>
         </div>
     </div>
