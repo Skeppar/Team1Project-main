@@ -64,7 +64,7 @@
   float: left;
   width: 9%;
   padding: 10px;
-  /*height: 300px; /* Should be removed. Only for demonstration */
+  /* height: 300px; /* Should be removed. Only for demonstration */
   display: table;
   margin: 0 auto;
   border-style: groove;
@@ -75,7 +75,7 @@
   float: left;
   width: 55%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 300px;
   display: table;
   margin-left: 12px;
   margin-right: 12px;
@@ -87,7 +87,7 @@
   float: left;
   width: 30%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 300px;
   display: table;
   margin: 0 auto;
   border-style: groove;
@@ -129,7 +129,7 @@
   float: left;
   width: 40%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 300px;
   display: table;
   margin: 10px;
   border-style: groove;
@@ -164,10 +164,12 @@ input[type=submit] {
     margin-bottom: 150px;
   }
 
-  input { /* Ändra denna till endast sin sida */
+/*
+  input {  Ändra denna till endast sin sida
     padding: 10px;
-    /* border-radius: 10px; */
+    border-radius: 10px;
   }
+  */
 
   .login {
     padding-top: 90px;
@@ -177,6 +179,10 @@ input[type=submit] {
 
   .logo {
     margin-left: -480px;
+  }
+
+  .logo1 {
+    margin-left: 500px;
   }
 
   .title {
@@ -287,3 +293,40 @@ input[type=submit] {
     height: 450px;
     text-align: left;
  }
+
+ .loginInput {
+     padding: 10px;
+     border-radius: 10px;
+   }
+
+   .btn {
+     border: 2px solid black;
+     background-color: white;
+     color: black;
+     padding: 14px 28px;
+     font-size: 16px;
+     cursor: pointer;
+   }
+
+   .info {
+     border-color: #2196F3;
+     color: dodgerblue;
+     border-radius: 10px;
+   }
+
+   .info:hover {
+     background: #2196F3;
+     color: white;
+   }
+
+   .headerAss {
+     display: flex;
+     background-color: #0077B6;
+     padding: 10px;
+     justify-content: flex-end;
+   }
+
+   .logoAss {
+     width: 300px;
+     height: 100px;
+   }
