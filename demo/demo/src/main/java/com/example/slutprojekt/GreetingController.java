@@ -24,6 +24,7 @@ public class GreetingController {
         return "chat";
     }
 
+
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(ChatMessage message,Principal principal) throws Exception {
@@ -37,5 +38,6 @@ public class GreetingController {
             return new Greeting( HtmlUtils.htmlEscape(message.getMessage()),teacher.getFirstName());
         }
     }
+
 }
 
