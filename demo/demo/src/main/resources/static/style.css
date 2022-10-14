@@ -81,8 +81,8 @@ text-transform: uppercase;
 }
 
 .column2 {
-  background-color: white;
-  border-radius: 10px 10px 0px 0px;
+background-color: white;
+border-radius: 10px 10px 0px 0px;
 float: left;
 width: 55%;
 padding: 10px;
@@ -95,8 +95,8 @@ border-color: rgb(0,119,182);
 }
 
 .column3 {
-  background-color: white;
-  border-radius: 10px;
+background-color: white;
+border-radius: 10px;
 float: left;
 width: 30%;
 padding: 10px;
@@ -173,13 +173,28 @@ border-radius: 10px;
 }
 
 input[type=submit] {
-  /*background-color: #04AA6D;
-  color: white;*/
-  cursor: pointer;
+    cursor: pointer;
+    background-color: dodgerblue;
+    border-color: #2196F3;
+    color: white;
+    border-radius: 5px;
+    width: 80px;
+    padding: 5px;
+}
+
+#loginButton {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+    width: 90px;
+    border-color: black;
+    height: 40px;
 }
 
 input[type=submit]:hover {
-  background-color: darkgreen;
+  background-color: dodgerblue;
+  border-color: #2196F3;
+  color: white;
 }
 
 .container {
@@ -262,11 +277,11 @@ position: relative;
  padding: 16px 20px;
  border: none;
  cursor: pointer;
- opacity: 0.8;
  position: fixed;
- bottom: 23px;
- right: 28px;
+ bottom: 25px;
+ right: 35px;
  width: 280px;
+ border-radius: 5px;
 }
 
 .chat-popup {
@@ -282,7 +297,7 @@ position: relative;
 }
 
 .containerChat input {
- width: 470px;
+ width: 450px;
  padding: 15px;
  margin: 5px 0 20px 0;
  border: none;
@@ -300,6 +315,7 @@ position: relative;
  width: 100%;
  margin-bottom:10px;
  opacity: 0.8;
+ border-radius: 5px;
 }
 b{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -315,7 +331,7 @@ b{
 }
 
 #conversation {
-  width: 500px;
+  width: 480px;
   padding: 5px;
   margin: 5px 0 5px 0;
   border: none;
@@ -332,10 +348,15 @@ b{
  }
 
  .loginInput2 {
-  padding: 10px;
-  border-radius: 5px;
-  margin-left: 60px;
-  margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 63px;
+    margin-top: 5px;
+    border-color: #2196F3;
+    color: dodgerblue;
+    border-radius: 5px;
+    width: 80px;
+    background-color: white;
 }
 
  .loginInput3 {
@@ -357,7 +378,8 @@ b{
  .info {
    border-color: #2196F3;
    color: dodgerblue;
-   border-radius: 10px;
+   border-radius: 5px;
+   width: 170px
  }
 
  .info:hover {
