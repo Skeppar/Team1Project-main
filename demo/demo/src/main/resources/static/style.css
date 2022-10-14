@@ -232,6 +232,7 @@ position: relative;
   min-width: 400px;
   max-width: 920px;
   max-height: 200px;
+  min-height: 30px;
   padding-top: 5px;
   padding-left: 5px;
 }
