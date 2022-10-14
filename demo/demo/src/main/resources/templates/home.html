@@ -11,47 +11,53 @@
 
 </head>
 <body>
-<div class="header">
-    <a href="/" class="logo"><img src="/images/DarkblueBCNW.png" class="headerPic"></a>
-    <div class="header-right">
-        <a href="#contact">Contact</a>
-        <a href="/profile">Profile</a>
-               <a href="/chat">Chat</a>
-    </div>
+<form class="logOutButton" th:action="@{/logout}" method="get">
+    <input type="submit" value="Logout"/></form></span>
+<a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
+<div class="headerAss">
 
+    <div class="header-right">
+        <a href="#contact"><button class="btn info">Contact</button></a>
+        <a href="/profile"><button class="btn info">Profile</button></a>
+        <a href="/chat"><button class="btn info">Chat</button></a>
+
+
+    </div>
 </div>
 <br>
 <br>
 <br>
 <br>
-
+<!--class="frontPageButton"-->
 <div class="body">
 
     <div class="row">
         <div class="column1">
             <h2>Links</h2>
             <div class="flex-container">
-                <button class="frontPageButton"><div>Most recent updates</div></button>
-                <br>
-                <button class="frontPageButton"><div>Modules</div></button>
-                <br>
-                <button class="frontPageButton"><div>Assignments</div></button>
-                <a href="/uploadAss"><button><div>Assignments</div></button></a>
-                <br>
-                <button><a href="/people">Meet the team</a></button>
+                <button class="btn info"><div>Most recent </div></button>
+                <br><br>
+                <button class="btn info"><div>Modules</div></button>
+                <br><br>
+
+                <a href="/uploadAss"><button class="btn info"><div>Assignments</div></button></a>
+                <br><br>
+                <button class="btn info"><a href="/people">Meet the team</a></button>
             </div>
         </div>
 
-      <div class="column2">
-          <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
-          <h2>Recent announcement</h2>
 
-          <div class="posts" th:each="post : ${allContent}">
-              <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
-              <div th:text="${post.content}"></div>
-              <div class="date" th:text="'Posted the: ' + ${post.date}"></div>
-              <!--<div th:text="${post.teacherName}"></div>-->
-          </div>
+
+        <div class="column2">
+            <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+            <h2>Recent announcement</h2>
+
+            <div class="posts" th:each="post : ${allContent}">
+                <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
+                <div th:text="${post.content}"></div>
+                <div class="date" th:text="'Posted the: ' + ${post.date}"></div>
+                <!--<div th:text="${post.teacherName}"></div>-->
+            </div>
 
             <!--<div th:if="${content.title != null}">
 
@@ -66,17 +72,17 @@
                 </div>
             </div>
         </div>-->
-        <div class="createPost">
-            <form method="post" action="/" th:object="${newPost}">
-                <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
-                <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
+            <div class="createPost">
+                <form method="post" action="/" th:object="${newPost}">
+                    <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
+                    <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
                     </textarea>
-                </div>
-                <input class="announcementButton" type="submit" value="Post">
-            </form>
-        </div>
+                    </div>
+                    <input class="loginInput2" type="submit" value="Post">
+                </form>
+            </div>
 
-          </div>
+        </div>
         <!--<form  action="/addPost" method="POST" th:object="${content}" enctype="multipart/form-data">
             <table><div>
                 <th >Title: <input type="text" th:field="*{title}"/>
@@ -106,82 +112,42 @@
                 <tr>
                     <td class="stefan" style="font-weight: bold;">
                         <br>
-                        <a href="/video" target="_blank">Digital Classroom</a>
-                    <td>
+                        <b><a href="/video" target="_blank">Digital Classroom</a>
+                        </b><td>
+
                 </tr>
+
                 <tr>
                     <td>
                         <br>
-                        <b>09:00 - Check-in</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>AnonymousClassesAndLambda - Exercises.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>AnonymousClassesAndLambda.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>LambdaStarter.zip</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                        <b >09:00 - Check-in</b>
+
+                        <p>AnonymousClassesAndLambda - Exercises.pdf</p>
+
+                        <p>AnonymousClassesAndLambda.pdf</p>
+
+                        <p>LambdaStarter.zip</p>
+
                         <b>[10.15 - 10.30 - Morning break]</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>10.30 - LambdaSolution.zip</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Functional Programming.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Lambda.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Lambda - Exercises.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
+                        <p>10.30 - LambdaSolution.zip</p>
+
+                        <p>Functional Programming.pdf</p>
+
+                        <p>Lambda.pdf</p>
+
+                        <p>Lambda - Exercises.pdf</p>
+
                         <b>14:00 - Lambda2Solution.zip</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Streams.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Streams - Exercises.pdf</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
+                        <p>Streams.pdf</p>
+
+                        <p>Streams - Exercises.pdf</p>
+
                         <b>[14.45 - 15.00 - Afternoon break]</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>16:30 - StreamsSolution.zip</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
+                        <p>16:30 - StreamsSolution.zip</p>
+
                         <b>Checkout</b>
                     </td>
                 </tr>
@@ -190,7 +156,7 @@
                 </tr>
             </table>
             <br>
-            <table class="schema" border="5" cellspacing="0" align="center">
+            <table class="schema" border="2" cellspacing="0" align="center">
                 <tr>
                     <td align="center" height="50"
                         width="80"><br>
@@ -232,63 +198,63 @@
                 <tr>
                     <td align="center" height="50">
                         <b>Monday</b></td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Mat</td>
-                    <td align="center" height="30">Che</td>
+                    <td class="schemaTxt" align="center" height="30">Java</td>
+                    <td align="center" height="30">CSS</td>
+                    <td align="center" height="30">SQL</td>
                     <td rowspan="6" align="center" height="30">
                         <h2>L<br>U<br>N<br>C<br>H</h2>
                     </td>
                     <td colspan="3" align="center"
-                        height="30">LAB</td>
-                    <td align="center" height="30">Phy</td>
+                        height="30">Mini Project</td>
+                    <td align="center" height="30">Java</td>
                 </tr>
                 <tr>
                     <td align="center" height="30">
                         <b>Tuesday</b>
                     </td>
                     <td colspan="3" align="center"
-                        height="30">LAB
+                        height="30">Mini Project
                     </td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Che</td>
-                    <td align="center" height="30">Mat</td>
-                    <td align="center" height="30">SPORTS</td>
+                    <td align="center" height="30">CSS</td>
+                    <td align="center" height="30">AWS</td>
+                    <td align="center" height="30">Java</td>
+                    <td align="center" height="30">JavaScript</td>
                 </tr>
                 <tr>
                     <td align="center" height="30">
                         <b>Wednesday</b>
                     </td>
-                    <td align="center" height="30">Mat</td>
-                    <td align="center" height="30">phy</td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Che</td>
+                    <td align="center" height="30">Java</td>
+                    <td align="center" height="30">Java Int.</td>
+                    <td align="center" height="30">Java Int.</td>
+                    <td align="center" height="30">Streams</td>
                     <td colspan="3" align="center"
-                        height="30">LIBRARY
+                        height="30">CHECKPOINT
                     </td>
                 </tr>
                 <tr>
                     <td align="center" height="30">
                         <b>Thursday</b>
                     </td>
-                    <td align="center" height="30">Phy</td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Che</td>
+                    <td align="center" height="30">AWS</td>
+                    <td align="center" height="30">SQL</td>
+                    <td align="center" height="30">CSS</td>
                     <td colspan="3" align="center"
-                        height="30">LAB
+                        height="30">Mini Project
                     </td>
-                    <td align="center" height="30">Mat</td>
+                    <td align="center" height="30">Java</td>
                 </tr>
                 <tr>
                     <td align="center" height="30">
                         <b>Friday</b>
                     </td>
                     <td colspan="3" align="center"
-                        height="30">LAB
+                        height="30">ASSESMENT TEST
                     </td>
-                    <td align="center" height="30">Mat</td>
-                    <td align="center" height="30">Che</td>
-                    <td align="center" height="30">Eng</td>
-                    <td align="center" height="30">Phy</td>
+                    <td align="center" height="30">Java</td>
+                    <td align="center" height="30">SQL</td>
+                    <td align="center" height="30">CSS</td>
+                    <td align="center" height="30">AWS</td>
                 </tr>
             </table>
         </div>

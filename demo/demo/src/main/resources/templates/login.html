@@ -1,8 +1,3 @@
-<!--
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,14 +9,13 @@
 </head>
 <body >
 <div class="header">
-    <img src="/images/DarkblueBCNW.png" class="headerPic">
+    <img src="/images/BCLogo.png" class="headerPic">
 </div>
-<img src="/images/loginpic2.png" class="logo1" width="200">
 <div class="container">
     <form class="login" action="/login" th:method="POST">
         <input class="loginInput" type="text" name="username" placeholder="Username" required>
         <input class="loginInput" type="password" name="password" placeholder="Password" required>
-        <input class="loginInput" type="submit" value="Login">
+        <input type="submit" value="Login">
         <!-- <div class="error" th:if="${param.error}">
              Invalid username and password.
          </div>-->
@@ -31,6 +25,8 @@
         <img class="pix" src="/images/SP1.jpeg"/>
         <img class="pix" src="/images/SP2.jfif"/>
     </div>
+
+
 
 </div>
 </body>
