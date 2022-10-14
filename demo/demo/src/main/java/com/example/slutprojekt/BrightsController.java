@@ -128,12 +128,13 @@ public class BrightsController {
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
              demo/demo/src/main/resources/static/files*/
                 // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
-                String folder = System.getProperty("\\demo\\src\\main\\resources\\static\\files\\");
+                String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\";
+                System.out.println(System.getProperty(("user.dir")));
                 byte[] bytes = multipartFile.getBytes();
                 Path path = Paths.get(folder + multipartFile.getOriginalFilename());
                 Files.write(path, bytes);
 
-                ta.setImg("static/files/" + ta.getImg()); // item.getImg()
+                ta.setImg("/files/" + ta.getImg()); // item.getImg()
             }
 
             Teacher teacher = (Teacher) session.getAttribute("teacher");

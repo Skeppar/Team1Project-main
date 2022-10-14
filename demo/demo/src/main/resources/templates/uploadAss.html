@@ -23,13 +23,13 @@
 <br>
 <br>
 <br>
-
+<td><img th:src="${post.img}" width="100"></td>
 <form method="post" action="/uploadAss" th:object="${post}"  enctype="multipart/form-data">
         <label for="file">Choose file to upload</label>
         <input type="file" id="file" name="afile" multiple />
         <input type="submit"/>
 </form>
 
-<td><img th:src="${post.img}" width="100"></td>
+
 </body>
 </html>
