@@ -86,10 +86,9 @@ public class PostController {
     }
 
     @PostMapping("/")
-    public String addPost(@ModelAttribute TeacherAnnouncement post, Model model, HttpSession session, HttpServletRequest request /*, @RequestParam("image") MultipartFile multipartFile*/) throws IOException {
-        model.addAttribute("content",post);
+    public String addPost(@ModelAttribute TeacherAnnouncement post, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
-                /*
+        /*
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
@@ -128,8 +127,33 @@ public class PostController {
         TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(), date);
         teacherAnnouncementRepo.save(ta);
 
+        // Hämta filnamnet
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        // Har användaren inte laddat upp en bild så vill fortsätta använda default
+        if (!fileName.equals("")) {
+            ta.setImg(fileName);
+            String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
+            System.out.println(System.getProperty(("user.dir")));
+            byte[] bytes = multipartFile.getBytes();
+            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+            Files.write(path, bytes);
+
+            post.setImg(post.getImg()); // item.getImg()
+        }
+
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        ta.setTeacher(teacher);
+
+        teacherAnnouncementRepo.save(ta);
+        logger.info("User added an item" + " " + ta );
+
+        model.addAttribute("content",post);
+
+
+
         return "redirect:/";
     }
+
     private List<TeacherAnnouncement> getPage(int page, int pageSize) {
         List<TeacherAnnouncement> items = (List<TeacherAnnouncement>)teacherAnnouncementRepo.findAll();
 

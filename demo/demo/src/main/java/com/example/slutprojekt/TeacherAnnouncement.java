@@ -11,7 +11,7 @@ public class TeacherAnnouncement {
 
     private String title;
     private String content;
-    private String img = "/files/default.jpg";
+    private String img; // = "/files/default.jpg";
     private Timestamp date;
     private String teacherName;
 
@@ -20,6 +20,13 @@ public class TeacherAnnouncement {
 
     public TeacherAnnouncement(){}
 
+    public TeacherAnnouncement(String title, String content, Timestamp  date, String image, String teacherName) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.img = image;
+        this.teacherName = teacherName;
+    }
     public TeacherAnnouncement(String title, String content, Timestamp  date) {
         this.title = title;
         this.content = content;

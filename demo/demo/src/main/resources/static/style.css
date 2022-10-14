@@ -130,7 +130,7 @@ font-size: 30px;
 .posts {
 border-style: groove;
 border-radius: 5px;
-margin-bottom: 25px;
+margin-bottom: 15px;
 width: 1000px;
 word-break: break-word;
 }
@@ -410,4 +410,12 @@ b{
 
   display: flex;
   justify-content: flex-end
+ }
+
+ #postImageHome {
+
+ }
+
+ #file {
+    margin-left: 64px;
  }
