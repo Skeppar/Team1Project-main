@@ -134,7 +134,7 @@ public class BrightsController {
                 Path path = Paths.get(folder + multipartFile.getOriginalFilename());
                 Files.write(path, bytes);
 
-                ta.setImg("/files/" + ta.getImg()); // item.getImg()
+                ta.setImg(ta.getImg()); // item.getImg()
             }
 
             Teacher teacher = (Teacher) session.getAttribute("teacher");
