@@ -68,16 +68,16 @@ text-transform: uppercase;
 
 /* Create three equal columns that floats next to each other */
 .column1 {
-  background-color: white;
-float: left;
-width: 9%;
-padding: 10px;
-/* height: 300px; /* Should be removed. Only for demonstration */
-display: table;
-margin: 0 auto;
-border-style: groove;
-border-color: #0077B6;
-border-radius: 10px 0px 10px 0px;
+    background-color: white;
+    float: left;
+    width: 9%;
+    padding: 10px;
+    /* height: 300px; /* Should be removed. Only for demonstration */
+    display: table;
+    margin: 0 auto;
+    border-style: groove;
+    border-color: #0077B6;
+    border-radius: 10px 0px 10px 0px;
 }
 
 .column2 {
@@ -148,6 +148,7 @@ border-color: black;
 
 .people {
 float: left;
+background-color: white;
 width: 40%;
 padding: 10px;
 height: 300px; /* Should be removed. Only for demonstration */
@@ -209,7 +210,7 @@ position: relative;
 
 .title {
   position: relative;
-  right: -20px;
+  right: -25px;
   margin-bottom: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -324,19 +325,25 @@ b{
 }
 
 .loginInput {
-   padding: 10px;
-   border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
  }
+
  .loginInput2 {
   padding: 10px;
-  border-radius: 10px;
-  margin-left: 20px;
+  border-radius: 5px;
+  margin-left: 60px;
+  margin-top: 5px;
 }
+
  .loginInput3 {
-  padding: 10px;
-  border-radius: 10px;
-  margin-left: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 250px;
 }
+
  .btn {
    border: 2px solid black;
    background-color: white;

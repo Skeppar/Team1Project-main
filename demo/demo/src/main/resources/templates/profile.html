@@ -6,13 +6,17 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="header">
-    <a href="/" class="logo">Company Logo</a>
+<form class="logOutButton" th:action="@{/logout}" method="get">
+    <input type="submit" value="Logout"/></form></span>
+<a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
+<div class="headerAss">
+
     <div class="header-right">
-        <a href="/">Home</a>
-        <a href="#contact">Contact</a>
-        <a href="/chat">Chat</a>
+        <a href="/"><button class="btn info">Home</button></a>
+        <a href="#contact"><button class="btn info">Contact</button></a>
+        <a href="/chat"><button class="btn info">Chat</button></a>
     </div>
+</div>
 </div>
 <br>
 <br>
@@ -25,17 +29,17 @@
         <div class="column1">
             <h2>Links</h2>
             <div class="flex-container">
-                <button class="frontPageButton"><div>Most recent updates</div></button>
-                <br>
-                <button class="frontPageButton"><div>Modules</div></button>
-                <br>
-                <button class="frontPageButton"><div>Assignments</div></button>
-                <br>
-                <form action="/people">
-                    <input type="submit" value="Meet the team" />
-                </form>
+                <button class="btn info"><div>Most recent </div></button>
+                <br><br>
+                <button class="btn info"><div>Modules</div></button>
+                <br><br>
+
+                <a href="/uploadAss"><button class="btn info"><div>Assignments</div></button></a>
+                <br><br>
+                <button class="btn info"><a href="/people">Meet the team</a></button>
             </div>
         </div>
+
 
         <div class="column2">
 
@@ -83,6 +87,7 @@
 
     </div>
 
+</div>
 </div>
 </div>
    <!-- <script>
