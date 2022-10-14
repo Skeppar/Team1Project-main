@@ -11,7 +11,7 @@ public class TeacherAnnouncement {
 
     private String title;
     private String content;
-    private String img = "/image/ads/default.png";
+    private String img = "/files/default.jpg";
     private Timestamp date;
     private String teacherName;
 
