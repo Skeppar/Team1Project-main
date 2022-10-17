@@ -408,6 +408,16 @@ b{
   justify-content: flex-end
  }
 
+ /* go back button*/
+ .goback {
+  border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+ }
+
  #postImageHome {
 
  }
@@ -415,6 +425,9 @@ b{
  #file {
     margin-left: 64px;
  }
+
+
+
 
 #column1 {
     margin-bottom: -10px;

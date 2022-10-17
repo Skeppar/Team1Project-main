@@ -22,6 +22,7 @@ public class InitController {
         // tries to find the user so that we only save the user if it does not exist
         //User user = userRepository.findByUsername("user");
         Student student = studentRepo.findByEmail("user");
+
         /*if (user == null) {
             user = new User();
             user.setUsername("user");

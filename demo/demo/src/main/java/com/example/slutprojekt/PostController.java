@@ -48,6 +48,9 @@ public class PostController {
     @Autowired
     CourseRepo courseRepo;
 
+    @Autowired
+    private CityRepo cityRepo;
+
 
     @GetMapping("/post/{id}")
     public String post(Model model, @PathVariable Long id) {
@@ -294,5 +297,17 @@ public class PostController {
         assignmentRepo.save(assignment);
 
         return "redirect:/uploadAssignment";
+    }
+    @GetMapping("/addStudent")
+    public String showStudent(Model model, Student newStudent) {
+        model.addAttribute("student", new Student());
+        return  "addStudent";
+    }
+    @PostMapping("/addStudent")
+    public String addStudent(@ModelAttribute Student student) {
+        studentRepo.save(student);
+
+
+        return "redirect:/addStudent";
     }
 }

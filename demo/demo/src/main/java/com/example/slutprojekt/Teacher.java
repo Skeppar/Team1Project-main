@@ -1,5 +1,8 @@
 package com.example.slutprojekt;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -14,17 +17,32 @@ public class Teacher {
     private String password;
     private String linkedIn;
     private String gitHub;
+
+
     //@Column(nullable = false, unique = true)
+
+
+
+    //för security??
+
     private String username;
+
+
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<TeacherAnnouncement> posts = new ArrayList<>();
+
+   /* private List<Role> isAdmin = new ArrayList<>();
+
+    */
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
     private String address;
     private Date dateOfBirth;
+
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Teacher_Course",
@@ -42,6 +60,8 @@ public class Teacher {
         this.email = email;
         this.linkedIn = linkedIn;
         this.password = password;
+
+
         //this.gitHub = gitHub;
         //this.city = city;
         //this.address = address;
@@ -137,14 +157,16 @@ public class Teacher {
         this.course = course;
     }
 
-    /*public Course getCourse() {
+
+}
+/*public Course getCourse() {
         return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
     }*/
-}
+
 
 /*
 INSERT INTO COURSE (TITLE, START_DATE, GRADUATION_DATE, CITY) VALUES ('Java HT 2022', 01-08-2022, 21-10-2022, 'Stockholm');

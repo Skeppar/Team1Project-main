@@ -46,6 +46,9 @@ public class Student {
         this.password = password;
     }
 
+    public Student(String firstName) {
+    }
+
     /*public boolean isActive() {
         return isActive;
     }
