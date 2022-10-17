@@ -54,7 +54,7 @@
                 <div th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
-                <div class="date" th:text="'Posted the: ' + ${post.date} + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
+                <div class="date" th:text="'Posted the: ' + ${post.date} + ' - ' + {post.teacherName} + ' ' + ${post.teacherLastName}"></div>
                 <!--<div th:text="${post.teacherName}"></div>-->
             </div>
 
