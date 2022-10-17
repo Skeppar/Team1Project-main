@@ -68,16 +68,12 @@ text-transform: uppercase;
 
 /* Create three equal columns that floats next to each other */
 .column1 {
-    background-color: white;
     float: left;
     width: 9%;
     padding: 10px;
     /* height: 300px; /* Should be removed. Only for demonstration */
     display: table;
     margin: 0 auto;
-    border-style: groove;
-    border-color: #0077B6;
-    border-radius: 10px 0px 10px 0px;
 }
 
 .column2 {
@@ -419,3 +415,40 @@ b{
  #file {
     margin-left: 64px;
  }
+
+#column1 {
+    margin-bottom: -10px;
+    background-color: transparent;
+    border-color: transparent;
+    color: #0000c1;
+    font-weight: bold;
+    /* text-align: left; */
+    margin-left: -30px;
+    width: 210px;
+}
+
+#column1 a:hover {
+    background-color: dodgerblue;
+    border-color: white;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 210px;
+}
+
+.linksColumn1 {
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #0000c1;
+}
+
+#imgColumn1 {
+    width: 32px;
+}
