@@ -74,6 +74,7 @@ text-transform: uppercase;
     /* height: 300px; /* Should be removed. Only for demonstration */
     display: table;
     margin: 0 auto;
+    margin-top: -36px;
 }
 
 .column2 {
@@ -116,7 +117,6 @@ margin: 10px;
 padding: 20px;
 font-size: 30px;
 }
-
 
 .frontPagePic {
  margin-left: 250px;
@@ -424,7 +424,7 @@ b{
     font-weight: bold;
     /* text-align: left; */
     margin-left: -30px;
-    width: 210px;
+    width: 195px;
 }
 
 #column1 a:hover {
@@ -437,8 +437,8 @@ b{
 }
 
 .linksColumn1 {
-
-}
+    margin-left: 36px;
+    margin-bottom: -5px;}
 
 a:link {
     text-decoration: none;
@@ -451,4 +451,8 @@ a:visited {
 
 #imgColumn1 {
     width: 32px;
+}
+
+#column1text {
+
 }
