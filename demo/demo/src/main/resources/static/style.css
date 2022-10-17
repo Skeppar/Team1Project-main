@@ -464,3 +464,9 @@ a:visited {
 .columnNewAss {
 
 }
+
+#column1sec {
+    margin: 0px;
+    background-color: transparent;
+    padding: 0px;
+}
