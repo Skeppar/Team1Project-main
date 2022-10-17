@@ -14,6 +14,15 @@ public class TeacherAnnouncement {
     private String img; // = "/files/default.jpg";
     private Timestamp date;
     private String teacherName;
+    private String teacherLastName;
+
+    public String getTeacherLastName() {
+        return teacherLastName;
+    }
+
+    public void setTeacherLastName(String teacherLastname) {
+        this.teacherLastName = teacherLastname;
+    }
 
     @ManyToOne
     private Teacher teacher;
@@ -33,11 +42,12 @@ public class TeacherAnnouncement {
         this.date = date;
     }
 
-    public TeacherAnnouncement(String title, String content, Teacher teacher, Timestamp date) {
+    public TeacherAnnouncement(String title, String content, Teacher teacher, Timestamp date,String teacherName) {
         this.title = title;
         this.content = content;
         this.teacher = teacher;
         this.date = date;
+        this.teacherName = teacherName;
     }
 
     public String getTeacherName() {

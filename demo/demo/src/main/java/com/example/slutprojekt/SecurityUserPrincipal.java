@@ -28,9 +28,14 @@ public class SecurityUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("User"));
-        return authorities;
+        if (student != null) {
+            return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+        } else {
+            return Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
+        }
+
     }
+
 
     // the getPassword method in SecurityUserPrincipal is using the password in our user object
     /*@Override

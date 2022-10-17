@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
@@ -47,7 +48,21 @@ public class PostController {
         return "home";
     }
     @GetMapping("/")
-    public String posts(HttpSession session, Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+    public String posts(HttpSession session,Principal principal, Model model,HttpServletRequest request, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+
+        /*if (studentRepo.findByEmail(principal.getName()) != null){
+            Student student = studentRepo.findByEmail(principal.getName());
+
+
+            //session.setAttribute("username1",userName1);
+            model.addAttribute("username1",student.getFirstName());
+
+        } else {
+            Teacher teacher = teacherRepo.findByEmail(principal.getName());
+            //session.setAttribute("username1",userName1);
+            model.addAttribute("username1",teacher.getFirstName());
+        }*/
+
       //List<TeacherAnnouncement> posts = getPage(page - 1, PAGE_SIZE);
         //int pageCount = numberOfPages(PAGE_SIZE);
         //int[] pages = toArray(pageCount);
@@ -58,6 +73,7 @@ public class PostController {
             contentsTitle.add(strings.getTitle());
             contentsContent.add(strings.getContent());
         }
+
 
         session.setAttribute("contentTitle", contentsTitle);
         session.setAttribute("contentContent", contentsContent);*/
@@ -86,8 +102,20 @@ public class PostController {
     }
 
     @PostMapping("/")
-    public String addPost(@ModelAttribute TeacherAnnouncement post, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
+    public String addPost(@ModelAttribute TeacherAnnouncement post,Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
+        /*if (studentRepo.findByEmail(principal.getName()) != null){
+            Student student = studentRepo.findByEmail(principal.getName());
+
+
+            //session.setAttribute("username1",userName1);
+            model.addAttribute("username1",student.getFirstName());
+
+        } else {
+            Teacher teacher = teacherRepo.findByEmail(principal.getName());
+            //session.setAttribute("username1",userName1);
+            model.addAttribute("username1",teacher.getFirstName());
+        }*/
         /*
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -124,8 +152,36 @@ public class PostController {
 
         Long millis=System.currentTimeMillis();
         java.sql.Timestamp date = new java.sql.Timestamp (millis);
-        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(), date);
+        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(),post.getTeacher(),date,post.getTeacherName());
         teacherAnnouncementRepo.save(ta);
+
+
+        if (studentRepo.findByEmail(principal.getName()) != null){
+            Student student = studentRepo.findByEmail(principal.getName());
+
+
+            //session.setAttribute("username1",userName1);
+           // model.addAttribute("username1",student.getFirstName());
+
+        } else {
+            Teacher teacher = teacherRepo.findByEmail(principal.getName());
+            //session.setAttribute("username1",userName1);
+            //model.addAttribute("username1",teacher);
+
+            ta.setTeacherName(teacher.getFirstName());
+            ta.setTeacherLastName(teacher.getLastName());
+            ta.setTeacher(teacher);
+            //model.addAttribute("teacherlastname",post.getTeacher().getLastName());
+            // ta.setTeacher(teacher);
+            // teacher.setId(teacher.getId());
+            //teacher.setLastName(teacher.getLastName());
+        }
+
+
+
+
+
+
 
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -184,4 +240,5 @@ public class PostController {
         model.addAttribute("teachers", teacherRepo.findAll());
         return "people";
     }
+
 }
