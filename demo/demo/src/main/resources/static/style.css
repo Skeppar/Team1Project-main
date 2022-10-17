@@ -171,7 +171,7 @@ border-radius: 10px;
 input[type=submit] {
     cursor: pointer;
     background-color: dodgerblue;
-    border-color: #2196F3;
+    border-color: #2e2eff;
     color: white;
     border-radius: 5px;
     width: 80px;
@@ -189,7 +189,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: dodgerblue;
-  border-color: #2196F3;
+  border-color: #2e2eff;
   color: white;
 }
 
@@ -348,7 +348,7 @@ b{
     border-radius: 5px;
     margin-left: 63px;
     margin-top: 5px;
-    border-color: #2196F3;
+    border-color: #2e2eff;
     color: dodgerblue;
     border-radius: 5px;
     width: 80px;
@@ -471,15 +471,45 @@ a:visited {
 }
 
 .columnAllAss {
-
+    float: left;
+    margin-right: 80px;
+    border-radius: 5px;
+    border-style: groove;
+    border-color: rgb(0,119,182);
 }
 
 .columnNewAss {
-
+    float: left;
+    margin-right: 80px;
+    border-radius: 5px;
+    border-style: groove;
+    border-color: rgb(0,119,182);
 }
 
 #column1sec {
     margin: 0px;
     background-color: transparent;
     padding: 0px;
+}
+
+.postForm {
+    padding: 30px;
+    border-bottom-style: dashed;
+    border-color: dodgerblue;
+    margin-top: -10px;
+    font-family: 'Franklin Gothic light', 'Arial Narrow', Arial, sans-serif;
+}
+
+#postForm {
+    padding: 20px;
+}
+
+#submitNewStudent {
+    cursor: pointer;
+    background-color: dodgerblue;
+    border-color: #2e2eff;
+    color: white;
+    border-radius: 5px;
+    width: 130px;
+    padding: 5px;
 }

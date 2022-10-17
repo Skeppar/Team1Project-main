@@ -20,9 +20,6 @@
     </div>
 </div>
 <br>
-<br>
-<br>
-<br>
 <!--<td><img th:src="${post.img}" width="100"></td>
 
 <form method="post" action="/uploadAss" th:object="${post}"  enctype="multipart/form-data">
@@ -33,9 +30,8 @@
 
 <div class="columnAllAss">
 
-    <div th:each="assignment : ${allAssignments}" >
-        <p>--------------------------------------------------------</p><br>
-        Task: <div th:text="${assignment.title}"></div>
+    <div class="postForm" th:each="assignment : ${allAssignments}" >
+        Assignment: <div th:text="${assignment.title}"></div>
         <br>
         Description: <div th:text="${assignment.content}"></div>
         <br>
@@ -45,20 +41,15 @@
             <div th:file="{assignment.file}"></div>
         </div>-->
         <button>Start assignment</button>
-        <br>
-        <p>---------------------------------------------------------</p>
     </div>
     <br>
 </div>
 
 <div sec:authorize="hasAuthority('ADMIN')">
     <div class="columnNewAss">
-        <form method="post" action="/uploadAssignment" th:object="${assignment}" enctype="multipart/form-data">
-
-            Title: <input type="text" th:field="*{title}"><br><br><br>
-
-            Content: <textarea name="Text1" cols="40" rows="5" th:field="*{content}"></textarea><br><br><br>
-
+        <form id="postForm" method="post" action="/uploadAssignment" th:object="${assignment}" enctype="multipart/form-data">
+            <div class="title">Title: <input class="titleText" type="text" th:field="*{title}"></div>
+            <div class="content">Content: <textarea class="contentText" name="Text1" cols="40" rows="5" th:field="*{content}"></textarea></div>
             <div>
             <label for="file"></label>
             <input type="file" id="file" name="afile" multiple />
@@ -76,7 +67,7 @@
 
             </select><br><br><br>
 
-            <input type="submit" value="Post assignment "/>
+            <input id="submitNewStudent" type="submit" value="Post assignment "/>
         </form>
 
     </div>
