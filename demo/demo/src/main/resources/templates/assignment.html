@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -48,41 +48,39 @@
         <br>
         <p>---------------------------------------------------------</p>
     </div>
-
-    <br>
-    <br>
     <br>
 </div>
 
-<div class="columnNewAss">
-    <form method="post" action="/uploadAssignment" th:object="${assignment}" enctype="multipart/form-data">
+<div sec:authorize="hasAuthority('ADMIN')">
+    <div class="columnNewAss">
+        <form method="post" action="/uploadAssignment" th:object="${assignment}" enctype="multipart/form-data">
 
-        Title: <input type="text" th:field="*{title}"><br><br><br>
+            Title: <input type="text" th:field="*{title}"><br><br><br>
 
-        Content: <textarea name="Text1" cols="40" rows="5" th:field="*{content}"></textarea><br><br><br>
+            Content: <textarea name="Text1" cols="40" rows="5" th:field="*{content}"></textarea><br><br><br>
 
-        <div>
-        <label for="file"></label>
-        <input type="file" id="file" name="afile" multiple />
-        </div><br><br><br>
+            <div>
+            <label for="file"></label>
+            <input type="file" id="file" name="afile" multiple />
+            </div><br><br><br>
 
 
-        Due date: <input type="date" id="date" name="date" th:value="${{dueDate}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+            Due date: <input type="date" id="date" name="date" th:value="${{dueDate}}" min="1900-01-01" max="2030-12-31"><br><br><br>
 
-        Due time: <input type="time" name="time" id="time"
-                         min="09:00" max="23:59" required> <br><br><br>
+            Due time: <input type="time" name="time" id="time"
+                             min="09:00" max="23:59" required> <br><br><br>
 
-        <select class="courses" th:field="${assignment.id}"  id="courses">
-            <option value="0">Select course</option>
-            <option th:each="course : ${allCourses}" th:value="${course.id}" th:text="${course.title}"></option>
+            <select class="courses" th:field="${assignment.id}"  id="courses">
+                <option value="0">Select course</option>
+                <option th:each="course : ${allCourses}" th:value="${course.id}" th:text="${course.title}"></option>
 
-        </select><br><br><br>
+            </select><br><br><br>
 
-        <input type="submit" value="Post assignment "/>
-    </form>
+            <input type="submit" value="Post assignment "/>
+        </form>
 
+    </div>
 </div>
-
 
 </body>
 </html>
