@@ -26,6 +26,10 @@ public class Course {
     private List<Student> students;
     @ManyToMany(mappedBy = "course")
     private Set<Teacher> teacher = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private List<Assignment> assignments;
+
+
     //@JoinColumn(name = "teacher_id")
     //private Teacher teacher;
 
@@ -126,4 +130,12 @@ public class Course {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }*/
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
+    }
 }

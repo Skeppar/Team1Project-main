@@ -107,9 +107,11 @@ public class BrightsController {
 
         @GetMapping("/uploadAss")
         public String assignment(Model model){
+
             model.addAttribute("post", new TeacherAnnouncement());
             return "uploadAss";
         }
+
         @PostMapping("/uploadAss")
         public String addAss(@ModelAttribute TeacherAnnouncement ta, Model model, HttpSession
         session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
@@ -128,6 +130,8 @@ public class BrightsController {
             FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
              demo/demo/src/main/resources/static/files*/
                 // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
+
+
                 String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
                 System.out.println(System.getProperty(("user.dir")));
                 byte[] bytes = multipartFile.getBytes();
@@ -135,8 +139,13 @@ public class BrightsController {
                 Files.write(path, bytes);
 
                 ta.setImg(ta.getImg()); // item.getImg()
+
             }
 
+            Long millis=System.currentTimeMillis();
+            java.sql.Timestamp date = new java.sql.Timestamp (millis);
+
+            ta.setDate(date.toString());
             Teacher teacher = (Teacher) session.getAttribute("teacher");
             ta.setTeacher(teacher);
 
@@ -144,6 +153,8 @@ public class BrightsController {
             logger.info("User added an item" + " " + ta );
             return "redirect:/uploadAss";
         }
+
+
         @GetMapping("/logoutuser")
         public String logout (HttpSession session, HttpServletResponse res)
         {

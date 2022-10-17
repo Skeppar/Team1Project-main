@@ -11,10 +11,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
@@ -22,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import static java.sql.Timestamp.valueOf;
 import static javax.print.attribute.Size2DSyntax.MM;
 
 @Controller
@@ -37,6 +40,12 @@ public class PostController {
 
     @Autowired
     TeacherRepo teacherRepo;
+
+    @Autowired
+    AssignmentRepo assignmentRepo;
+
+    @Autowired
+    CourseRepo courseRepo;
 
 
     @GetMapping("/post/{id}")
@@ -183,5 +192,51 @@ public class PostController {
         model.addAttribute("students", studentRepo.findAll());
         model.addAttribute("teachers", teacherRepo.findAll());
         return "people";
+    }
+
+    @GetMapping("/uploadAssignment")
+    public String uploadAssignment(Model model, HttpSession session) {
+
+        Assignment assignment = new Assignment();
+        model.addAttribute("assignment", assignment);
+
+        model.addAttribute("allCourses", courseRepo.findAll());
+
+        Long millis=System.currentTimeMillis();
+        java.sql.Timestamp date = new java.sql.Timestamp (millis);
+
+        session.setAttribute("dateNum", date.toString());
+
+        model.addAttribute("allAssignments", assignmentRepo.findAll());
+
+        return "assignment";
+    }
+
+    @PostMapping("uploadAssignment")
+    public String uploadAssignmentpost(@ModelAttribute Assignment assignment, @ModelAttribute Course course, HttpSession session, HttpServletRequest request) {
+
+
+        Long millis=System.currentTimeMillis();
+        java.sql.Timestamp date = new java.sql.Timestamp (millis);
+
+
+        assignment.setCourse(course);
+
+        System.out.println(assignment.getContent());
+
+        assignment.setCreatedDate(date);
+
+        String date2 = request.getParameter("date");
+        String time = request.getParameter("time");
+        String dateAndTime = date2 + " " + time + ":59";
+
+
+        Timestamp date3 = Timestamp.valueOf(dateAndTime);
+
+        assignment.setDueDate(date3);
+
+        assignmentRepo.save(assignment);
+
+        return "redirect:/uploadAssignment";
     }
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form class="logOutButton" th:action="@{/logout}" method="get">
+    <input type="submit" value="Logout"/></form></span>
+<a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
+<div class="headerAss">
+
+    <div class="header-right">
+        <a href="/"><button class="btn info">Home</button></a>
+        <a href="#contact"><button class="btn info">Contact</button></a>
+        <a href="/profile"><button class="btn info">Profile</button></a>
+        <a href="/chat"><button class="btn info">Chat</button></a>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<!--<td><img th:src="${post.img}" width="100"></td>
+
+<form method="post" action="/uploadAss" th:object="${post}"  enctype="multipart/form-data">
+        <label for="file">Choose file to upload</label>
+        <input type="file" id="file" name="afile" multiple />
+        <input type="submit"/>
+</form>-->
+
+<div class="columnAllAss">
+
+    <div th:each="assignment : ${allAssignments}" >
+        <p>--------------------------------------------------------</p><br>
+        Task: <div th:text="${assignment.title}"></div>
+        <br>
+        Description: <div th:text="${assignment.content}"></div>
+        <br>
+        Due date & time: <div th:text="${assignment.dueDate}"></div>
+        <br>
+        <!--<div th:if="${assignment.file} != null">
+            <div th:file="{assignment.file}"></div>
+        </div>-->
+        <button>Start assignment</button>
+        <br>
+        <p>---------------------------------------------------------</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+</div>
+
+<div class="columnNewAss">
+    <form method="post" action="/uploadAssignment" th:object="${assignment}" enctype="multipart/form-data">
+
+        Title: <input type="text" th:field="*{title}"><br><br><br>
+
+        Content: <textarea name="Text1" cols="40" rows="5" th:field="*{content}"></textarea><br><br><br>
+
+        <div>
+        <label for="file"></label>
+        <input type="file" id="file" name="afile" multiple />
+        </div><br><br><br>
+
+
+        Due date: <input type="date" id="date" name="date" th:value="${{dueDate}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+
+        Due time: <input type="time" name="time" id="time"
+                         min="09:00" max="23:59" required> <br><br><br>
+
+        <select class="courses" th:field="${assignment.id}"  id="courses">
+            <option value="0">Select course</option>
+            <option th:each="course : ${allCourses}" th:value="${course.id}" th:text="${course.title}"></option>
+
+        </select><br><br><br>
+
+        <input type="submit" value="Post assignment "/>
+    </form>
+
+</div>
+
+
+</body>
+</html>
+
