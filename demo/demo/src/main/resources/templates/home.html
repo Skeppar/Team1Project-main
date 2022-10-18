@@ -283,6 +283,7 @@
                         <div class="form-group">
                             <input type="text" id="message" class="form-control" placeholder="Type your message here...">
                             <button id="send" class="btn btn-default" type="submit">Send</button>
+                            <button id="hideChat" onclick="closeForm()" class="btn btn-default" type="submit" >Close chat</button>
                             <!-- <button class="btn btn-default" type="submit"  onclick="closeForm()">Close chat</button> -->
                             <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled" onclick="closeForm()">Disconnect</button>
                         </div>
@@ -316,6 +317,11 @@
           document.getElementById("connect").style.display = "none";
     }
 */
+
+     function hideChat() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
 
     function openForm() {
       document.getElementById("myForm").style.display = "block";
