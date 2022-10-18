@@ -117,51 +117,7 @@ public class PostController {
     @PostMapping("/")
     public String addPost(@ModelAttribute TeacherAnnouncement post,Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
-        /*if (studentRepo.findByEmail(principal.getName()) != null){
-            Student student = studentRepo.findByEmail(principal.getName());
 
-
-            //session.setAttribute("username1",userName1);
-            model.addAttribute("username1",student.getFirstName());
-
-        } else {
-            Teacher teacher = teacherRepo.findByEmail(principal.getName());
-            //session.setAttribute("username1",userName1);
-            model.addAttribute("username1",teacher.getFirstName());
-        }*/
-        /*
-        // Hämta filnamnet
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-
-
-        // Har användaren inte laddat upp en bild så vill fortsätta använda default
-        if(!fileName.equals(""))
-        {
-            post.setImg(fileName);
-
-            // Lägg till bilden i projektmappen /images/[bildnamn.typ]
-            /* Med FileUploadUtil
-
-            String uploadDir = "images/" + item.getId();
-            FileUploadUtil.saveFile(uploadDir, item.getImg(), multipartFile);
-             */
-
-        /*
-            // System.getProperty("user.dir") pekar på C:\Users\...\kvarteret
-            String folder = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images\\ads\\";
-            byte[] bytes = multipartFile.getBytes();
-            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
-            Files.write(path,bytes);
-
-            post.setImg("images/ads/" + post.getImg()); // item.getImg()
-        }
-
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
-        post.setTeacher(teacher);
-
-        teacherAnnouncementRepo.save(post);
-        logger.info("User added an item" + " " + post );
-        */
 
         Long millis=System.currentTimeMillis();
         java.sql.Timestamp date = new java.sql.Timestamp (millis);
@@ -247,7 +203,8 @@ public class PostController {
     }
 
     @GetMapping("/uploadAssignment")
-    public String uploadAssignment(Model model, HttpSession session) {
+    public String uploadAssignment(Model model, HttpSession session,Principal principal) {
+
 
         Assignment assignment = new Assignment();
         model.addAttribute("assignment", assignment);
@@ -265,9 +222,9 @@ public class PostController {
     }
 
     @PostMapping("uploadAssignment")
-    public String uploadAssignmentpost(@ModelAttribute Assignment assignment, @ModelAttribute Course course, HttpSession session, HttpServletRequest request) {
+    public String uploadAssignmentpost(@ModelAttribute Assignment assignment,Principal principal, @ModelAttribute Course course, HttpSession session, HttpServletRequest request) {
 
-
+        Teacher teacher = teacherRepo.findByEmail(principal.getName());
         Long millis=System.currentTimeMillis();
         java.sql.Timestamp date = new java.sql.Timestamp (millis);
 
@@ -286,6 +243,7 @@ public class PostController {
         Timestamp date3 = Timestamp.valueOf(dateAndTime);
 
         assignment.setDueDate(date3);
+        assignment.setTeacherName(teacher.getFirstName());
 
         assignmentRepo.save(assignment);
 

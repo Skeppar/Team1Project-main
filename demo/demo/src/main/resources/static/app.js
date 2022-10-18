@@ -1,18 +1,22 @@
 var stompClient = null;
-
+var isConnected = false
 function setConnected(connected) {
-$("#connect").prop("disabled", connected);
-$("#disconnect").prop("disabled", !connected);
-if (connected) {
-$("#conversation").show();
-}
-else {
-$("#conversation").hide();
-}
-$("#greetings").html("");
+    isConnected = connected
+    $("#connect").prop("enabled", connected);
+    $("#disconnect").prop("disabled", !connected);
+    if (connected) {
+        $("#conversation").show();
+    }
+    else {
+        $("#conversation").hide();
+    }
+     $("#greetings").html("");
 }
 
 function connect() {
+if (isConnected) {
+$("#conversation").show();
+}else {
 var socket = new SockJS('/gs-guide-websocket');
 stompClient = Stomp.over(socket);
 stompClient.connect({}, function (frame) {
@@ -22,6 +26,12 @@ stompClient.subscribe('/topic/greetings', function (greeting) {
 showGreeting(JSON.parse(greeting.body));
 });
 });
+}
+}
+
+
+function hideChat(connected) {
+$("#conversation").hide();
 }
 
 function disconnect() {
