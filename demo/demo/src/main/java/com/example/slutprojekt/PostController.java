@@ -249,6 +249,7 @@ public class PostController {
 
         return "redirect:/uploadAssignment";
     }
+
     @GetMapping("/addStudent")
     public String showStudent(Model model, Student newStudent) {
         model.addAttribute("student", new Student());
