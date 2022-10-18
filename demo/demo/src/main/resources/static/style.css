@@ -171,7 +171,7 @@ border-radius: 10px;
 
 input[type=submit] {
     cursor: pointer;
-    background-color: dodgerblue;
+    background-color: #0077b6;
     border-color: #2e2eff;
     color: white;
     border-radius: 5px;
@@ -544,6 +544,23 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
 }
 
+#editPost {
+    background-color: #0077b6;
+    border-color: transparent;
+    position: relative;
+    margin-left: 95px;
+}
+
+#deletePost {
+    background-color: red;
+    border-color: transparent;
+    position: absolute;
+}
+
+#postAction {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 li::marker {
     content: '';
 }
