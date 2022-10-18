@@ -59,6 +59,7 @@ public class PostController {
         model.addAttribute("post1", post1);
         return "home";
     }
+
     @GetMapping("/")
     public String posts(HttpSession session,Principal principal, Model model,HttpServletRequest request, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 
@@ -309,6 +310,62 @@ public class PostController {
 
 
         return "redirect:/addStudent";
+    }
+
+
+    @GetMapping("/filesUpload")
+    public String filesUpload(HttpSession session,Principal principal, Model model,HttpServletRequest request, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        List<TeacherAnnouncement> allContent = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        Collections.sort(allContent, (o1, o2) -> o2.getDate().compareTo(o1.getDate()));
+
+        model.addAttribute("allContent", allContent);
+
+        model.addAttribute("newPost",new TeacherAnnouncement());
+
+        return "filesUpload";
+    }
+
+    @PostMapping("/filesUpload")
+    public String filesUpload(@ModelAttribute TeacherAnnouncement post,Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
+
+        Long millis = System.currentTimeMillis();
+        java.sql.Timestamp date = new java.sql.Timestamp(millis);
+        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(), post.getTeacher(), date, post.getTeacherName());
+        teacherAnnouncementRepo.save(ta);
+
+
+        if (studentRepo.findByEmail(principal.getName()) != null) {
+            Student student = studentRepo.findByEmail(principal.getName());
+
+        } else {
+            Teacher teacher = teacherRepo.findByEmail(principal.getName());
+
+            ta.setTeacherName(teacher.getFirstName());
+            ta.setTeacherLastName(teacher.getLastName());
+            ta.setTeacher(teacher);
+        }
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        if (!fileName.equals("")) {
+            ta.setImg(fileName);
+            String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
+            System.out.println(System.getProperty(("user.dir")));
+            byte[] bytes = multipartFile.getBytes();
+            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+            Files.write(path, bytes);
+
+            post.setImg(post.getImg()); // item.getImg()
+        }
+
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        ta.setTeacher(teacher);
+
+        teacherAnnouncementRepo.save(ta);
+        logger.info("User added an item" + " " + ta );
+
+        model.addAttribute("content",post);
+
+        return "redirect:/filesUpload";
     }
 
     @PostMapping("/deletePost")
