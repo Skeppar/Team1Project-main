@@ -2,45 +2,82 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AddStudent</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <p>Add Student</p>
-    <form action="/addStudent" th:object="${student}" method="post">
-    First name: <input type="text" th:field="*{firstName}"><br><br><br>
-        Last name: <input type="text" th:field="*{lastName}"><br><br><br>
-        Email: <input type="text" th:field="*{email}"><br><br><br>
-        <div th:if="*{dateOfBirth} == null">
-            Date of Birth: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+<form class="logOutButton" th:action="@{/logout}" method="get">
+    <input type="submit" value="Logout"/></form></span>
+<a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
+<div class="headerAss">
+
+    <div class="header-right">
+        <a href="/"><button class="btn info">Home</button></a>
+        <a href="#contact"><button class="btn info">Contact</button></a>
+    </div>
+</div>
+<br>
+
+<div class="body">
+
+    <div class="row">
+        <div class="column1">
+            <h2 class="linksColumn1">Links</h2>
+            <div class="flex-container">
+                <a href="/news"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/news.png"><br>Most recent</button></a>
+                <a href="/modules"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/cubes.png"><br>Modules</button></a>
+                <a href="/uploadAssignment"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/qa.png"><br>Assignments</button></a>
+                <a href="/people"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/people.png"><br>Class list</button></a>
+                <a href="/grades"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/test.png"><br>Grades</button></a>
+                <a href="/video"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
+                <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
+                <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
+            </div>
         </div>
-        <div th:if="*{dateOfBirth} != null">
-            Date of Birth: <input type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+
+        <div class="column2">
+            <h1>Add Student </h1>
+            <form  action="/addStudent" th:object="${student}" method="post">
+                First name: <input type="text" th:field="*{firstName}"><br><br><br>
+                Last name: <input type="text" th:field="*{lastName}"><br><br><br>
+                Email: <input type="text" th:field="*{email}"><br><br><br>
+                <div th:if="*{dateOfBirth} == null">
+                    Date of Birth: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+                <div th:if="*{dateOfBirth} != null">
+                    Date of Birth: <input type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+
+                City: <input list="cities" name="cities" th:placeholder="*{city}"/>
+                <datalist id="cities">
+                    <select>
+                        <option th:each="stad: ${stader}" th:value=" ${stad}">
+                        </option>
+                    </select>
+                </datalist>
+
+                <br> <br> <br>
+
+                Address: <input type="text" th:field="*{address}"><br><br><br>
+                <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
+                LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
+                gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>
+
+                <!--<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">-->
+
+
+                <!--  -->
+                <input type="hidden" th:field="*{id}">
+
+                <input type="submit" value="Save" class="btn btn-primary">
+            </form>
+
+
         </div>
 
-        City: <input list="cities" name="cities" th:placeholder="*{city}"/>
-        <datalist id="cities">
-            <select>
-                <option th:each="stad: ${stader}" th:value=" ${stad}">
-                </option>
-            </select>
-        </datalist>
-
-        <br> <br> <br>
-
-        Address: <input type="text" th:field="*{address}"><br><br><br>
-        <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
-        LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
-        gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>
-
-        <!--<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">-->
-
-
-        <!--  -->
-        <input type="hidden" th:field="*{id}">
-
-        <input type="submit" value="Save">
-</form>
+    </div>
+</div>
 
 </body>
 </html>

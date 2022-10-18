@@ -8,7 +8,6 @@
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/app.js"></script>
-
 </head>
 <body>
 <form class="logOutButton" th:action="@{/logout}" method="get">
@@ -19,7 +18,6 @@
     <div class="header-right">
         <a href="#contact"><button class="btn info">Contact</button></a>
         <a href="/profile"><button class="btn info">Profile</button></a>
-        <a href="/chat"><button class="btn info">Chat</button></a>
     </div>
 
 </div>
@@ -36,7 +34,7 @@
                 <a href="/uploadAssignment"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/qa.png"><br>Assignments</button></a>
                 <a href="/people"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/people.png"><br>Class list</button></a>
                 <a href="/grades"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/test.png"><br>Grades</button></a>
-                <a href="/video"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
+                <a href="/video" target="_blank"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
                 <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
                 <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
                 <div id="column1sec" sec:authorize="hasAuthority('ADMIN')">
@@ -50,11 +48,11 @@
             <h2>Recent announcement</h2>
 
             <div class="posts" th:each="post : ${allContent}">
-                <h3><div th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
+                <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
                 <div th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
-                <div class="date" th:text="'Posted the: ' + ${post.date} + ' - ' + {post.teacherName} + ' ' + ${post.teacherLastName}"></div>
+                <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
                 <!--<div th:text="${post.teacherName}"></div>-->
             </div>
 
@@ -267,6 +265,7 @@
     </div>
 
     <button id="connect" onclick="openForm()" class="btn btn-default" type="submit" >Open chat</button> <!-- style="background-color: #00b4d8;" -->
+    <!-- <button id="openWhenConnected" onclick="openForm()" class="btn btn-default" type="submit" >Open the chat again</button> -->
 
     <div class="chat-popup" id="myForm">
         <noscript><h2 style="color: #ff0000"></h2></noscript>
@@ -284,6 +283,7 @@
                         <div class="form-group">
                             <input type="text" id="message" class="form-control" placeholder="Type your message here...">
                             <button id="send" class="btn btn-default" type="submit">Send</button>
+                            <!-- <button class="btn btn-default" type="submit"  onclick="closeForm()">Close chat</button> -->
                             <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled" onclick="closeForm()">Disconnect</button>
                         </div>
 
@@ -306,16 +306,26 @@
         </div>
     </div>
 
-    <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+<script>
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+/*
+    if (connect == true) {
+          document.getElementById("openWhenConnected").style.display = "none";
+    } else {
+          document.getElementById("openWhenConnected").style.display = "block";
+          document.getElementById("connect").style.display = "none";
+    }
+*/
+
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
 </script>
-
 
 </div>
 <!--
