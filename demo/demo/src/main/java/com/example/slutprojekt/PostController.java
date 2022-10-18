@@ -190,12 +190,6 @@ public class PostController {
             //teacher.setLastName(teacher.getLastName());
         }
 
-
-
-
-
-
-
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         // Har användaren inte laddat upp en bild så vill fortsätta använda default
@@ -217,8 +211,6 @@ public class PostController {
         logger.info("User added an item" + " " + ta );
 
         model.addAttribute("content",post);
-
-
 
         return "redirect:/";
     }
@@ -242,12 +234,12 @@ public class PostController {
         return result;
     }
 
-    @GetMapping ("/video")
+    @GetMapping("/video")
     public String chat() {
         return "video";
     }
 
-    @GetMapping ("/people")
+    @GetMapping("/people")
     public String people(Model model){
         model.addAttribute("students", studentRepo.findAll());
         model.addAttribute("teachers", teacherRepo.findAll());
@@ -379,4 +371,10 @@ public class PostController {
         teacherAnnouncementRepo.save(teacherAnnouncement);
         return "redirect:/";
     }
+
+    @GetMapping("/modules")
+    public String modules() {
+        return "/modules";
+    }
 }
+
