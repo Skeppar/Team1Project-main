@@ -190,12 +190,6 @@ public class PostController {
             //teacher.setLastName(teacher.getLastName());
         }
 
-
-
-
-
-
-
         // Hämta filnamnet
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         // Har användaren inte laddat upp en bild så vill fortsätta använda default
