@@ -56,7 +56,7 @@
                 <div sec:authorize="hasAuthority('ADMIN')">
                     <form action="/deletePost" method="post">
                         <input type="hidden" th:value="${post.id}">
-                        <input type="submit" value="Delete post">
+                        <input id="delete" type="submit" value="Delete post">
                     </form>
                     <form action="/changePost" method="post">
                         <input type="hidden" th:value="${post.id}">

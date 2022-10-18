@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script src="/app.js"></script>
+</head>
+<body>
+
+<div class="body">
+
+  <div class="row">
+    <div class="column1">
+      <h2 class="linksColumn1">Links</h2>
+      <div id="column1text" class="flex-container">
+        <a href="/news"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/news.png"><br>Most recent</button></a>
+        <a href="/modules"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/cubes.png"><br>Modules</button></a>
+        <a href="/uploadAssignment"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/qa.png"><br>Assignments</button></a>
+        <a href="/people"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/people.png"><br>Class list</button></a>
+        <a href="/grades"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/test.png"><br>Grades</button></a>
+        <a href="/video" target="_blank"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
+        <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
+        <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
+        <div id="column1sec" sec:authorize="hasAuthority('ADMIN')">
+          <a href="/addStudent"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Student</button></a>
+        </div>
+      </div>
+    </div>
+
+<div class="column2">
+  <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+  <h2>Recent announcement</h2>
+
+  <div class="posts" th:each="post : ${allContent}">
+    <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
+    <div th:text="${post.content}"></div>
+    <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
+    <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
+    <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
+    <!--<div th:text="${post.teacherName}"></div>-->
+  </div>
+
+  <div sec:authorize="hasAuthority('ADMIN')">
+
+    <div class="createPost">
+      <form method="post" action="/" th:object="${newPost}" enctype="multipart/form-data">
+        <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
+        <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
+                    </textarea>
+          <div>
+            <label for="file"></label>
+            <input type="file" id="file" name="afile" multiple />
+            <input type="submit"/>
+            <div id="postImageHome">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
