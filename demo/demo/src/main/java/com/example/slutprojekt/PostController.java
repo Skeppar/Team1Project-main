@@ -310,4 +310,16 @@ public class PostController {
 
         return "redirect:/addStudent";
     }
+
+    @PostMapping("/deletePost")
+    public String deletePost(@ModelAttribute TeacherAnnouncement teacherAnnouncement) {
+        teacherAnnouncementRepo.delete(teacherAnnouncement);
+        return "redirect:/";
+    }
+
+    @PostMapping("/changePost")
+    public String changePost(@ModelAttribute TeacherAnnouncement teacherAnnouncement) {
+        teacherAnnouncementRepo.save(teacherAnnouncement);
+        return "redirect:/";
+    }
 }
