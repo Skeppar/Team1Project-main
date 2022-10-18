@@ -275,7 +275,7 @@
     </div>
 
     <button id="connect" onclick="openForm()" class="btn btn-default" type="submit" >Open chat</button> <!-- style="background-color: #00b4d8;" -->
-    <button id="openWhenConnected" onclick="openForm()" class="btn btn-default" type="submit" >Open the chat again</button>
+    <!-- <button id="openWhenConnected" onclick="openForm()" class="btn btn-default" type="submit" >Open the chat again</button> -->
 
     <div class="chat-popup" id="myForm">
         <noscript><h2 style="color: #ff0000"></h2></noscript>
@@ -293,7 +293,8 @@
                         <div class="form-group">
                             <input type="text" id="message" class="form-control" placeholder="Type your message here...">
                             <button id="send" class="btn btn-default" type="submit">Send</button>
-                            <button class="btn btn-default" type="submit"  onclick="closeForm()">Close chat</button>
+                            <button id="hideChat" onclick="closeForm()" class="btn btn-default" type="submit" >Close chat</button>
+                            <!-- <button class="btn btn-default" type="submit"  onclick="closeForm()">Close chat</button> -->
                             <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled" onclick="closeForm()">Disconnect</button>
                         </div>
 
@@ -317,6 +318,20 @@
     </div>
 
 <script>
+
+/*
+    if (connect == true) {
+          document.getElementById("openWhenConnected").style.display = "none";
+    } else {
+          document.getElementById("openWhenConnected").style.display = "block";
+          document.getElementById("connect").style.display = "none";
+    }
+*/
+
+     function hideChat() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
 
     function openForm() {
       document.getElementById("myForm").style.display = "block";
