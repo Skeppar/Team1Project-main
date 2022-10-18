@@ -51,9 +51,9 @@
         <br>
         Due date & time: <div th:text="${assignment.dueDate}"></div>
         <br>
-        <!--<div th:if="${assignment.file} != null">
-            <div th:file="{assignment.file}"></div>
-        </div>-->
+     <div th:if="${assignment.fileName} != null">
+         <a th:href="@{files/} + ${assignment.fileName}" width="100"><div th:text="${assignment.fileName}"></div></a>
+        </div>
         <button>Start assignment</button>
     </div>
     <br>

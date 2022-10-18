@@ -249,7 +249,7 @@ public class PostController {
     }
 
     @GetMapping("/uploadAssignment")
-    public String uploadAssignment(Model model, HttpSession session) {
+    public String uploadAssignment(Model model, HttpSession session,HttpServletRequest request ) {
 
         Assignment assignment = new Assignment();
         model.addAttribute("assignment", assignment);
@@ -267,7 +267,7 @@ public class PostController {
     }
 
     @PostMapping("uploadAssignment")
-    public String uploadAssignmentpost(@ModelAttribute Assignment assignment, @ModelAttribute Course course, HttpSession session, HttpServletRequest request) {
+    public String uploadAssignmentpost(@ModelAttribute Assignment assignment, @ModelAttribute Course course, HttpSession session, HttpServletRequest request,@RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
 
         Long millis=System.currentTimeMillis();
@@ -288,7 +288,17 @@ public class PostController {
         Timestamp date3 = Timestamp.valueOf(dateAndTime);
 
         assignment.setDueDate(date3);
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        if (!fileName.equals("")) {
+            assignment.setFileName(fileName);
+            String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
+            System.out.println(System.getProperty(("user.dir")));
+            byte[] bytes = multipartFile.getBytes();
+            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+            Files.write(path, bytes);
 
+            assignment.setFileName(assignment.getFileName()); // item.getImg()
+        }
         assignmentRepo.save(assignment);
 
         return "redirect:/uploadAssignment";
