@@ -47,12 +47,22 @@
             <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
             <h2>Recent announcement</h2>
 
-            <div class="posts" th:each="post : ${allContent}">
+            <div class="posts" th:if="${post.content} != null" th:each="post : ${allContent}">
                 <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
                 <div th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
+                <div id="postAction" sec:authorize="hasAuthority('ADMIN')">
+                    <form action="/deletePost" method="post">
+                        <input type="hidden" th:value="${post.id}">
+                        <input id="deletePost" type="submit" value="Delete post">
+                    </form>
+                    <form action="/changePost" method="post">
+                        <input type="hidden" th:value="${post.id}">
+                        <input id="editPost" type="submit" value="Edit post">
+                    </form>
+                </div>
                 <!--<div th:text="${post.teacherName}"></div>-->
             </div>
 

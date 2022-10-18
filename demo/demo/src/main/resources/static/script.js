@@ -9,3 +9,15 @@ const calendar = new DayPilot.Calendar("calendar", {
 });
 calendar.init();
 
+checkCourse()
+
+function checkCourse() {
+    var course = document.querySelector(".courses").value;
+    var courseError = document.querySelector(".courseError");
+    var courseErrorBtn = document.querySelector(".assBtn");
+    if (course.value === null) {
+        courseError.innerText = "Select a course!"
+
+    }
+}
+
