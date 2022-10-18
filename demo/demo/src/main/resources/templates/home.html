@@ -10,13 +10,16 @@
     <script src="/app.js"></script>
 </head>
 <body>
+
+<p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
 <form class="logOutButton" th:action="@{/logout}" method="get">
-    <input type="submit" value="Logout"/></form></span>
+    <input type="submit" value="Logout"/></form>
+
 <a href="/" class="logo"><img class="logoAss" src="/images/BCLogo.png"></a>
 <div class="headerAss">
 
     <div class="header-right">
-        <a href="#contact"><button class="btn info">Contact</button></a>
+        <a href="/"><button class="btn info">Home</button></a>
         <a href="/profile"><button class="btn info">Profile</button></a>
     </div>
 
@@ -44,7 +47,6 @@
         </div>
 
         <div class="column2">
-            <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
             <h2>Recent announcement</h2>
 
             <div class="posts" th:if="${post.content} != null" th:each="post : ${allContent}">
