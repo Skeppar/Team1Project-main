@@ -255,8 +255,10 @@ position: relative;
 }
 
 .loggedInAs {
-  margin-top: 0px;
-  font-weight: bold;
+    margin-top: -5px;
+    font-weight: bold;
+    right: 10px;
+    position: absolute;
 }
 
 .frontPageButton {
@@ -411,16 +413,17 @@ b{
    height: 100px;
  }
 
- .row{
+ .row {
   background-color: lightblue;
   padding: 30px 10px 20px 10px;
   border-radius: 5px;
  }
- .logOutButton
- {
 
+ .logOutButton {
+  margin-top: 20px;
+  position: absolute;
   display: flex;
-  justify-content: flex-end
+  right: 10px;
  }
 
  /* go back button*/
@@ -561,6 +564,13 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
 li::marker {
     content: '';
 }
+
+.createPost {
+    margin-left: -65px;
+    margin-top: 10px;
+}
+

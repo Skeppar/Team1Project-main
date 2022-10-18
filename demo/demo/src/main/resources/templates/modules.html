@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
   <link rel="stylesheet" href="style.css">
-  <script src="/webjars/jquery/jquery.min.js"></script>
-  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-  <script src="/app.js"></script>
 </head>
 <body>
-
 <form class="logOutButton" th:action="@{/logout}" method="get">
   <input type="submit" value="Logout"/></form></span>
 <a href="/" class="logo"><img class="logoAss" src="/images/BCLogo.png"></a>
@@ -44,31 +39,13 @@
       </div>
     </div>
 
-<div class="column2">
-  <h2>All Files</h2>
-  <li  th:if="${post.content} == null"  th:each="post : ${allContent}">
+    <div class="column2">
 
-    <div th:if="${post.img} != null"> <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a>
-    </div>
-  </li>
-
-  <div sec:authorize="hasAuthority('ADMIN')">
-
-    <div class="createPost">
-      <form method="post" action="/filesUpload" th:object="${newPost}" enctype="multipart/form-data">
-          <div>
-            <label for="file"></label>
-            <input type="file" id="file" name="afile" multiple />
-            <input type="submit"/>
-            <div id="postImageHome">
-            </div>
-          </div>
-      </form>
+      <div>
+          Content
+      </div>
     </div>
   </div>
 </div>
-</div>
-</div>
-
 </body>
 </html>
