@@ -47,7 +47,7 @@
             <p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
             <h2>Recent announcement</h2>
 
-            <div class="posts" th:each="post : ${allContent}">
+            <div class="posts" th:if="${post.content} != null" th:each="post : ${allContent}">
                 <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
                 <div th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
