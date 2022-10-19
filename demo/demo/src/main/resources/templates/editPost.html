@@ -1,26 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<form method="post" action="/editPostSave" th:object="${oldPost}" enctype="multipart/form-data">
-    <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
-    <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50">
-                    </textarea>
-        <div>
-            <label for="file"></label>
-            <input type="file" id="file" name="afile" multiple />
-            <input type="hidden" th:field="*{id}" name="id2">
-            <!--<input type="hidden" th:value="${post.date}" name="date1">-->
-            <input type="submit"/>
-            <div id="postImageHome">
+<p class="loggedInAs" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+<form class="logOutButton" th:action="@{/logout}" method="get">
+    <input type="submit" value="Logout"/></form>
+
+<a href="/" class="logo"><img class="logoAss" src="/images/BCLogo.png"></a>
+<div class="headerAss">
+
+    <div class="header-right">
+        <a href="/"><button class="btn info">Home</button></a>
+        <a href="/profile"><button class="btn info">Profile</button></a>
+    </div>
+
+</div>
+<br>
+
+<div class="body">
+
+    <div class="row">
+        <div class="column1">
+            <h2 class="linksColumn1">Links</h2>
+            <div id="column1text" class="flex-container">
+                <a href="/news"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/news.png"><br>Most recent</button></a>
+                <a href="/modules"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/cubes.png"><br>Modules</button></a>
+                <a href="/uploadAssignment"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/qa.png"><br>Assignments</button></a>
+                <a href="/people"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/people.png"><br>Class list</button></a>
+                <a href="/grades"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/test.png"><br>Grades</button></a>
+                <a href="/video" target="_blank"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
+                <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
+                <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
+                <div id="column1sec" sec:authorize="hasAuthority('ADMIN')">
+                    <a href="/addStudent"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Student</button></a>
+                </div>
             </div>
         </div>
+            <div class="editPost">
+            <form method="post" action="/editPostSave" th:object="${oldPost}" enctype="multipart/form-data">
+                <div class="title">Title: <input class="titleText" type="text" name="title" th:field="*{title}"></div>
+                <div class="content">Content: <textarea class="contentText" th:field="*{content}" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                    <div>
+                        <label for="file"></label>
+                        <div>
+                            <label for="file"></label>
+                            <input type="file" id="file" name="afile" multiple />
+                            <div id="postImageHome"></div></div>
+                        <input type="hidden" th:field="*{id}" name="id2">
+                        <!-- <input type="hidden" th:value="${post.date}" name="date1"> -->
+                        <input id="submitEdit" type="submit"/>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
-
+</div>
 </body>
 </html>

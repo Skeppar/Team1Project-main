@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>AddStudent</title>
@@ -14,7 +14,7 @@
 
     <div class="header-right">
         <a href="/"><button class="btn info">Home</button></a>
-        <a href="/profile"><button class="btn info">Profile</button></a>
+        <a href="#contact"><button class="btn info">Contact</button></a>
     </div>
 </div>
 <br>
@@ -33,44 +33,61 @@
                 <a href="/video"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
                 <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
                 <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
-                <a href="/addCourse"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Course</button></a>
+                <a href="/addStudent"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Student</button></a>
             </div>
         </div>
-
+        <div sec:authorize="hasAuthority('ADMIN')">
         <div class="column2">
-            <h1>Add Student </h1>
-            <form  action="/addStudent" th:object="${student}" method="post">
-                First name: <input type="text" th:field="*{firstName}"><br><br><br>
-                Last name: <input type="text" th:field="*{lastName}"><br><br><br>
-                Email: <input type="text" th:field="*{email}"><br><br><br>
-                <div th:if="*{dateOfBirth} == null">
-                    Date of Birth: <input type="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
-                </div>
-                <div th:if="*{dateOfBirth} != null">
-                    Date of Birth: <input type="date"  th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
-                </div>
+            <h1>Add Course </h1>
+            <form  action="/addCourse" th:object="${course}" method="post">
 
-                City: <input list="cities" name="cities" th:placeholder="*{city}"/>
+                Course <input type="text" th:field="*{title}"><br><br><br>
+                <!--Teacher: <input type="text" th:field="${course.teacher}"><br><br><br> -->
+
+                <div th:if="*{startDate} == null">
+                    Start Date: <input type="date"   th:field="*{startDate}" value="2023-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+                <div th:if="*{graduationDate} == null">
+                    Graduation Date: <input type="date"  th:field="*{graduationDate}" value="2023-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+                <!--
+                <div th:if="*{graduationDate} == null">
+                    Start Date: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div>
+                <div th:if="*{graduationDate} == null">
+                    Graduation Date: <input type="date" id="date" name="date" th:value="${{graduationDate}}" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                </div> -->
+
+               <!-- Course: <div th:text="${course.title}"></div>
+                <br>
+                Teacher: <div th:text="${course.teacher}"></div>
+                <br>
+                Startdate: <div th:text="${course.startDate}"></div>
+                <br>
+                Graduation Date: <div th:text="${course.graduationDate}"></div>
+                <br> -->
+
+
+               <!-- City: <input list="cities" name="cities" th:placeholder="*{city}"/>
                 <datalist id="cities">
                     <select>
                         <option th:each="stad: ${stader}" th:value=" ${stad}">
                         </option>
                     </select>
                 </datalist>
+                -->
 
                 <br> <br> <br>
 
-                Address: <input type="text" th:field="*{address}"><br><br><br>
-                <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
-                LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
-                gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>
+                City: <input list="cities" name="cities" th:placeholder="*{city}"/>
+                <datalist id="cities">
+                    <select>
+                        <option th:each="stad: ${stader}" th:field=" *{stad}">
+                        </option>
+                    </select>
+                </datalist>
 
-                <!--<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">-->
-
-
-                <!--  -->
                 <input type="hidden" th:field="*{id}">
-
                 <input type="submit" value="Save" class="btn btn-primary">
             </form>
 
@@ -78,6 +95,7 @@
         </div>
 
     </div>
+</div>
 </div>
 
 </body>

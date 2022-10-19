@@ -321,15 +321,38 @@ public class PostController {
     }
 
     @PostMapping("/editPostSave")
-    public String editPostSave(@ModelAttribute TeacherAnnouncement teacherAnnouncement){
+    public String editPostSave(@ModelAttribute TeacherAnnouncement teacherAnnouncement, @RequestParam("afile") MultipartFile multipartFile) throws IOException{
+
+        TeacherAnnouncement ta2 = new TeacherAnnouncement();
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        if (!fileName.equals("")) {
+            ta2.setImg(fileName);
+            String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
+            System.out.println(System.getProperty(("user.dir")));
+            byte[] bytes = multipartFile.getBytes();
+            Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+            Files.write(path, bytes);
+
+            teacherAnnouncement.setImg(teacherAnnouncement.getImg()); // item.getImg()
+        }
+
+
 
         Timestamp date = null;
         List<TeacherAnnouncement> lista = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
         for (TeacherAnnouncement ta : lista) {
             if (ta.getId() == teacherAnnouncement.getId()) {
                 date = ta.getDate();
+                teacherAnnouncement.setTeacher(ta.getTeacher());
+                teacherAnnouncement.setTeacherName(ta.getTeacherName());
+                teacherAnnouncement.setTeacherLastName(ta.getTeacherLastName());
             }
         }
+
+
+
+        teacherAnnouncement.setImg(ta2.getImg());
         teacherAnnouncement.setDate(date.toString());
         teacherAnnouncementRepo.save(teacherAnnouncement);
 
@@ -339,6 +362,16 @@ public class PostController {
     @GetMapping("/modules")
     public String modules() {
         return "/modules";
+    }
+    @GetMapping("/addCourse")
+    public String addCourse(Model model, Course newCourse) {
+        model.addAttribute("course", new Course());
+        return "addCourse";
+    }
+    @PostMapping("addCourse")
+    public String addCourse(@ModelAttribute Course course) {
+        courseRepo.save(course);
+        return "redirect:/addCourse";
     }
 }
 

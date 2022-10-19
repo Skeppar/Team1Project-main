@@ -14,6 +14,8 @@ public class Course {
     private String title;
     private Date startDate;
     private Date graduationDate;
+
+
     //private String startDate;
     //private String graduationDate;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,6 +31,8 @@ public class Course {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private List<Assignment> assignments;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Course> courses;
 
     //@JoinColumn(name = "teacher_id")
     //private Teacher teacher;
@@ -36,11 +40,13 @@ public class Course {
     public Course() {
     }
 
-    public Course(String title, Date startDate, Date graduationDate) {
+    public Course(String title, Date startDate, Date graduationDate, City city) {
         this.title = title;
         this.startDate = startDate;
         this.graduationDate = graduationDate;
+
         this.city = city;
+
     }
 
     public Long getId() {
@@ -74,6 +80,17 @@ public class Course {
     public void setGraduationDate(Date graduationDate) {
         this.graduationDate = graduationDate;
     }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+
+
 
     /*public String getStartDate() {
         return startDate;
