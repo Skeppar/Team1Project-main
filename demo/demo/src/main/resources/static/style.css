@@ -442,10 +442,8 @@ b{
 
  #file {
     margin-left: 64px;
+    margin-top: 5px;
  }
-
-
-
 
 #column1 {
     margin-bottom: -10px;
@@ -576,3 +574,18 @@ li::marker {
     margin-top: 10px;
 }
 
+.editPost {
+    border-style: solid;
+    left: 210px;
+    padding: 10px;
+    width: 1000px;
+    position: absolute;
+    border-color: rgb(0,119,182);
+    border-radius: 5px;
+}
+
+#submitEdit {
+    left: 275px;
+    top: -20px;
+    position: relative;
+}
