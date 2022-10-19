@@ -582,10 +582,19 @@ li::marker {
     position: absolute;
     border-color: rgb(0,119,182);
     border-radius: 5px;
+    background-color
 }
 
 #submitEdit {
     left: 275px;
     top: -20px;
     position: relative;
+}
+
+#changeDelete {
+    margin-top: 5px;
+}
+
+#hideChat {
+    background-color: #0077b6;
 }

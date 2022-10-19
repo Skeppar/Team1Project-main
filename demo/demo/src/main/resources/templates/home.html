@@ -55,7 +55,7 @@
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
-                <div sec:authorize="hasAuthority('ADMIN')">
+                <div id="changeDelete" sec:authorize="hasAuthority('ADMIN')">
                     <form th:action="@{/deletePost}" method="post">
                         <input type="hidden" th:value="${post.id}" name="id">
                         <input id="deletePost" type="submit" value="Delete post">
@@ -299,7 +299,6 @@
                             <!-- <button class="btn btn-default" type="submit"  onclick="closeForm()">Close chat</button> -->
                             <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled" onclick="closeForm()">Disconnect</button>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -320,20 +319,6 @@
     </div>
 
 <script>
-
-/*
-    if (connect == true) {
-          document.getElementById("openWhenConnected").style.display = "none";
-    } else {
-          document.getElementById("openWhenConnected").style.display = "block";
-          document.getElementById("connect").style.display = "none";
-    }
-*/
-
-     function hideChat() {
-      document.getElementById("myForm").style.display = "none";
-    }
-
 
     function openForm() {
       document.getElementById("myForm").style.display = "block";
