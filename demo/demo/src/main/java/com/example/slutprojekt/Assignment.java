@@ -30,6 +30,13 @@ public class Assignment {
         this.course = course;
     }
 
+    public Assignment(String title, String content, Course course, Timestamp dueDate) {
+        this.title = title;
+        this.content = content;
+        this.course = course;
+        this.dueDate = dueDate;
+    }
+
     public Long getId() {
         return id;
     }

@@ -51,7 +51,7 @@
 
             <div class="posts" th:if="${post.content} != null" th:each="post : ${allContent}">
                 <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
-                <div id="printTextContent" th:text="${post.content}"></div>
+                <div class="printTextContent" th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
