@@ -479,7 +479,7 @@ a:visited {
 }
 
 #imgColumn1 {
-    width: 32px;
+    width: 40px;
 }
 
 #column1text {
@@ -552,6 +552,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-color: transparent;
     position: relative;
     margin-left: 95px;
+    width: 100px;
 }
 
 #deletePost {
@@ -582,7 +583,7 @@ li::marker {
     position: absolute;
     border-color: rgb(0,119,182);
     border-radius: 5px;
-    background-color
+    background-color: white;
 }
 
 #submitEdit {

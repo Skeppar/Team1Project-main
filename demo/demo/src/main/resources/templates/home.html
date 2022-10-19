@@ -19,7 +19,6 @@
 <div class="headerAss">
 
     <div class="header-right">
-        <a href="/"><button class="btn info">Home</button></a>
         <a href="/profile"><button class="btn info">Profile</button></a>
     </div>
 
@@ -42,7 +41,7 @@
                 <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
                 <div id="column1sec" sec:authorize="hasAuthority('ADMIN')">
                 <a href="/addStudent"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Student</button></a>
-                    <a href="/addCourse"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Course</button></a>
+                <a href="/addCourse"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/elearning.png"><br>Add Course</button></a>
                 </div>
             </div>
         </div>
@@ -64,7 +63,7 @@
                     <form th:action="@{/changePost}" method="post">
                         <input type="hidden" th:value="${post.id}" name="id2">
                         <!--<input type="hidden" th:value="${post.date}" name="date1">-->
-                        <input id="editPost" type="submit" value="Change post">
+                        <input id="editPost" type="submit" value="Edit post">
                     </form>
                 </div>
                 <!--<div th:text="${post.teacherName}"></div>-->
