@@ -9,17 +9,46 @@
 <form class="logOutButton" th:action="@{/logout}" method="get">
     <input type="submit" value="Logout"/></form></span>
 <a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
-<div class="headerAss">
+<div id="changeColorHead" class="headerAss">
 
     <div class="header-right">
         <a href="/"><button class="btn info">Home</button></a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+                <a onclick="myFunctionRed()">Red</a>
+                <a onclick="myFunctionBlue()">Blue</a>
+                <a onclick="myFunctionGreen()">Green</a>
+            </div>
+        </div>
+
+        <script>
+
+                function myFunctionRed() {
+                  document.getElementById("changeColor").style.backgroundColor = "#e6adad";
+                  document.getElementById("changeColorHead").style.backgroundColor = "#ff4646";
+                }
+
+                function myFunctionBlue() {
+                  document.getElementById("changeColor").style.backgroundColor = "lightblue";
+                  document.getElementById("changeColorHead").style.backgroundColor = "#0077B6";
+                }
+
+                function myFunctionGreen() {
+                  document.getElementById("changeColor").style.backgroundColor = "#caf7b1b5";
+                  document.getElementById("changeColorHead").style.backgroundColor = "#329f00b5";
+                }
+
+            </script>
+
     </div>
 </div>
 <br>
 
 <div class="body">
 
-    <div class="row">
+    <div id="changeColor" class="row">
         <div class="column1">
             <h2 class="linksColumn1">Links</h2>
             <div class="flex-container">
