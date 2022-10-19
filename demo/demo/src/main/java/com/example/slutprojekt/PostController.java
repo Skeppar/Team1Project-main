@@ -1,5 +1,6 @@
 package com.example.slutprojekt;
 
+import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,8 @@ import java.nio.file.Paths;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.*;
 import java.sql.Date;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 import static java.sql.Timestamp.valueOf;
 import static javax.print.attribute.Size2DSyntax.MM;
@@ -63,6 +61,7 @@ public class PostController {
     @GetMapping("/")
     public String posts(HttpSession session,Principal principal, Model model,HttpServletRequest request, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 
+        //Long oldId = (Long) model.getAttribute("postId");
         /*if (studentRepo.findByEmail(principal.getName()) != null){
             Student student = studentRepo.findByEmail(principal.getName());
 
@@ -329,14 +328,33 @@ public class PostController {
     }
 
     @PostMapping("/deletePost")
-    public String deletePost(@ModelAttribute TeacherAnnouncement teacherAnnouncement) {
-        teacherAnnouncementRepo.delete(teacherAnnouncement);
+    public String deletePost(@RequestParam Long id) {
+
+        teacherAnnouncementRepo.deleteById(id);
         return "redirect:/";
     }
 
     @PostMapping("/changePost")
-    public String changePost(@ModelAttribute TeacherAnnouncement teacherAnnouncement) {
+    public String changePost(@RequestParam Long id2, Model model) {
+
+        model.addAttribute("oldPost", teacherAnnouncementRepo.findById(id2));
+
+        return "editPost";
+    }
+
+    @PostMapping("/editPostSave")
+    public String editPostSave(@ModelAttribute TeacherAnnouncement teacherAnnouncement){
+
+        Timestamp date = null;
+        List<TeacherAnnouncement> lista = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
+        for (TeacherAnnouncement ta : lista) {
+            if (ta.getId() == teacherAnnouncement.getId()) {
+                date = ta.getDate();
+            }
+        }
+        teacherAnnouncement.setDate(date.toString());
         teacherAnnouncementRepo.save(teacherAnnouncement);
+
         return "redirect:/";
     }
 

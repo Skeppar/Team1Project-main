@@ -59,10 +59,18 @@
                     <form action="/deletePost" method="post">
                         <input type="hidden" th:value="${post.id}">
                         <input id="deletePost" type="submit" value="Delete post">
+                <div sec:authorize="hasAuthority('ADMIN')">
+                    <form th:action="@{/deletePost}" method="post">
+                        <input type="hidden" th:value="${post.id}" name="id">
+                        <input type="submit" value="Delete post">
                     </form>
                     <form action="/changePost" method="post">
                         <input type="hidden" th:value="${post.id}">
                         <input id="editPost" type="submit" value="Edit post">
+                    <form th:action="@{/changePost}" method="post">
+                        <input type="hidden" th:value="${post.id}" name="id2">
+                        <!--<input type="hidden" th:value="${post.date}" name="date1">-->
+                        <input type="submit" value="Change post">
                     </form>
                 </div>
                 <!--<div th:text="${post.teacherName}"></div>-->
