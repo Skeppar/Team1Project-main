@@ -368,12 +368,30 @@ public class PostController {
         return "/modules";
     }
     @GetMapping("/addCourse")
-    public String addCourse(Model model, Course newCourse) {
+    public String addCourse(Model model, Course newCourse, HttpServletRequest request) {
         model.addAttribute("course", new Course());
+
+        List<String> cityNames = new ArrayList<>();
+        for (City city2 : cityRepo.findAll()) {
+            cityNames.add(city2.getName());
+        }
+
+        model.addAttribute("stader", cityNames);
         return "addCourse";
     }
     @PostMapping("addCourse")
-    public String addCourse(@ModelAttribute Course course) {
+    public String addCourse(@ModelAttribute Course course, HttpServletRequest request )throws IOException{
+        String newCity = request.getParameter("cities");
+
+        City newCity2 = null;
+        for (City city : cityRepo.findAll()) {
+            if (city.getName().equals(newCity)) {
+                newCity2 = city;
+            }
+        }
+
+        course.setCity(newCity2);
+
         courseRepo.save(course);
         return "redirect:/addCourse";
     }

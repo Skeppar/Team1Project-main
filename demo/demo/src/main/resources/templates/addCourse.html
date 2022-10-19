@@ -82,7 +82,7 @@
                 City: <input list="cities" name="cities" th:placeholder="*{city}"/>
                 <datalist id="cities">
                     <select>
-                        <option th:each="stad: ${stader}" th:field=" *{stad}">
+                        <option th:each="stad: ${stader}" th:value=" ${stad}">
                         </option>
                     </select>
                 </datalist>
