@@ -479,7 +479,7 @@ a:visited {
 }
 
 #imgColumn1 {
-    width: 40px;
+    width: 42px;
 }
 
 #column1text {
@@ -552,7 +552,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-color: transparent;
     position: relative;
     margin-left: 95px;
-    width: 100px;
+    width: 80px;
 }
 
 #deletePost {
