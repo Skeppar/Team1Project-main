@@ -50,34 +50,7 @@
                 <div th:if="*{graduationDate} == null">
                     Graduation Date: <input type="date"  th:field="*{graduationDate}" value="2023-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
                 </div>
-                <!--
-                <div th:if="*{graduationDate} == null">
-                    Start Date: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
-                </div>
-                <div th:if="*{graduationDate} == null">
-                    Graduation Date: <input type="date" id="date" name="date" th:value="${{graduationDate}}" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
-                </div> -->
 
-               <!-- Course: <div th:text="${course.title}"></div>
-                <br>
-                Teacher: <div th:text="${course.teacher}"></div>
-                <br>
-                Startdate: <div th:text="${course.startDate}"></div>
-                <br>
-                Graduation Date: <div th:text="${course.graduationDate}"></div>
-                <br> -->
-
-
-               <!-- City: <input list="cities" name="cities" th:placeholder="*{city}"/>
-                <datalist id="cities">
-                    <select>
-                        <option th:each="stad: ${stader}" th:value=" ${stad}">
-                        </option>
-                    </select>
-                </datalist>
-                -->
-
-                <br> <br> <br>
 
                 City: <input list="cities" name="cities" th:placeholder="*{city}"/>
                 <datalist id="cities">
