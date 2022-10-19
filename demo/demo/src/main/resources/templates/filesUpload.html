@@ -44,30 +44,35 @@
       </div>
     </div>
 
-<div class="column2">
-  <h2>All Files</h2>
-  <li  th:if="${post.content} == null"  th:each="post : ${allContent}">
+    <div class="column2">
+      <h2>All Files</h2>
+      <li  th:if="${post.content} == null"  th:each="post : ${allContent}">
+        <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a>
+        </div>
+      </li>
 
-    <div th:if="${post.img} != null"> <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a>
-    </div>
-  </li>
+      <li th:if="${assignment.content} == null"  th:each="assignment : ${allCourses}">
+        <div th:if="${assignment.fileName} != null"><a th:href="@{files/} + ${assignment.fileName}" width="100"><div th:text="${assignment.fileName}"></div></a>
+      </div></li>
+    <li th:each="document : ${allDocuments}">
+      <a th:href="@{files/} + ${document.fileName}" width="100"><div th:text="${document.fileName}"></div></a>
+      </div></li>
+      <div sec:authorize="hasAuthority('ADMIN')">
 
-  <div sec:authorize="hasAuthority('ADMIN')">
-
-    <div class="createPost1">
-      <form method="post" action="/filesUpload" th:object="${newPost}" enctype="multipart/form-data">
-          <div>
-            <label for="file"></label>
-            <input type="file" id="file" name="afile" multiple />
-            <input type="submit"/>
-            <div id="postImageHome">
+        <div class="createPost1">
+          <form method="post" action="/filesUpload" th:object="${File}" enctype="multipart/form-data">
+            <div>
+              <label for="file"></label>
+              <input type="file" id="file" name="afile" multiple />
+              <input type="submit"/>
+              <div id="postImageHome">
+              </div>
             </div>
-          </div>
-      </form>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 
 </body>

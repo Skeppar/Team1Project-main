@@ -1,6 +1,5 @@
 package com.example.slutprojekt;
 
-import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +11,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.sql.Date;
 
 import static java.sql.Timestamp.valueOf;
-import static javax.print.attribute.Size2DSyntax.MM;
 
 @Controller
 public class PostController {
@@ -45,6 +40,9 @@ public class PostController {
 
     @Autowired
     CourseRepo courseRepo;
+
+    @Autowired
+    DocumentRepo documentRepo;
 
     @Autowired
     private CityRepo cityRepo;
@@ -274,55 +272,35 @@ public class PostController {
 
     @GetMapping("/filesUpload")
     public String filesUpload(HttpSession session,Principal principal, Model model,HttpServletRequest request, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
-        List<TeacherAnnouncement> allContent = (List<TeacherAnnouncement>) teacherAnnouncementRepo.findAll();
-        Collections.sort(allContent, (o1, o2) -> o2.getDate().compareTo(o1.getDate()));
-
-        model.addAttribute("allContent", allContent);
-
-        model.addAttribute("newPost",new TeacherAnnouncement());
-
+        Document document = new Document();
+        List<Document> allDocuments = (List<Document>) documentRepo.findAll();
+        model.addAttribute("document", document);
+        model.addAttribute("allDocuments", allDocuments);
+        model.addAttribute("allDocuments", documentRepo.findAll());
         return "filesUpload";
     }
 
     @PostMapping("/filesUpload")
-    public String filesUpload(@ModelAttribute TeacherAnnouncement post,Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
-
-        Long millis = System.currentTimeMillis();
-        java.sql.Timestamp date = new java.sql.Timestamp(millis);
-        TeacherAnnouncement ta = new TeacherAnnouncement(post.getTitle(), post.getContent(), post.getTeacher(), date, post.getTeacherName());
-        teacherAnnouncementRepo.save(ta);
+    public String filesUpload(@ModelAttribute Document document , Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
 
-        if (studentRepo.findByEmail(principal.getName()) != null) {
-            Student student = studentRepo.findByEmail(principal.getName());
-
-        } else {
-            Teacher teacher = teacherRepo.findByEmail(principal.getName());
-
-            ta.setTeacherName(teacher.getFirstName());
-            ta.setTeacherLastName(teacher.getLastName());
-            ta.setTeacher(teacher);
-        }
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         if (!fileName.equals("")) {
-            ta.setImg(fileName);
+            document.setFileName(fileName);
             String folder = System.getProperty("user.dir") + "\\demo\\demo\\src\\main\\resources\\static\\files\\";
             System.out.println(System.getProperty(("user.dir")));
             byte[] bytes = multipartFile.getBytes();
             Path path = Paths.get(folder + multipartFile.getOriginalFilename());
             Files.write(path, bytes);
 
-            post.setImg(post.getImg()); // item.getImg()
+            document.setFileName(document.getFileName()); //
         }
 
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
-        ta.setTeacher(teacher);
 
-        teacherAnnouncementRepo.save(ta);
-        logger.info("User added an item" + " " + ta );
+        documentRepo.save(document);
+        logger.info("User added an item" + " " + document );
 
-        model.addAttribute("content",post);
 
         return "redirect:/filesUpload";
     }
