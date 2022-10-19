@@ -55,22 +55,15 @@
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
-                <div id="postAction" sec:authorize="hasAuthority('ADMIN')">
-                    <form action="/deletePost" method="post">
-                        <input type="hidden" th:value="${post.id}">
-                        <input id="deletePost" type="submit" value="Delete post">
                 <div sec:authorize="hasAuthority('ADMIN')">
                     <form th:action="@{/deletePost}" method="post">
                         <input type="hidden" th:value="${post.id}" name="id">
-                        <input type="submit" value="Delete post">
+                        <input id="deletePost" type="submit" value="Delete post">
                     </form>
-                    <form action="/changePost" method="post">
-                        <input type="hidden" th:value="${post.id}">
-                        <input id="editPost" type="submit" value="Edit post">
                     <form th:action="@{/changePost}" method="post">
                         <input type="hidden" th:value="${post.id}" name="id2">
                         <!--<input type="hidden" th:value="${post.date}" name="date1">-->
-                        <input type="submit" value="Change post">
+                        <input id="editPost" type="submit" value="Change post">
                     </form>
                 </div>
                 <!--<div th:text="${post.teacherName}"></div>-->
@@ -100,8 +93,7 @@
                         <label for="file"></label>
                         <input type="file" id="file" name="afile" multiple />
                         <input type="submit"/>
-                        <div id="postImageHome">
-                        </div>
+                        <div id="postImageHome"></div>
                         </div>
                     </div>
                 </form>

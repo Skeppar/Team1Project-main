@@ -12,12 +12,13 @@
                     </textarea>
         <div>
             <label for="file"></label>
-            <input type="file" id="file" name="afile" multiple />
+            <div>
+                <label for="file"></label>
+                <input type="file" id="file" name="afile" multiple />
+                <div id="postImageHome"></div></div>
             <input type="hidden" th:field="*{id}" name="id2">
-            <!--<input type="hidden" th:value="${post.date}" name="date1">-->
+            <!-- <input type="hidden" th:value="${post.date}" name="date1"> -->
             <input type="submit"/>
-            <div id="postImageHome">
-            </div>
         </div>
     </div>
 </form>
