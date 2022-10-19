@@ -393,8 +393,18 @@ public class PostController {
     }
 
     @PostMapping("/grades")
-    public String postgrades() {
+    public String gradesPost() {
         return "grades";
+    }
+
+    @GetMapping("/git")
+    public String git() {
+        return "git";
+    }
+
+    @PostMapping("/git")
+    public String gitPost() {
+        return "git";
     }
 
 }
