@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 @Entity
 public class Document {
@@ -12,7 +13,15 @@ public class Document {
     private Long id;
     private String fileName; // = "/files/default.jpg";
 
+      private Timestamp date;
     public Document() {
+    }
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
     public Long getId() {
         return id;

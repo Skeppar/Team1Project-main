@@ -46,18 +46,26 @@
 
     <div class="column2">
       <h2>All Files</h2>
-      <li th:each="post : ${allContent}">
-        <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a> </li>
+      <br>
+      <button>Sort by date</button> <br> <button>Sort by name</button>
+      <br>
+      <ol>
+      <div th:each="post : ${allContent}" th:if="${post.img} != null">
+        <a th:href="@{files/} + ${post.img}"> <p th:text="${post.img}"></p></a><p th:text="${post.date}"></p>
+      </div>
 
-      <li th:each="assignment : ${allCourses}">
-        <div th:if="${assignment.fileName} != null"><a th:href="@{files/} + ${assignment.fileName}" width="100"><div th:text="${assignment.fileName}"></div></a>
-      </div></li>
-    <li th:each="document : ${allDocuments}">
-      <a th:href="@{files/} + ${document.fileName}" width="100"><div th:text="${document.fileName}"></div></a>
-     </li>
+      <div th:each="assignment : ${allCourses}" th:if="${assignment.fileName} != null">
+          <a th:href="@{files/} + ${assignment.fileName}"><p th:text="${assignment.fileName}"></p></a><p th:text="${assignment.createdDate}"></p>
+        </div>
+
+    <div th:each="document : ${allDocuments}">
+      <a th:href="@{files/} + ${document.fileName}" width="100"><p th:text="${document.fileName}"></p></a><p th:text="${document.date}"></p>
+     </div>
+
+      </ol>
       <div sec:authorize="hasAuthority('ADMIN')">
 
-        <div class="createPost1">
+        <div class="createDocument1">
           <form method="post" action="/filesUpload" th:object="${File}" enctype="multipart/form-data">
             <div>
               <label for="file"></label>

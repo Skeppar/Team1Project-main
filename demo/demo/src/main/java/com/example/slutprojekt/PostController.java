@@ -286,7 +286,9 @@ public class PostController {
     @PostMapping("/filesUpload")
     public String filesUpload(@ModelAttribute Document document , Principal principal, Model model, HttpSession session, HttpServletRequest request, @RequestParam("afile") MultipartFile multipartFile) throws IOException {
 
-
+        Long millis=System.currentTimeMillis();
+        java.sql.Timestamp date = new java.sql.Timestamp (millis);
+        document.setDate(date);
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         if (!fileName.equals("")) {
@@ -299,7 +301,6 @@ public class PostController {
 
             document.setFileName(document.getFileName()); //
         }
-
 
         documentRepo.save(document);
         logger.info("User added an item" + " " + document );
