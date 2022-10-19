@@ -46,17 +46,15 @@
 
     <div class="column2">
       <h2>All Files</h2>
-      <li  th:if="${post.content} == null"  th:each="post : ${allContent}">
-        <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a>
-        </div>
-      </li>
+      <li th:each="post : ${allContent}">
+        <a th:href="@{files/} + ${post.img}" width="100"><div th:text="${post.img}"></div></a> </li>
 
-      <li th:if="${assignment.content} == null"  th:each="assignment : ${allCourses}">
+      <li th:each="assignment : ${allCourses}">
         <div th:if="${assignment.fileName} != null"><a th:href="@{files/} + ${assignment.fileName}" width="100"><div th:text="${assignment.fileName}"></div></a>
       </div></li>
     <li th:each="document : ${allDocuments}">
       <a th:href="@{files/} + ${document.fileName}" width="100"><div th:text="${document.fileName}"></div></a>
-      </div></li>
+     </li>
       <div sec:authorize="hasAuthority('ADMIN')">
 
         <div class="createPost1">
@@ -67,6 +65,8 @@
               <input type="submit"/>
               <div id="postImageHome">
               </div>
+              </div>
+        </div>
             </div>
           </form>
         </div>

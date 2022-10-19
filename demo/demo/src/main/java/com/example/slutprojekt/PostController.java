@@ -98,6 +98,7 @@ public class PostController {
             }
         }*/
         model.addAttribute("allContent", allContent);
+
         //model.addAttribute("content", posts);
         //model.addAttribute("pages", pages);
         //model.addAttribute("currentPage", page);
@@ -276,7 +277,9 @@ public class PostController {
         List<Document> allDocuments = (List<Document>) documentRepo.findAll();
         model.addAttribute("document", document);
         model.addAttribute("allDocuments", allDocuments);
-        model.addAttribute("allDocuments", documentRepo.findAll());
+        model.addAttribute("allCourses", assignmentRepo.findAll());
+        model.addAttribute("allContent",teacherAnnouncementRepo.findAll());
+
         return "filesUpload";
     }
 
