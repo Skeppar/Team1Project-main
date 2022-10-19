@@ -23,24 +23,104 @@
             </div>
         </div>
 
-        <script>
-
-                function myFunctionRed() {
+        <!--
+                  Funkad men sparar inte:
+                  function myFunctionRed() {
                   document.getElementById("changeColor").style.backgroundColor = "#e6adad";
                   document.getElementById("changeColorHead").style.backgroundColor = "#ff4646";
                 }
 
-                function myFunctionBlue() {
+                  function myFunctionBlue() {
                   document.getElementById("changeColor").style.backgroundColor = "lightblue";
                   document.getElementById("changeColorHead").style.backgroundColor = "#0077B6";
                 }
 
-                function myFunctionGreen() {
+                  function myFunctionGreen() {
                   document.getElementById("changeColor").style.backgroundColor = "#caf7b1b5";
                   document.getElementById("changeColorHead").style.backgroundColor = "#329f00b5";
                 }
 
-            </script>
+
+            Försök 2 som inte funkar:
+
+            const color = document.getElementById("changeColor");
+
+            var colorVal = localStorage.getItem("changeColor");
+
+            function myFunctionRed() {
+              if (typeof(Storage) !== "undefined") {
+                if (localStorage.myFunctionRed) {
+                    localStorage.myFunctionRed = Number(localStorage.myFunctionRed); Number kanske är för int, men hittar inte info om det.
+                  }
+                    localStorage.setItem("changeColor", color."#e6adad");
+                    color."#e6adad" = "Select changeColor";
+                    color."#e6adad" = colorVal;
+                    }
+                  }
+
+             Försök 3 som funkar men inte om man laddar om:
+
+             function myFunctionRed() {
+              if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.myFunctionRed) {
+                    sessionStorage.myFunctionRed = Number(sessionStorage.myFunctionRed);
+                  }
+                    document.getElementById("changeColor").style.backgroundColor = "#e6adad";
+                    document.getElementById("changeColorHead").style.backgroundColor = "#ff4646";
+                    }
+                  }
+
+             function myFunctionBlue() {
+              if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.myFunctionBlue) {
+                    sessionStorage.myFunctionBlue = Number(sessionStorage.myFunctionBlue);
+                   }
+                     document.getElementById("changeColor").style.backgroundColor = "lightblue";
+                     document.getElementById("changeColorHead").style.backgroundColor = "#0077B6";
+                     }
+                    }
+
+             function myFunctionGreen() {
+              if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.myFunctionGreen) {
+                    sessionStorage.myFunctionGreen = Number(sessionStorage.myFunctionGreen);
+                  }
+                    document.getElementById("changeColor").style.backgroundColor = "#caf7b1b5";
+                    document.getElementById("changeColorHead").style.backgroundColor = "#329f00b5";
+                    }
+                  }
+        -->
+
+        <script>
+
+            function myFunctionRed() {
+                sessionStorage.setItem("color", "#e6adad");
+                let redColor = sessionStorage.getItem("color");
+                document.getElementById("changeColor").style.backgroundColor = redColor;
+                sessionStorage.setItem("colorH", "#ff4646");
+                let redColorH = sessionStorage.getItem("colorH");
+                document.getElementById("changeColorHead").style.backgroundColor = redColorH;
+            }
+
+            function myFunctionBlue() {
+                sessionStorage.setItem("color", "lightblue");
+                let blueColor = sessionStorage.getItem("color");
+                document.getElementById("changeColor").style.backgroundColor = blueColor;
+                sessionStorage.setItem("colorH", "#0077B6");
+                let blueColorH = sessionStorage.getItem("colorH");
+                document.getElementById("changeColorHead").style.backgroundColor = blueColorH;
+            }
+
+            function myFunctionGreen() {
+                sessionStorage.setItem("color", "#caf7b1b5");
+                let greenColor = sessionStorage.getItem("color");
+                document.getElementById("changeColor").style.backgroundColor = greenColor;
+                sessionStorage.setItem("colorH", "#329f00b5");
+                let greenColorH = sessionStorage.getItem("colorH");
+                document.getElementById("changeColorHead").style.backgroundColor = greenColorH;
+            }
+
+        </script>
 
     </div>
 </div>
