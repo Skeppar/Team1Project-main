@@ -54,12 +54,13 @@
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
                 <div sec:authorize="hasAuthority('ADMIN')">
-                    <form action="/deletePost" method="post">
-                        <input type="hidden" th:value="${post.id}">
+                    <form th:action="@{/deletePost}" method="post">
+                        <input type="hidden" th:value="${post.id}" name="id">
                         <input type="submit" value="Delete post">
                     </form>
-                    <form action="/changePost" method="post">
-                        <input type="hidden" th:value="${post.id}">
+                    <form th:action="@{/changePost}" method="post">
+                        <input type="hidden" th:value="${post.id}" name="id2">
+                        <!--<input type="hidden" th:value="${post.date}" name="date1">-->
                         <input type="submit" value="Change post">
                     </form>
                 </div>
