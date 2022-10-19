@@ -385,5 +385,15 @@ public class PostController {
     public String modules() {
         return "/modules";
     }
+    @GetMapping("/addCourse")
+    public String addCourse(Model model, Course newCourse) {
+        model.addAttribute("course", new Course());
+        return "addCourse";
+    }
+    @PostMapping("addCourse")
+    public String addCourse(@ModelAttribute Course course) {
+        courseRepo.save(course);
+        return "redirect:/addCourse";
+    }
 }
 
