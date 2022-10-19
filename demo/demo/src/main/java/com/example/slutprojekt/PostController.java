@@ -377,5 +377,36 @@ public class PostController {
         courseRepo.save(course);
         return "redirect:/addCourse";
     }
+
+    @GetMapping("/news")
+    public String news() {
+        return "news";
+    }
+
+    @PostMapping("/news")
+    public String postNews() {
+        return "news";
+    }
+
+    @GetMapping("/grades")
+    public String grades() {
+        return "grades";
+    }
+
+    @PostMapping("/grades")
+    public String gradesPost() {
+        return "grades";
+    }
+
+    @GetMapping("/git")
+    public String git() {
+        return "git";
+    }
+
+    @PostMapping("/git")
+    public String gitPost() {
+        return "git";
+    }
+
 }
 

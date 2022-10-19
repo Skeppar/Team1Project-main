@@ -1,68 +1,70 @@
 .header {
-  margin-left: 730px;
-  margin-top: 50px;
+    margin-left: 730px;
+    margin-top: 50px;
 }
 
 .headerPic {
-  width: 300px;
-  height: 100px;
+    width: 300px;
+    height: 100px;
 }
 
 /* Style the header links */
 .header a {
-float: left;
-color: rgb(0,119,182);
-text-align: center;
-padding: 12px;
-text-decoration: none;
-font-size: 18px;
-line-height: 25px;
-border-radius: 4px;
+    float: left;
+    color: rgb(0,119,182);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-font-size: 50px;
-font-weight: bold;
+    font-size: 50px;
+    font-weight: bold;
 }
 
 /* Change the background color on mouse-over */
 .header a:hover {
-background-color: #ddd;
-color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 /* Style the active/current link*/
 .header a.active {
 background-color: dodgerblue;
-color: white;
+    color: white;
 }
 
 /* Float the link section to the right */
 .header-right {
-float: right;
+    float: right;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
 .header a {
-  float: none;
-  display: block;
-  text-align: left;
+    float: none;
+    display: block;
+    text-align: left;
 }
+
 .header-right {
-  float: none;
+    float: none;
 }
 }
 
 body {
-padding: 10px;
-box-sizing: border-box;
-/*background-color: rgb(224, 239, 244);
-*/}
+    padding: 10px;
+    box-sizing: border-box;
+    /*background-color: rgb(224, 239, 244);*/
+}
+
 h2{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
 }
 
 
@@ -78,58 +80,58 @@ text-transform: uppercase;
 }
 
 .column2 {
-background-color: white;
-border-radius: 10px 10px 0px 0px;
-float: left;
-width: 55%;
-padding: 10px;
-height: 300px;
-display: table;
-margin-left: 12px;
-margin-right: 12px;
-border-style: groove;
-border-color: rgb(0,119,182);
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+    float: left;
+    width: 55%;
+    padding: 10px;
+    height: 300px;
+    display: table;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-style: groove;
+    border-color: rgb(0,119,182);
 }
 
 .column3 {
-background-color: white;
-border-radius: 10px;
-float: left;
-width: 30%;
-padding: 10px;
-height: 300px;
-display: table;
-margin: 0 auto;
-border-style: groove;
-border-color: rgb(0,119,182);
+    background-color: white;
+    border-radius: 10px;
+    float: left;
+    width: 30%;
+    padding: 10px;
+    height: 300px;
+    display: table;
+    margin: 0 auto;
+    border-style: groove;
+    border-color: rgb(0,119,182);
 }
 
 /* Clear floats after the columns */
 .row:after {
-content: "";
-display: table;
-clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .flex-container > div {
-background-color: #f1f1f1;
-margin: 10px;
-padding: 20px;
-font-size: 30px;
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
 }
 
 .frontPagePic {
- margin-left: 250px;
- margin-top: 161px;
+     margin-left: 250px;
+     margin-top: 161px;
 }
 
 .posts {
-border-style: groove;
-border-radius: 5px;
-margin-bottom: 15px;
-width: 1000px;
-word-break: break-word;
-padding: 8px;
+    border-style: groove;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 1000px;
+    word-break: break-word;
+    padding: 8px;
 }
 
 
@@ -138,21 +140,21 @@ padding: 8px;
     border-radius: 10px;
     background-color: white;
     height: 20%;
-    width: 20%;
     order-color: black;
 }
 
 
 .people {
-float: left;
-background-color: white;
-width: 40%;
-padding: 10px;
-height: 300px; /* Should be removed. Only for demonstration */
-display: table;
-margin: 10px;
-border-style: groove;
-border-color: rgb(0,119,182);
+    float: left;
+    background-color: white;
+    width: 40%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    display: table;
+    margin: 10px;
+    border-style: groove;
+    border-color: rgb(0,119,182);
+    border-radius: 5px;
 }
 
 .picContainer
@@ -247,6 +249,11 @@ position: relative;
   min-height: 30px;
   padding-top: 5px;
   padding-left: 5px;
+}
+
+#printTextContent {
+    white-space: pre-wrap;
+    font-family: monospace;
 }
 
 .date {
@@ -533,7 +540,8 @@ a:visited {
 }
 
 #announcementTitle {
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .error {
@@ -599,9 +607,7 @@ li::marker {
 #hideChat {
     background-color: #0077b6;
 }
-createDocument1
-{
-    margin-top: 150px;
-    margin-left: 250px;
 
+#printSchedule {
+    white-space: pre-wrap;
 }

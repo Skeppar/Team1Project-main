@@ -51,7 +51,7 @@
 
             <div class="posts" th:if="${post.content} != null" th:each="post : ${allContent}">
                 <h3><div id="announcementTitle" th:text="${post.title}"></div></h3><!--det är olagligt ring bolis-->
-                <div th:text="${post.content}"></div>
+                <div id="printTextContent" th:text="${post.content}"></div>
                 <div th:if="${post.img} != null"> <img th:src="@{files/} + ${post.img}" width="100"></div>
                 <!-- <div th:text="'Posted by: ' + ${post.teacherName}"></div> This is fu**ed up-->
                 <div class="date" th:text="'Posted the: ' + ${post.date} + '&nbsp;&nbsp;' + ${post.teacherName} + ' ' + ${post.teacherLastName}"></div>
@@ -133,43 +133,13 @@
                         </b><td>
 
                 </tr>
-                <tr>
-                    <td>
-                        <br>
-                        <b >09:00 - Check-in</b>
 
-                        <p>AnonymousClassesAndLambda - Exercises.pdf</p>
+                <!-- Lägg in schema kod här:
+                 Ska bara vara text som går att editera.
+                 Ska INTE gå att deleta.
+                 Behöver: Text box, edit knapp.
+                 -->
 
-                        <p>AnonymousClassesAndLambda.pdf</p>
-
-                        <p>LambdaStarter.zip</p>
-
-                        <b>[10.15 - 10.30 - Morning break]</b>
-
-                        <p>10.30 - LambdaSolution.zip</p>
-
-                        <p>Functional Programming.pdf</p>
-
-                        <p>Lambda.pdf</p>
-
-                        <p>Lambda - Exercises.pdf</p>
-
-                        <b>14:00 - Lambda2Solution.zip</b>
-
-                        <p>Streams.pdf</p>
-
-                        <p>Streams - Exercises.pdf</p>
-
-                        <b>[14.45 - 15.00 - Afternoon break]</b>
-
-                        <p>16:30 - StreamsSolution.zip</p>
-
-                        <b>Checkout</b>
-                    </td>
-                </tr>
-                <tr>
-                    <b></b>
-                </tr>
             </table>
             <br>
             <table class="schema" border="2" cellspacing="0" align="center">
