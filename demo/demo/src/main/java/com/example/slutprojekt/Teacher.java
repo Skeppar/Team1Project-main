@@ -5,7 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import java.util.*;
-
+import java.sql.Date;
 @Entity
 public class Teacher {
     @Id
