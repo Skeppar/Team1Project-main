@@ -5,7 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body onload="colorOnLoad()">
 <form class="logOutButton" th:action="@{/logout}" method="get">
     <input type="submit" value="Logout"/></form></span>
 <a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
@@ -13,9 +13,8 @@
 
     <div class="header-right">
         <a href="/"><button class="btn info">Home</button></a>
-
         <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
+            <button class="dropbtn">Pick Color</button>
             <div class="dropdown-content">
                 <a onclick="myFunctionRed()">Red</a>
                 <a onclick="myFunctionBlue()">Blue</a>
@@ -24,7 +23,7 @@
         </div>
 
         <!--
-                  Funkad men sparar inte:
+                  Funkar men sparar inte:
                   function myFunctionRed() {
                   document.getElementById("changeColor").style.backgroundColor = "#e6adad";
                   document.getElementById("changeColorHead").style.backgroundColor = "#ff4646";
@@ -89,11 +88,9 @@
                     document.getElementById("changeColorHead").style.backgroundColor = "#329f00b5";
                     }
                   }
-        -->
 
-        <script>
-
-            function myFunctionRed() {
+                Försök 4 som funkar lika dåligt som 3:
+                function myFunctionRed() {
                 sessionStorage.setItem("color", "#e6adad");
                 let redColor = sessionStorage.getItem("color");
                 document.getElementById("changeColor").style.backgroundColor = redColor;
@@ -102,7 +99,7 @@
                 document.getElementById("changeColorHead").style.backgroundColor = redColorH;
             }
 
-            function myFunctionBlue() {
+                function myFunctionBlue() {
                 sessionStorage.setItem("color", "lightblue");
                 let blueColor = sessionStorage.getItem("color");
                 document.getElementById("changeColor").style.backgroundColor = blueColor;
@@ -111,13 +108,39 @@
                 document.getElementById("changeColorHead").style.backgroundColor = blueColorH;
             }
 
-            function myFunctionGreen() {
+                function myFunctionGreen() {
                 sessionStorage.setItem("color", "#caf7b1b5");
                 let greenColor = sessionStorage.getItem("color");
                 document.getElementById("changeColor").style.backgroundColor = greenColor;
                 sessionStorage.setItem("colorH", "#329f00b5");
                 let greenColorH = sessionStorage.getItem("colorH");
                 document.getElementById("changeColorHead").style.backgroundColor = greenColorH;
+            }
+
+        -->
+
+        <script>
+
+            function colorOnLoad() {
+                let Color = sessionStorage.getItem("color");
+                document.getElementById("changeColor").style.backgroundColor = Color;
+                let ColorH = sessionStorage.getItem("colorH");
+                document.getElementById("changeColorHead").style.backgroundColor = ColorH;
+            }
+
+            function myFunctionRed() {
+                sessionStorage.setItem("color", "#e6adad");
+                sessionStorage.setItem("colorH", "#ff4646");
+            }
+
+            function myFunctionBlue() {
+                sessionStorage.setItem("color", "lightblue");
+                sessionStorage.setItem("colorH", "#0077B6");
+            }
+
+            function myFunctionGreen() {
+                sessionStorage.setItem("color", "#caf7b1b5");
+                sessionStorage.setItem("colorH", "#329f00b5");
             }
 
         </script>
