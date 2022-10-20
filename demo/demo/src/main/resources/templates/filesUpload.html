@@ -59,19 +59,16 @@
       <br>
       <ol>
       <div class="filesUploadLine" th:each="post : ${allContent}" th:if="${post.img} != null">
-        <a th:href="@{files/} + ${post.img}"> <p th:text="${post.img}"></p></a><p th:text="${post.date}"></p><br>
+        <a th:href="@{files/} + ${post.img}"> <p th:text="${post.img}"></p></a><p th:text="${post.date}"></p>
       </div>
-        <br>
 
       <div class="filesUploadLine" th:each="assignment : ${allCourses}" th:if="${assignment.fileName} != null">
-          <a th:href="@{files/} + ${assignment.fileName}"><p th:text="${assignment.fileName}"></p></a><p th:text="${assignment.createdDate}"></p><br>
+          <a th:href="@{files/} + ${assignment.fileName}"><p th:text="${assignment.fileName}"></p></a><p th:text="${assignment.createdDate}"></p>
         </div>
-        <br>
 
     <div class="filesUploadLine" th:each="document : ${allDocuments}">
-      <a th:href="@{files/} + ${document.fileName}" width="100"><p th:text="${document.fileName}"></p></a><p th:text="${document.date}"></p><br>
+      <a th:href="@{files/} + ${document.fileName}" width="100"><p th:text="${document.fileName}"></p></a><p th:text="${document.date}"></p>
      </div>
-        <br>
 
       </ol>
       <div sec:authorize="hasAuthority('ADMIN')">

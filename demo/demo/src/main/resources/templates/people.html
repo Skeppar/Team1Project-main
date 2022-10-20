@@ -51,14 +51,12 @@
             <div th:each="teacher : ${teachers}">
                 <p th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></p>
                 <td>
-                    <a th:href="${teacher.linkedIn}" target="_blank">LinkedIn</a>
+                    <a th:href="${teacher.linkedIn}" target="_blank">LinkedIn</a><br>
                 <td>
                 <!-- <p th:text="${student.linkedIn}"></p> -->
                 <!-- <p><img th:src="@{/Image/} + ${profile.image}" width="100"></p> -->
                 <td>
-                    <form th:action="'/mail' + ${teacher.email}" method="post">
-                        <input type="submit" value="Send email"/>
-                    </form>
+                    <a th:href="'mailto:' + ${teacher.email}">Mail</a>
                 </td>
             </div>
         </div>
@@ -75,9 +73,7 @@
                 <!-- <p th:text="${student.linkedIn}"></p> -->
                 <!-- <p><img th:src="@{/Image/} + ${profile.image}" width="100"></p> -->
                 <td>
-                    <form th:action="'/mail' + ${student.email}" method="post">
-                        <input type="submit" value="Send email"/>
-                    </form>
+                    <a th:href="'mailto:' + ${student.email}">Mail</a>
                 </td>
             </div>
         </div>
