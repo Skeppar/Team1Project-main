@@ -671,7 +671,42 @@ li::marker {
 #printSchedule {
     white-space: pre-wrap;
 }
+
 createDocument1{
     margin-left: 250px;
     margin-top:150px;
+}
+
+.filesUploadLine {
+    display: inline-flex;
+    gap: 15px;
+    inline-size: -webkit-fill-available;
+}
+
+.buttonUpload {
+    cursor: pointer;
+    background-color: #0077b6;
+    border-color: #2e2eff;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px;
+    margin: 5px;
+    position: absolute;
+    left: 270px;
+}
+
+.buttonUpload2 {
+    cursor: pointer;
+    background-color: #0077b6;
+    border-color: #2e2eff;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px;
+    margin: 5px;
+    position: absolute;
+    left: 270px;
+    margin-top: -13px;
+    margin-left: 120px;
 }

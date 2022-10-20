@@ -14,11 +14,15 @@
     <div class="header-right">
         <a href="/"><button class="btn info">Home</button></a>
         <div class="dropdown">
-            <button class="dropbtn">Pick Color</button>
+            <button class="dropbtn">Pick Color Theme</button>
             <div class="dropdown-content">
-                <a onclick="myFunctionRed()">Red</a>
-                <a onclick="myFunctionBlue()">Blue</a>
-                <a onclick="myFunctionGreen()">Green</a>
+                <a onclick="myFunctionRed(); colorOnLoad()">Red</a>
+                <a onclick="myFunctionBlue(); colorOnLoad()">Blue</a>
+                <a onclick="myFunctionGreen(); colorOnLoad()">Green</a>
+                <a onclick="myFunctionPurple(); colorOnLoad()">Purple</a>
+                <a onclick="myFunctionYellow(); colorOnLoad()">Yellow</a>
+                <a onclick="myFunctionTurquoise(); colorOnLoad()">Turquoise</a>
+                <a onclick="myFunctionGray(); colorOnLoad()">Gray</a>
             </div>
         </div>
 
@@ -143,6 +147,31 @@
                 sessionStorage.setItem("colorH", "#329f00b5");
             }
 
+            function myFunctionPurple() {
+                sessionStorage.setItem("color", "#f2b3ff73");
+                sessionStorage.setItem("colorH", "#c732f1");
+            }
+
+            function myFunctionPurple() {
+                sessionStorage.setItem("color", "#f2b3ff73");
+                sessionStorage.setItem("colorH", "#c732f1");
+            }
+
+            function myFunctionYellow() {
+                sessionStorage.setItem("color", "#fcffb3ed");
+                sessionStorage.setItem("colorH", "#fffe00");
+            }
+
+            function myFunctionTurquoise() {
+                sessionStorage.setItem("color", "#98ffcd9c");
+                sessionStorage.setItem("colorH", "#00ff83");
+            }
+
+            function myFunctionGray() {
+                sessionStorage.setItem("color", "#a5a5a5cc");
+                sessionStorage.setItem("colorH", "#585858");
+            }
+
         </script>
 
     </div>
@@ -193,6 +222,7 @@
                 <br> <br> <br>
 
                 Address: <input type="text" th:field="*{address}"><br><br><br>
+                <input type="hidden" th:field="*{password}"><br><br><br>
                 <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
                 LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
                 gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>

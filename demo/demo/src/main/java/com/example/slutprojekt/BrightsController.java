@@ -40,6 +40,9 @@ public class BrightsController {
     private CityRepo cityRepo;
 
     @Autowired
+    private TeacherRepo teacherRepo;
+
+    @Autowired
    private FileUploadUtil fileUploadUtil;
 
     @GetMapping("/login")
@@ -52,33 +55,61 @@ public class BrightsController {
         String email = request.getRemoteUser();
         session.setAttribute("userEmail", request.getRemoteUser());
 
+        List<Student> students = (List<Student>) studentRepo.findAll();
 
         Date birth = null;
+        String password = null;
 
-        for (Student student : studentRepo.findAll()) {
-            if (student.getEmail().equals(email)) {
-                model.addAttribute("student", student);
-                if (student.getDateOfBirth() != null) {
-                    birth = student.getDateOfBirth();
+        for (Student student2 : students) {
+            if (student2.getEmail().equals(email)) {
+                for (Student student : studentRepo.findAll()) {
+                    if (student.getEmail().equals(email)) {
+                        model.addAttribute("student", student);
+                        if (student.getDateOfBirth() != null) {
+                            birth = student.getDateOfBirth();
+                        }
+                    }
                 }
+
+                List<String> cityNames = new ArrayList<>();
+                for (City city2 : cityRepo.findAll()) {
+                    cityNames.add(city2.getName());
+                }
+
+                //model.addAttribute("password" )
+                model.addAttribute("birth", birth);
+                session.setAttribute("birth2", birth);
+                model.addAttribute("stader", cityNames);
+
+                return "profile";
+            }
+            else {
+                for (Teacher student : teacherRepo.findAll()) {
+                    if (student.getEmail().equals(email)) {
+                        model.addAttribute("student", student);
+                        if (student.getDateOfBirth() != null) {
+                            birth = student.getDateOfBirth();
+                        }
+                    }
+                }
+
+                List<String> cityNames = new ArrayList<>();
+                for (City city2 : cityRepo.findAll()) {
+                    cityNames.add(city2.getName());
+                }
+
+                model.addAttribute("birth", birth);
+                session.setAttribute("birth2", birth);
+                model.addAttribute("stader", cityNames);
             }
         }
-
-        List<String> cityNames = new ArrayList<>();
-        for (City city2 : cityRepo.findAll()) {
-            cityNames.add(city2.getName());
-        }
-
-        model.addAttribute("birth", birth);
-        session.setAttribute("birth2", birth);
-        model.addAttribute("stader", cityNames);
 
         return "profile";
     }
 
 
     @PostMapping("/profile")
-        public String profilePost (@ModelAttribute Student student, HttpServletRequest request) throws IOException {
+        public String profilePost (@ModelAttribute Student student,@ModelAttribute Teacher teacher, HttpServletRequest request) throws IOException {
 
             String newCity = request.getParameter("cities");
 
@@ -89,14 +120,32 @@ public class BrightsController {
                 }
             }
 
-            student.setCity(newCity2);
 
-            Date date2 = Date.valueOf(request.getParameter("date"));
 
-            student.setDateOfBirth(date2);
+            for (Teacher teache : teacherRepo.findAll()) {
+                if (!teache.getEmail().equals(student.getEmail())) {
+                    student.setCity(newCity2);
 
-            studentRepo.save(student);
+                    Date date2 = Date.valueOf(request.getParameter("date"));
 
+                    student.setDateOfBirth(date2);
+
+                    studentRepo.save(student);
+
+                    return "redirect:/profileSaved";
+                }
+                else {
+                    teacher.setCity(newCity2);
+
+                    Date date2 = Date.valueOf(request.getParameter("date"));
+
+                    teacher.setDateOfBirth(date2);
+
+                    teacherRepo.save(teacher);
+                    return "redirect:/profileSaved";
+                }
+
+            }
             return "redirect:/profileSaved";
         }
 
