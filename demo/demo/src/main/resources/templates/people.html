@@ -51,7 +51,9 @@
             <div th:each="teacher : ${teachers}">
                 <p th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></p>
                 <td>
-                    <a th:href="${teacher.linkedIn}" target="_blank">LinkedIn</a><br>
+                    <div class="linkedInProfile" th:if="${teacher.linkedIn != null}">
+                        <a class="linkedInProfile" th:href="${teacher.linkedIn}" target="_blank">LinkedIn</a><br>
+                    </div>
                 <td>
                 <!-- <p th:text="${student.linkedIn}"></p> -->
                 <!-- <p><img th:src="@{/Image/} + ${profile.image}" width="100"></p> -->
@@ -66,7 +68,7 @@
             <div th:each="student : ${students}">
                 <p th:text="${student.firstName} + ' ' + ${student.lastName}"></p>
                 <td>
-                    <div th:if="${student.linkedIn != null}">
+                    <div class="linkedInProfile" th:if="${student.linkedIn != null}">
                         <a th:href="${student.linkedIn}" target="_blank">LinkedIn</a>
                     </div>
                 <td>

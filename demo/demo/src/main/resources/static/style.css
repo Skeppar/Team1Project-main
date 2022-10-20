@@ -750,3 +750,8 @@ createDocument1{
     width: 222px;
     margin-bottom: 15px;
 }
+
+.linkedInProfile {
+    margin-top: -15px;
+    margin-bottom: 5px;
+}

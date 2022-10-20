@@ -120,8 +120,6 @@ public class BrightsController {
                 }
             }
 
-
-
             for (Teacher teache : teacherRepo.findAll()) {
                 if (!teache.getEmail().equals(student.getEmail())) {
                     student.setCity(newCity2);
