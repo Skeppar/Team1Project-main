@@ -710,3 +710,43 @@ createDocument1{
     margin-top: -13px;
     margin-left: 120px;
 }
+
+#firstNameInput {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+#lastNameInput {
+    width: 201px;
+    margin-bottom: 15px;
+}
+
+#emailProfileInput {
+    width: 228px;
+    margin-bottom: 15px;
+}
+
+.dobProfileInput {
+    width: 185px;
+    margin-bottom: 15px;
+}
+
+#cityProfileInput {
+    width: 239px;
+    margin-bottom: 15px;
+}
+
+#addressProfileInput {
+    width: 214px;
+    margin-bottom: 15px;
+}
+
+#liProfileInput {
+    width: 208px;
+    margin-bottom: 15px;
+}
+
+#gitProfileInput {
+    width: 222px;
+    margin-bottom: 15px;
+}

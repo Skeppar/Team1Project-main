@@ -201,36 +201,33 @@
 
             <form action="/profile" th:object="${student}" method="post">
 
-                First name: <input type="text" th:field="*{firstName}"><br><br><br>
-                Last name: <input type="text" th:field="*{lastName}"><br><br><br>
-                Email: <input type="text" th:field="*{email}"><br><br><br>
+                First name: <input id="firstNameInput" type="text" th:field="*{firstName}"><br>
+                Last name: <input id="lastNameInput" type="text" th:field="*{lastName}"><br>
+                Email: <input id="emailProfileInput" type="text" th:field="*{email}"><br>
                 <div th:if="*{dateOfBirth} == null">
-                    Date of Birth: <input type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br><br><br>
+                    Date of Birth: <input class="dobProfileInput" type="date" id="date" name="date" value="1970-01-01" min="1900-01-01" max="2030-12-31"><br>
                 </div>
                 <div th:if="*{dateOfBirth} != null">
-                    Date of Birth: <input type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br><br><br>
+                    Date of Birth: <input class="dobProfileInput" type="date" id="date" name="date" th:value="${{birth}}" min="1900-01-01" max="2030-12-31"><br>
                 </div>
 
-                City: <input list="cities" name="cities" th:placeholder="*{city}"/>
+                City: <input id="cityProfileInput" list="cities" name="cities" th:placeholder="*{city}"/>
                 <datalist id="cities">
                     <select>
                         <option th:each="stad: ${stader}" th:value=" ${stad}">
                         </option>
                     </select>
                 </datalist>
+                <br>
 
-                <br> <br> <br>
-
-                Address: <input type="text" th:field="*{address}"><br><br><br>
-                <input type="hidden" th:field="*{password}"><br><br><br>
+                Address: <input id="addressProfileInput" type="text" th:field="*{address}"><br>
+                <input type="hidden" th:field="*{password}">
                 <!--Password: <input type="text" th:field="*{password}"><br><br><br>-->
-                LinkedIn: <input type="text" th:field="*{linkedIn}"><br><br><br>
-                gitHub: <input type="text" th:field="*{gitHub}"><br><br><br>
+                LinkedIn: <input id="liProfileInput" type="text" th:field="*{linkedIn}"><br>
+                gitHub: <input id="gitProfileInput" type="text" th:field="*{gitHub}"><br>
 
                 <!--<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">-->
 
-
-                <!--  -->
                 <input type="hidden" th:field="*{id}">
 
                 <input type="submit" value="Save">
