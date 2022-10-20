@@ -683,7 +683,7 @@ createDocument1{
     inline-size: -webkit-fill-available;
 }
 
-.filesUpload {
+.buttonUpload {
     cursor: pointer;
     background-color: #0077b6;
     border-color: #2e2eff;
@@ -694,4 +694,19 @@ createDocument1{
     margin: 5px;
     position: absolute;
     left: 270px;
+}
+
+.buttonUpload2 {
+    cursor: pointer;
+    background-color: #0077b6;
+    border-color: #2e2eff;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px;
+    margin: 5px;
+    position: absolute;
+    left: 270px;
+    margin-top: -13px;
+    margin-left: 120px;
 }
