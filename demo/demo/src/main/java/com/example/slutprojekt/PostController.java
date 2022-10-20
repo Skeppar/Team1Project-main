@@ -226,7 +226,6 @@ public class PostController {
         Long millis=System.currentTimeMillis();
         java.sql.Timestamp date = new java.sql.Timestamp (millis);
 
-
         assignment.setCourse(course);
 
         System.out.println(assignment.getContent());
@@ -236,7 +235,6 @@ public class PostController {
         String date2 = request.getParameter("date");
         String time = request.getParameter("time");
         String dateAndTime = date2 + " " + time + ":59";
-
 
         Timestamp date3 = Timestamp.valueOf(dateAndTime);
 
