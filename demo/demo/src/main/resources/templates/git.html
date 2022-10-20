@@ -5,11 +5,21 @@
   <title>Title</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body  onload="colorOnLoad()">
+
+<script>
+    function colorOnLoad() {
+        let Color = sessionStorage.getItem("color");
+        document.getElementById("changeColor").style.backgroundColor = Color;
+        let ColorH = sessionStorage.getItem("colorH");
+        document.getElementById("changeColorHead").style.backgroundColor = ColorH;
+    }
+</script>
+
 <form class="logOutButton" th:action="@{/logout}" method="get">
   <input type="submit" value="Logout"/></form></span>
 <a href="/" class="logo"><img class="logoAss"src="/images/BCLogo.png"></a>
-<div class="headerAss">
+<div id="changeColorHead" class="headerAss">
 
   <div class="header-right">
     <a href="/"><button class="btn info">Home</button></a>
@@ -18,7 +28,7 @@
 </div>
 <br>
 
-<div class="row">
+<div id="changeColor" class="row">
   <div class="column1">
     <h2 class="linksColumn1">Links</h2>
     <div class="flex-container">
