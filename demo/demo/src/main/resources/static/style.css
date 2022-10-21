@@ -755,3 +755,8 @@ createDocument1{
     margin-top: -15px;
     margin-bottom: 5px;
 }
+
+#modules {
+    font-family: Lucida Sans Unicode;
+    font-size: 14px;
+}

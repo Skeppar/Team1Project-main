@@ -31,7 +31,7 @@
 <div id="changeColor" class="row">
     <div class="column1">
         <h2 class="linksColumn1">Links</h2>
-        <div class="flex-container">
+        <div id="column1text" class="flex-container">
             <a href="/news"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/news.png"><br>Most recent</button></a>
             <a href="/modules"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/cubes.png"><br>Modules</button></a>
             <a href="/uploadAssignment"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/qa.png"><br>Assignments</button></a>
@@ -40,6 +40,10 @@
             <a href="/video" target="_blank"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/videoconference.png"><br>Classroom</button></a>
             <a href="/git"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/github.png"><br>Git</button></a>
             <a href="/filesUpload"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/folder.png"><br>Documents</button></a>
+            <div id="column1sec" sec:authorize="hasAuthority('ADMIN')">
+                <a href="/addStudent"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/students.png"><br>Add Student</button></a>
+                <a href="/addCourse"><button id="column1" class="btn info"><img id="imgColumn1" src="/images/elearning.png"><br>Add Course</button></a>
+            </div>
         </div>
     </div>
 
