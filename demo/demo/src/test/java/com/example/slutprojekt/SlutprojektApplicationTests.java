@@ -54,42 +54,50 @@ import java.util.List;
 		}
 		@Test
 		public void FindTeachByName() {
+			//testar konstruktorn
 			Teacher teacher = new Teacher("Stefan","Stefansson","stefan@stefanmail.com","Stefanslinkedin","Password");
 			Assert.assertEquals("Stefan",teacher.getFirstName());
 		}
 		@Test
 		public void teacherAnnoucementTest () {
 			List<TeacherAnnouncement> testAnnouncement = (List<TeacherAnnouncement>)teacherAnnouncementRepo.findAll();
-			Assert.assertEquals(3,testAnnouncement.size());
+			Assert.assertEquals(6,testAnnouncement.size());
+			//hittar alla teacher announcements som finns i anncoument.
+
 		}
 
 		@Test
 		public void teacherTestSomething() {
 			Teacher teacher = teacherRepo.findByEmail("olsson@mail.com");
 			Assert.assertEquals("Andreas",teacher.getFirstName());
+			//hittar en lärare hittar första nament på läraren som är kopplat till mailen vilket vi använder som principal.
 		}
 		@Test
 		public void testSomethingElse() {
 			List <Student>  student = (List<Student>) studentRepo.findAll();
 			Assert.assertEquals(6,student.size());
+			//hittar alla studenter och kollar om storleken på listan av studenter är 6.
 		}
 		@Test
 		public void testThisThingHere() {
 
-			Teacher teacher = teacherRepo.findByEmail("olsson@mail.com");
-			TeacherAnnouncement hello = new TeacherAnnouncement();
-			hello.setTeacher(teacher);
-			hello.setTeacherName(teacher.getFirstName());
-			Assert.assertEquals("Andreas",hello.getTeacherName());
+			Teacher teacher = teacherRepo.findByEmail("olsson@mail.com");//hittar läraren
+			TeacherAnnouncement hello = new TeacherAnnouncement();//nytt teacherannouncement hello
+			hello.setTeacher(teacher);//sätter läraren vi har hittat till Announcement hello
+			hello.setTeacherName(teacher.getFirstName());//hittar namnet till läraren som existerar i hello
+			Assert.assertEquals("Andreas",hello.getTeacherName());//kollar vad första namnet är på läraren
+
 
 		}
 		@Test
 		public void runningOutOfNames () {
-			List <Teacher>  teachers = (List<Teacher>) teacherRepo.findAll();
-			Assert.assertEquals(2,teachers.size());
+			List <Teacher>  teachers = (List<Teacher>) teacherRepo.findAll();//gör en lista av lärare
+			Assert.assertEquals(2,teachers.size());//kollar så att storleken är 2
 			Teacher teacher = new Teacher("Stefan","Stefansson","stefan@stefanmail.com","Stefanslinkedin","Password");
+			//skapar en ny lärare
 			teacherRepo.save(teacher);
-			teachers = (List<Teacher>)teacherRepo.findAll();
+			//sparar läraren
+			teachers = (List<Teacher>)teacherRepo.findAll();//hittar alla lärare och nu när vi lagt till en ny lärare i databasen så hittas dom 2 gamla och den nya
 			Assert.assertEquals(3,teachers.size());
 			teacherRepo.findByEmail("stefan@stefanmail.com");
 
